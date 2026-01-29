@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { portfolio } from "@/data/portfolio";
 import { Mail } from "lucide-react";
 import { ModeToggle } from "@/components/ModeToggle";
-import { LanguageToggle } from "@/components/LanguageToggle";
 
 export function Navbar() {
   return (
