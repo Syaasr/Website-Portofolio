@@ -42,17 +42,7 @@ export interface ButtonProps
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, ...props }, ref) => {
-    // Basic implementation since we didn't install @radix-ui/react-slot
-    // If asChild is true, we would use Slot, but for simplicity let's default to button or check if we need to install radix-slot.
-    // The prompt didn't strictly ask for Radix, butshadcn uses it.
-    // I will use a simple implementation for now to avoid dependency hell if I missed installing radix-slot.
-    // But wait, the imports above use it. I should probably install it or remove it.
-    // I'll implementation without Slot for now to be safe, or just use standard button.
-    // "asChild" pattern is powerful but might be overkill for this simple portfolio if not needed.
-    // However, I'll stick to a simpler version without Slot to avoid errors if the package is missing.
-    // I'll actually Remove Slot import to be safe since I didn't explicitly install it.
-    
-    const Comp = "button"
+    const Comp = asChild ? Slot : "button"
     return (
       <Comp
         className={cn(buttonVariants({ variant, size, className }))}

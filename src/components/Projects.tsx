@@ -1,9 +1,9 @@
-import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { portfolio } from "@/data/portfolio";
 import { Github, Globe } from "lucide-react";
+import Image from "next/image"; // <--- WAJIB IMPORT INI
 
 export function Projects() {
   return (
@@ -14,14 +14,18 @@ export function Projects() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {portfolio.projects.map((project, index) => (
             <Card key={index} className="flex flex-col bg-slate-900 border-slate-800 overflow-hidden hover:border-emerald-500/50 transition-colors group">
+              
+              {/* BAGIAN INI YANG DIPERBAIKI */}
               <div className="relative h-48 w-full bg-slate-800 overflow-hidden">
-                 {/* Placeholder for project image - using a colored gradient/pattern if image fails or path is placeholder */}
-                 <div className="absolute inset-0 bg-gradient-to-br from-slate-700 to-slate-800 group-hover:scale-105 transition-transform duration-500" />
-                 {/* Imagine Image component here if we had actual images, using fallback for now */}
-                 <div className="absolute inset-0 flex items-center justify-center text-slate-600 font-mono text-xs">
-                   {project.imagePath}
-                 </div>
+                 <Image 
+                   src={project.imagePath} 
+                   alt={project.title}
+                   fill
+                   className="object-cover group-hover:scale-105 transition-transform duration-500"
+                   unoptimized={true} // Opsional: Tambahkan ini agar aman di GitHub Pages jika config belum diset
+                 />
               </div>
+              {/* END BAGIAN DIPERBAIKI */}
 
               <CardHeader>
                 <div className="flex flex-wrap gap-2 mb-3">
@@ -49,9 +53,9 @@ export function Projects() {
                   </a>
                 </Button>
                 <Button variant="ghost" size="sm" className="w-full gap-2 hover:bg-emerald-500/10 hover:text-emerald-500" asChild>
-                   <a href={project.linkDemo} target="_blank" rel="noopener noreferrer">
-                    <Globe className="h-4 w-4" /> Demo
-                  </a>
+                    <a href={project.linkDemo} target="_blank" rel="noopener noreferrer">
+                     <Globe className="h-4 w-4" /> Demo
+                   </a>
                 </Button>
               </CardFooter>
             </Card>

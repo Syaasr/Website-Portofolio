@@ -14,9 +14,13 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Alex Sterling | Robotics & AI",
-  description: "Personal Portfolio of Alex Sterling - Informatics Student & IT Generalist.",
+  title: "Syaikhasril Maulana Firdaus",
+  description: "Personal Portfolio of Syaikhasril Maulana Firdaus - Informatics Student & IT Generalist.",
 };
+
+import { ThemeProvider } from "@/components/ThemeProvider";
+
+// ... imports
 
 export default function RootLayout({
   children,
@@ -24,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark scroll-smooth">
+    <html lang="en" suppressHydrationWarning className="scroll-smooth">
       <body
         className={cn(
           inter.variable,
@@ -32,7 +36,14 @@ export default function RootLayout({
           "min-h-screen bg-background font-sans antialiased text-foreground"
         )}
       >
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { portfolio } from "@/data/portfolio";
 import { Mail } from "lucide-react";
+import { ModeToggle } from "@/components/ModeToggle";
 
 export function Navbar() {
   return (
@@ -22,17 +23,23 @@ export function Navbar() {
           <Link href="#projects" className="hover:text-primary transition-colors">
             Projects
           </Link>
+          <Link href="#education" className="hover:text-primary transition-colors">
+            Education
+          </Link>
           <Link href="#experience" className="hover:text-primary transition-colors">
             Experience
           </Link>
         </div>
 
-        <Button variant="default" size="sm" asChild>
-          <a href={`mailto:${portfolio.socials.email}`}>
-            <Mail className="mr-2 h-4 w-4" />
-            Contact
-          </a>
-        </Button>
+        <div className="flex items-center gap-4">
+          <ModeToggle />
+          <Button variant="default" size="sm" asChild>
+            <a href={`mailto:${portfolio.socials.email}`}>
+              <Mail className="mr-2 h-4 w-4" />
+              Contact
+            </a>
+          </Button>
+        </div>
       </div>
     </nav>
   );

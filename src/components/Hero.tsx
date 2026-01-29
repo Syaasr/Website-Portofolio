@@ -1,9 +1,8 @@
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { portfolio } from "@/data/portfolio";
-import { ArrowRight, Code2, Cpu, Brain } from "lucide-react";
+import { ArrowRight, Cpu, Brain, Download } from "lucide-react";
 
 export function Hero() {
   return (
@@ -33,8 +32,8 @@ export function Hero() {
                 </a>
               </Button>
               <Button variant="outline" size="lg" className="h-12 px-8 text-base" asChild>
-                <a href={portfolio.socials.github} target="_blank" rel="noopener noreferrer">
-                  GitHub
+                <a href={portfolio.hero.resumeUrl} target="_blank" rel="noopener noreferrer">
+                  Download CV <Download className="ml-2 h-4 w-4" />
                 </a>
               </Button>
             </div>
