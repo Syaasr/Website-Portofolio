@@ -20,14 +20,14 @@ export function Navbar() {
           <Link href="#about" className="hover:text-primary transition-colors">
             About
           </Link>
-          <Link href="#projects" className="hover:text-primary transition-colors">
-            Projects
-          </Link>
           <Link href="#education" className="hover:text-primary transition-colors">
             Education
           </Link>
           <Link href="#experience" className="hover:text-primary transition-colors">
             Experience
+          </Link>
+          <Link href="#projects" className="hover:text-primary transition-colors">
+            Projects
           </Link>
         </div>
 

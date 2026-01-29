@@ -48,6 +48,13 @@ export const portfolio = {
   ],
   education: [
     {
+      university: "Madrasah Aliyah Negeri 1 Surakarta",
+      degree: "Matematika dan Ilmu Pengetahuan Alam",
+      period: "2021 - 2024",
+      coursework: ["Fisika", "Kimia", "Biologi", "Matematika"],
+      gpa: "90/100",
+    },
+    {
       university: "Universitas Sebelas Maret (UNS)",
       degree: "S1 Informatika (Bachelor of Informatics)",
       period: "2024 - 2028",
