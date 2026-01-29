@@ -4,14 +4,14 @@ import { portfolio } from "@/data/portfolio";
 
 export function AboutSkills() {
   return (
-    <section id="about" className="py-20 bg-slate-950/50">
+    <section id="about" className="py-20 bg-muted/30">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           
           {/* About Section */}
           <div className="space-y-6">
             <h2 className="text-3xl font-bold tracking-tight">About Me</h2>
-            <div className="prose prose-invert prose-lg text-muted-foreground">
+            <div className="prose prose-lg dark:prose-invert text-muted-foreground">
               <p>{portfolio.about.story}</p>
             </div>
             
@@ -50,13 +50,13 @@ export function AboutSkills() {
 
 function SkillCategory({ title, skills }: { title: string; skills: string[] }) {
   return (
-    <Card className="bg-slate-900 border-slate-800">
+    <Card className="bg-card border-border">
       <CardHeader className="py-4">
-        <CardTitle className="text-base font-medium text-slate-300">{title}</CardTitle>
+        <CardTitle className="text-base font-medium text-foreground">{title}</CardTitle>
       </CardHeader>
       <CardContent className="flex flex-wrap gap-2 pb-4">
         {skills.map((skill) => (
-          <Badge key={skill} variant="secondary" className="bg-slate-800 hover:bg-slate-700 text-slate-300 font-normal">
+          <Badge key={skill} variant="secondary" className="font-normal">
             {skill}
           </Badge>
         ))}

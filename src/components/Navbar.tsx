@@ -33,8 +33,8 @@ export function Navbar() {
         </div>
 
         <div className="flex items-center gap-2">
-          {/* <LanguageToggle />
-          <ModeToggle /> */}
+          <LanguageToggle />
+          <ModeToggle />
           <Button variant="default" size="sm" asChild>
             <a href={`mailto:${portfolio.socials.email}`}>
               <Mail className="mr-2 h-4 w-4" />

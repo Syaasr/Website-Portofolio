@@ -3,7 +3,7 @@ import { portfolio } from "@/data/portfolio";
 
 export function Experience() {
   return (
-    <section id="experience" className="py-20 bg-slate-950/50">
+    <section id="experience" className="py-20 bg-muted/30">
       <div className="container mx-auto px-6 max-w-4xl">
         <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-12">Experience</h2>
         

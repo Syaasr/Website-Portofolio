@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { portfolio } from "@/data/portfolio";
 import { Github, Globe } from "lucide-react";
-import Image from "next/image"; // <--- WAJIB IMPORT INI
+import Image from "next/image";
 
 export function Projects() {
   return (
@@ -13,24 +13,23 @@ export function Projects() {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {portfolio.projects.map((project, index) => (
-            <Card key={index} className="flex flex-col bg-slate-900 border-slate-800 overflow-hidden hover:border-emerald-500/50 transition-colors group">
+            <Card key={index} className="flex flex-col bg-card border-border overflow-hidden hover:border-primary/50 transition-colors group">
               
-              {/* BAGIAN INI YANG DIPERBAIKI */}
-              <div className="relative h-48 w-full bg-slate-800 overflow-hidden">
+              {/* Project Image */}
+              <div className="relative h-48 w-full bg-muted overflow-hidden">
                  <Image 
                    src={project.imagePath} 
                    alt={project.title}
                    fill
                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                   unoptimized={true} // Opsional: Tambahkan ini agar aman di GitHub Pages jika config belum diset
+                   unoptimized={true}
                  />
               </div>
-              {/* END BAGIAN DIPERBAIKI */}
 
               <CardHeader>
                 <div className="flex flex-wrap gap-2 mb-3">
                   {project.techStack.map((tech) => (
-                    <Badge key={tech} variant="outline" className="text-xs border-slate-700 text-slate-400">
+                    <Badge key={tech} variant="outline" className="text-xs">
                       {tech}
                     </Badge>
                   ))}
@@ -52,7 +51,7 @@ export function Projects() {
                     <Github className="h-4 w-4" /> Code
                   </a>
                 </Button>
-                <Button variant="ghost" size="sm" className="w-full gap-2 hover:bg-emerald-500/10 hover:text-emerald-500" asChild>
+                <Button variant="ghost" size="sm" className="w-full gap-2 hover:bg-primary/10 hover:text-primary" asChild>
                     <a href={project.linkDemo} target="_blank" rel="noopener noreferrer">
                      <Globe className="h-4 w-4" /> Demo
                    </a>

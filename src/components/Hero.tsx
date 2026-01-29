@@ -44,26 +44,26 @@ export function Hero() {
              {/* Abstract Background Element */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-primary/20 blur-[120px] rounded-full" />
             
-            {/* Main Image Placeholder - Replacing standard image with abstract tech composition for "Dark SaaS" vibe if no image provided */}
+            {/* Main Image Placeholder - Theme-aware */}
             <div className="absolute inset-0 flex items-center justify-center">
-               <div className="relative w-[350px] h-[450px] bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl rotate-y-12 transition-transform duration-700 hover:rotate-y-0 group-hover:scale-105 overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-slate-800/50 to-bg-slate-950/50" />
+               <div className="relative w-[350px] h-[450px] bg-card border border-border rounded-2xl shadow-2xl rotate-y-12 transition-transform duration-700 hover:rotate-y-0 group-hover:scale-105 overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-muted/50 to-background/50" />
                   
                   {/* Generative UI Pattern Mockup */}
                   <div className="p-6 space-y-4 opacity-50">
-                    <div className="w-1/2 h-4 bg-slate-700 rounded animate-pulse" />
-                    <div className="w-3/4 h-4 bg-slate-700 rounded animate-pulse delay-75" />
-                    <div className="w-full h-32 bg-slate-800 rounded-lg border border-slate-700 mt-8" />
+                    <div className="w-1/2 h-4 bg-muted rounded animate-pulse" />
+                    <div className="w-3/4 h-4 bg-muted rounded animate-pulse delay-75" />
+                    <div className="w-full h-32 bg-muted rounded-lg border border-border mt-8" />
                     <div className="grid grid-cols-2 gap-4 mt-4">
-                      <div className="h-20 bg-slate-800 rounded border border-slate-700" />
-                      <div className="h-20 bg-slate-800 rounded border border-slate-700" />
+                      <div className="h-20 bg-muted rounded border border-border" />
+                      <div className="h-20 bg-muted rounded border border-border" />
                     </div>
                   </div>
                </div>
             </div>
 
             {/* Floating Stat Cards */}
-            <Card className="absolute top-10 right-10 p-4 bg-slate-900/90 backdrop-blur border-slate-700 shadow-xl animate-bounce-slow hover:border-primary/50 transition-colors">
+            <Card className="absolute top-10 right-10 p-4 bg-card/90 backdrop-blur border-border shadow-xl animate-bounce-slow hover:border-primary/50 transition-colors">
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-primary/10 rounded-lg text-primary">
                   <Cpu className="h-6 w-6" />
@@ -75,9 +75,9 @@ export function Hero() {
               </div>
             </Card>
 
-            <Card className="absolute bottom-20 left-0 p-4 bg-slate-900/90 backdrop-blur border-slate-700 shadow-xl animate-bounce-slow delay-500 hover:border-primary/50 transition-colors">
+            <Card className="absolute bottom-20 left-0 p-4 bg-card/90 backdrop-blur border-border shadow-xl animate-bounce-slow delay-500 hover:border-primary/50 transition-colors">
               <div className="flex items-center gap-3">
-                 <div className="p-2 bg-blue-500/10 rounded-lg text-blue-500">
+                 <div className="p-2 bg-primary/10 rounded-lg text-primary">
                   <Brain className="h-6 w-6" />
                 </div>
                 <div>
