@@ -51,9 +51,11 @@ export function Hero() {
                   
                   {/* Generative UI Pattern Mockup */}
                   <div className="p-6 space-y-4 opacity-50">
-                    <div className="w-1/2 h-4 bg-muted rounded animate-pulse" />
-                    <div className="w-3/4 h-4 bg-muted rounded animate-pulse delay-75" />
-                    <div className="w-full h-32 bg-muted rounded-lg border border-border mt-8" />
+                    {/* <div className="w-1/2 h-4 bg-muted rounded animate-pulse" /> */}
+                    <p>Syaikhasril Maulana Firdaus</p>
+                    {/* <div className="w-3/4 h-4 bg-muted rounded animate-pulse delay-75" /> */}
+                    <div className="w-full h-60 bg-muted rounded-lg border border-border mt-8" />
+
                     <div className="grid grid-cols-2 gap-4 mt-4">
                       <div className="h-20 bg-muted rounded border border-border" />
                       <div className="h-20 bg-muted rounded border border-border" />

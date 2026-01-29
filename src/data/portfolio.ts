@@ -63,28 +63,34 @@ export const portfolio = {
   ],
   certifications: [
     {
-      name: "Software Development Courses",
+      name: "Machine Learning Courses",
       platform: "Dicoding Indonesia",
-      year: "2024 - Present",
+      year: "2026",
     },
     {
-      name: "Fullstack Development",
+      name: "Fullstack Website Development",
       platform: "Eduwork",
-      year: "2024",
+      year: "2026",
     },
     {
-      name: "Problem Solving (Basic)",
-      platform: "HackerRank",
-      year: "2024",
+      name: "Prompt Engineering for Software Developer",
+      platform: "Dicoding Indonesia",
+      year: "2026",
     },
   ],
   achievements: [
-    // {
-    //   title: "Achievement Title",
-    //   event: "Event Name",
-    //   year: "Year",
-    //   description: "Description of achievement.",
-    // },
+    {
+      title: "Juara 2 KSM Matematika Tingkat Kabupaten Surakarta",
+      event: "Kompetisi Sains Madrasah Tingkat Kabupaten Surakarta",
+      year: "2023",
+      description: "Juara 2 dalam kompetisi sains madrasah tingkat kabupaten surakarta.",
+    },
+    {
+      title: "Juara 3 Kompetisi Matematika SEMPOA",
+      event: "Kompetisi Matematika SEMPOA 2023",
+      year: "2023",
+      description: "Juara 3 dalam kompetisi matematika SEMPOA 2023.",
+    },
     // Tambahkan prestasi lomba lain di sini jika ada
   ],
   blog: [

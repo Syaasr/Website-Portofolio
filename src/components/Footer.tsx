@@ -3,7 +3,7 @@ import { Github, Linkedin, Mail } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="py-8 border-t border-border bg-card">
+    <footer className="py-8 border-t border-black/20 bg-card">
       <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
         <p className="text-sm text-muted-foreground">
           © {new Date().getFullYear()} {portfolio.personalInfo.name}. All rights reserved.

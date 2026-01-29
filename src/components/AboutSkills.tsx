@@ -1,6 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { portfolio } from "@/data/portfolio";
+import { Terminal} from "@/components/eldoraui/terminal"
 
 export function AboutSkills() {
   return (
@@ -15,7 +16,7 @@ export function AboutSkills() {
               <p>{portfolio.about.story}</p>
             </div>
             
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-6 pt-6">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-6 pt-3">
               <div className="space-y-1">
                 <h4 className="text-4xl font-bold text-primary">{portfolio.about.stats.experience}</h4>
                 <p className="text-sm text-muted-foreground">Experience</p>
@@ -28,6 +29,21 @@ export function AboutSkills() {
                  <h4 className="text-4xl font-bold text-primary">{portfolio.about.stats.gpa}</h4>
                 <p className="text-sm text-muted-foreground">GPA</p>
               </div>
+            </div>
+            <div className="pt-3">
+              <Terminal
+                command="-> cat developer.profile"
+                steps={[
+                  { text: "| Name     : Syaikhasril Maulana Firdaus" },
+                  { text: "| Nickname : Asril" },
+                  { text: "| Role     : Informatics Student & Robotics Programmer" },
+                  { text: "| Focus    : Web Development + IoT Systems + Machine Learning" },
+                  { text: "| Motto    : Build clean. Build useful."},
+                  { text: "| Github   : github.com/Syaasr"},
+                ]}
+                pulseInterval={100}
+                showLocalhost={false}
+              />
             </div>
           </div>
 
