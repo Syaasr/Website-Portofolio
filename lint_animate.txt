@@ -1,0 +1,11 @@
+
+> web-portofolio@0.1.0 lint
+> eslint
+
+
+D:\Coding\Website\Website-Portofolio\src\components\Navbar.tsx
+  5:10  warning  'ModeToggle' is defined but never used      @typescript-eslint/no-unused-vars
+  6:10  warning  'LanguageToggle' is defined but never used  @typescript-eslint/no-unused-vars
+
+Γ£û 2 problems (0 errors, 2 warnings)
+

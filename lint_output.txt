@@ -1,0 +1,27 @@
+
+> web-portofolio@0.1.0 lint
+> eslint
+
+
+D:\Coding\Website\Website-Portofolio\src\components\Hero.tsx
+  1:8   warning  'Image' is defined but never used  @typescript-eslint/no-unused-vars
+  6:22  warning  'Code2' is defined but never used  @typescript-eslint/no-unused-vars
+
+D:\Coding\Website\Website-Portofolio\src\components\Navbar.tsx
+  15:12  error  'Link' is not defined    react/jsx-no-undef
+  18:12  error  'Link' is not defined    react/jsx-no-undef
+  21:12  error  'Link' is not defined    react/jsx-no-undef
+  24:12  error  'Link' is not defined    react/jsx-no-undef
+  27:12  error  'Link' is not defined    react/jsx-no-undef
+  34:12  error  'Button' is not defined  react/jsx-no-undef
+  36:16  error  'Mail' is not defined    react/jsx-no-undef
+
+D:\Coding\Website\Website-Portofolio\src\components\Projects.tsx
+  1:8  warning  'Image' is defined but never used  @typescript-eslint/no-unused-vars
+
+D:\Coding\Website\Website-Portofolio\src\components\ui\button.tsx
+   2:10  warning  'Slot' is defined but never used              @typescript-eslint/no-unused-vars
+  44:32  warning  'asChild' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+Γ£û 12 problems (7 errors, 5 warnings)
+
