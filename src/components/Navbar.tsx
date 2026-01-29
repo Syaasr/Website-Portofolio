@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { portfolio } from "@/data/portfolio";
 import { Mail } from "lucide-react";
 import { ModeToggle } from "@/components/ModeToggle";
+import { LanguageToggle } from "@/components/LanguageToggle";
 
 export function Navbar() {
   return (
@@ -31,8 +32,9 @@ export function Navbar() {
           </Link>
         </div>
 
-        <div className="flex items-center gap-4">
-          <ModeToggle />
+        <div className="flex items-center gap-2">
+          {/* <LanguageToggle />
+          <ModeToggle /> */}
           <Button variant="default" size="sm" asChild>
             <a href={`mailto:${portfolio.socials.email}`}>
               <Mail className="mr-2 h-4 w-4" />

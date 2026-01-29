@@ -33,11 +33,10 @@ export function AboutSkills() {
 
           {/* Skills Section */}
           <div className="space-y-8">
-            <h2 className="text-3xl font-bold tracking-tight">Technical Arsenal</h2>
+            <h2 className="text-3xl font-bold tracking-tight">Technical Skills</h2>
             <div className="grid gap-4">
               <SkillCategory title="Languages" skills={portfolio.skills.languages} />
               <SkillCategory title="Web Development" skills={portfolio.skills.web} />
-              <SkillCategory title="AI & Machine Learning" skills={portfolio.skills.ai} />
               <SkillCategory title="Robotics & IoT" skills={portfolio.skills.robotics} />
               <SkillCategory title="Tools & DevOps" skills={portfolio.skills.tools} />
             </div>

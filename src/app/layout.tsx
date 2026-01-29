@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import { LanguageProvider } from "@/components/LanguageProvider";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -17,10 +19,6 @@ export const metadata: Metadata = {
   title: "Syaikhasril Maulana Firdaus",
   description: "Personal Portfolio of Syaikhasril Maulana Firdaus - Informatics Student & IT Generalist.",
 };
-
-import { ThemeProvider } from "@/components/ThemeProvider";
-
-// ... imports
 
 export default function RootLayout({
   children,
@@ -42,9 +40,12 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <LanguageProvider>
+            {children}
+          </LanguageProvider>
         </ThemeProvider>
       </body>
     </html>
   );
 }
+

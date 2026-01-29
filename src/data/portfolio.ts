@@ -1,7 +1,7 @@
 export const portfolio = {
   personalInfo: {
     name: "Syaikhasril Maulana Firdaus",
-    role: "Informatics Student | Robotics Programmer",
+    role: "Informatics Student | Robotics Programmer | Web 3 Enthusiast",
     bio: "Mahasiswa Informatika yang membangun jembatan antara kecerdasan digital dan sistem fisik (Robotics).",
     location: "Surakarta, Indonesia",
   },
@@ -20,11 +20,10 @@ export const portfolio = {
     },
   },
   skills: {
-    languages: ["Python", "C++", "PHP", "SQL"],
+    languages: ["Python", "C", "C++", "Java", "PHP", "SQL"],
     web: ["Next.js", "Laravel", "Tailwind CSS", "React"],
-    ai: ["Machine Learning", "Python Scikit-Learn", "Data Analysis"],
-    robotics: ["ESP32", "Arduino", "IoT Protocols", "Hardware Control"],
-    tools: ["MySQL", "MSSQL", "Git", "Linux", "Figma"],
+    robotics: ["ESP32", "Arduino", "PlatformIO"],
+    tools: ["MySQL", "MSSQL", "Git", "Linux"],
   },
   experience: [
     {

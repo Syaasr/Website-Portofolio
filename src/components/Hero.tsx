@@ -16,7 +16,7 @@ export function Hero() {
               {portfolio.personalInfo.role}
             </Badge>
             
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-foreground leading-tight">
+            <h1 className="text-5xl md:text-5xl font-bold tracking-tight text-foreground leading-tight">
               {portfolio.hero.headline}
             </h1>
             
