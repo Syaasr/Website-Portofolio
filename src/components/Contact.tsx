@@ -13,7 +13,7 @@ export function Contact() {
                 
                 {/* Contact Info */}
                 <div className="space-y-8">
-                     <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Lets Architect the Future Together</h2>
+                     <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Let's Architect the Future Together</h2>
                      <p className="text-lg text-muted-foreground leading-relaxed">
                         I am currently open to internship opportunities and collaborative projects. 
                         Whether you have a question or just want to discuss the future of AI and Robotics, feel free to drop a message.
