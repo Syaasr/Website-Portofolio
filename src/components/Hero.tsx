@@ -24,14 +24,14 @@ export function Hero() {
               {portfolio.hero.subheadline}
             </p>
             
-            <div className="flex gap-4 pt-4">
-              <Button size="lg" className="h-12 px-8 text-base" asChild>
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4 w-full">
+              <Button size="lg" className="h-12 px-6 sm:px-8 text-sm sm:text-base w-full sm:w-auto" asChild>
                 <a href="#projects">
                   {portfolio.hero.cta}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </a>
               </Button>
-              <Button variant="outline" size="lg" className="h-12 px-8 text-base" asChild>
+              <Button variant="outline" size="lg" className="h-12 px-6 sm:px-8 text-sm sm:text-base w-full sm:w-auto" asChild>
                 <a href={portfolio.hero.resumeUrl} target="_blank" rel="noopener noreferrer">
                   Download CV <Download className="ml-2 h-4 w-4" />
                 </a>
