@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { portfolio } from "@/data/portfolio";
 import { ArrowRight, Cpu, Brain, Download } from "lucide-react";
+import InstagramPostCard from "@/components/ui/InstagramPostCard";
 
 export function Hero() {
   return (
@@ -46,21 +47,17 @@ export function Hero() {
             
             {/* Main Image Placeholder - Theme-aware */}
             <div className="absolute inset-0 flex items-center justify-center">
-               <div className="relative w-[350px] h-[450px] bg-card border border-border rounded-2xl shadow-2xl rotate-y-12 transition-transform duration-700 hover:rotate-y-0 group-hover:scale-105 overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-muted/50 to-background/50" />
-                  
-                  {/* Generative UI Pattern Mockup */}
-                  <div className="p-6 space-y-4 opacity-50">
-                    {/* <div className="w-1/2 h-4 bg-muted rounded animate-pulse" /> */}
-                    <p>Syaikhasril Maulana Firdaus</p>
-                    {/* <div className="w-3/4 h-4 bg-muted rounded animate-pulse delay-75" /> */}
-                    <div className="w-full h-60 bg-muted rounded-lg border border-border mt-8" />
-
-                    <div className="grid grid-cols-2 gap-4 mt-4">
-                      <div className="h-20 bg-muted rounded border border-border" />
-                      <div className="h-20 bg-muted rounded border border-border" />
-                    </div>
-                  </div>
+               <div className="relative w-[320px] transition-transform duration-700 hover:scale-105 group-hover:scale-105">
+                  <InstagramPostCard
+                    username="syaikhasrilmf"
+                    avatarUrl="/images/ig-profile.webp"
+                    imageUrl="/images/ig-post.webp"
+                    likedByText="Windah Basudara"
+                    likeCount={2389}
+                    caption="Building my personal portfolio website ✨"
+                    hastag="#portfolio #website #personal"
+                    timeAgo="12 hours ago"
+                  />
                </div>
             </div>
 

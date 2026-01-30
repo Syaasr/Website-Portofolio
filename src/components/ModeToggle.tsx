@@ -29,7 +29,7 @@ export function ModeToggle() {
       theme={theme as "light" | "dark" | "system"}
       setTheme={setTheme}
       resolvedTheme={resolvedTheme as "light" | "dark"}
-      direction="btt" // Added animation direction for flare
+      direction="ttb" // Added animation direction for flare
     >
       {({ toggleTheme, effective }) => (
         <Button
