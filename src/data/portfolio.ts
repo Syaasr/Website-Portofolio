@@ -104,6 +104,7 @@ export const portfolio = {
   projects: [
     {
       title: "E-Commerce Dashboard",
+      category: "Website",
       description: "Sistem manajemen toko dan inventaris komprehensif dengan analisis data real-time.",
       techStack: ["Laravel", "MySQL", "Tailwind CSS"],
       linkRepo: "https://github.com/Syaasr/olsop", 
@@ -111,7 +112,17 @@ export const portfolio = {
       imagePath: "/images/projects/ecommerce.webp",
     },
     {
+      title: "Landing Page Mouse Product",
+      category: "Website",
+      description: "Landing page untuk produk mouse dengan desain modern dan responsif.",
+      techStack: ["HTML", "CSS", "JavaScript", "React", "Vue"],
+      linkRepo: "https://github.com/Syaasr/LandingPageMouse", 
+      linkDemo: "https://store.syaikhasril.web.id/", 
+      imagePath: "/images/projects/landing_page_mouse.webp",
+    },
+    {
       title: "Recycopter Game",
+      category: "Game",
       description: "Game yang mengajarkan daur ulang dengan mengumpulkan sampah dengan helikopter untuk mendapatkan poin.",
       techStack: ["Java", "Gradle", "LibGDX"],
       linkRepo: "https://github.com/daffarahman/recycopter-java", 
@@ -120,6 +131,7 @@ export const portfolio = {
     },
     {
       title: "Robotics Control System",
+      category: "IoT / Robotics",
       description: "Sistem kendali robot berbasis ESP32 dengan latensi rendah untuk navigasi presisi.",
       techStack: ["C++", "ESP32", "IoT"],
       linkRepo: "https://github.com/Syaasr/ESP32-Robot-Antasena", 

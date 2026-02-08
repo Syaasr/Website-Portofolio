@@ -42,3 +42,6 @@ next-env.d.ts
 
 # Prompt
 /Prompt/
+# logs and linting
+lint_*.txt
+*.log
