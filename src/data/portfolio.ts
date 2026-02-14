@@ -130,6 +130,15 @@ export const portfolio = {
       imagePath: "/images/projects/recycopter.webp",
     },
     {
+      title: "Pixel Dungeon Endless Crawler",
+      category: "Game",
+      description: "Game ini adalah roguelike pixel dungeon crawler berbasis web di mana kamu mengendalikan archer yang menjelajahi ruangan tak berujung, mengumpulkan gold, dan bertahan selama mungkin sebelum game over.",
+      techStack: ["HTML", "CSS", "JavaScript"],
+      linkRepo: "https://github.com/Syaasr/Game-Pixel-Dungeon-Endless-Crawler", 
+      linkDemo: "https://pixel-dungeon-endless-crawler.netlify.app/",
+      imagePath: "/images/projects/pixel_dungeon_endless_crawler.webp",
+    },
+    {
       title: "Fraud Detection System",
       category: "Machine Learning",
       description: "Sistem deteksi penipuan menggunakan machine learning.",
