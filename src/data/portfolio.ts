@@ -112,6 +112,15 @@ export const portfolio = {
       imagePath: "/images/projects/ecommerce.webp",
     },
     {
+      title: "Prompt Refiner",
+      category: "Website",
+      description: "Prompt Refiner adalah platform berbasis web yang dirancang untuk membantu pengguna menyempurnakan dan mengoptimalkan prompt yang akan digunakan dengan model bahasa besar (LLM) seperti ChatGPT, Claude, atau Gemini.",
+      techStack: ["Python", "Streamlit", "AI"],
+      linkRepo: "https://github.com/Syaasr/Prompt-Improver", 
+      linkDemo: "https://prompt-improver-advance.streamlit.app/", 
+      imagePath: "/images/projects/prompt_improver.webp",
+    },
+    {
       title: "Landing Page Mouse Product",
       category: "Website",
       description: "Landing page untuk produk mouse dengan desain modern dan responsif.",
