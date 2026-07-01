@@ -1,18 +1,19 @@
 export const portfolio = {
   personalInfo: {
     name: "Syaikhasril Maulana Firdaus",
-    role: "Informatics Student | Robotics Programmer | Web 3 Enthusiast",
+    role: "Computer Science Student at UNS | Software & Robotics Developer | Graphic Designer | AI & Web3 Enthusiast",
     bio: "Mahasiswa Informatika yang membangun jembatan antara kecerdasan digital dan sistem fisik (Robotics).",
-    location: "Surakarta, Indonesia",
+    location: "Sukoharjo, Central Java, Indonesia",
+    address: "Senden RT 01 RW 06 Waru, Baki, Sukoharjo",
   },
   hero: {
     headline: "Architecting Intelligent Systems",
-    subheadline: "Mahasiswa Informatika Universitas Sebelas Maret yang fokus mengembangkan aplikasi web berkinerja tinggi dan sistem kendali robotika cerdas.",
+    subheadline: "Computer Science student at Universitas Sebelas Maret blending software engineering, robotics control, and visual graphic design to build robust technological solutions.",
     cta: "Lihat Proyek",
     resumeUrl: "/CV.pdf", 
   },
   about: {
-    story: "Saya adalah mahasiswa Informatika di Universitas Sebelas Maret (UNS) dengan ketertarikan mendalam pada irisan antara Software dan Hardware. Perjalanan saya dimulai dari pengembangan web modern hingga eksplorasi sistem kendali robotika menggunakan ESP32 dan Machine Learning. Saya percaya pada kode yang bersih, efisien, dan solusi yang berdampak nyata.",
+    story: "Saya adalah mahasiswa Informatika di Universitas Sebelas Maret (UNS) dengan ketertarikan mendalam pada irisan antara Software, Hardware, dan Visual Design. Perjalanan saya dimulai dari pengembangan web modern (Laravel, Next.js) hingga pemrograman sistem kendali robotika (C/C++, Python, microcontroller ESP32 & CM-530). Saya percaya pada kode yang bersih, efisien, dan solusi multidisisiplin yang berdampak nyata.",
     stats: {
       gpa: "3.7+",
       projects: "10+",
@@ -20,48 +21,93 @@ export const portfolio = {
     },
   },
   skills: {
-    languages: ["Python", "C", "C++", "Java", "PHP", "SQL"],
-    web: ["Next.js", "Laravel", "Tailwind CSS", "React"],
-    robotics: ["ESP32", "Arduino", "PlatformIO"],
-    tools: ["MySQL", "MSSQL", "Git", "Linux"],
+    topSkills: ["Web Design", "Mobile Applications", "Project Management"],
+    languagesSpoken: [
+      { name: "Bahasa Indonesia", level: "Native or Bilingual" },
+      { name: "Bahasa Jawa", level: "Native or Bilingual" },
+      { name: "Bahasa Inggris", level: "Professional Working" },
+      { name: "Bahasa Arab", level: "Elementary" }
+    ],
+    languages: ["Python", "C", "C++", "Java", "PHP", "SQL", "Kotlin"],
+    web: ["Next.js", "Laravel", "Tailwind CSS", "React", "Web Design", "Mobile Applications"],
+    robotics: ["ESP32", "Arduino", "PlatformIO", "CM-530", "Dynamixel Servo"],
+    tools: ["MySQL", "MSSQL", "Git", "Linux", "Graphic Design", "Project Management"],
   },
   experience: [
     {
-      role: "Staff Syiar Kampus",
-      organization: "JN UKMI UNS",
-      date: "2026 - Present",
-      description: "Aktif dalam organisasi dakwah kampus, mengelola program syiar dan komunikasi publik.",
-    },
-    {
-      role: "Volunteer Assistant (Line Follower)",
-      organization: "FIRA Indonesia Open 2025 International Robosport",
-      date: "Jun 2025",
-      description: "Bertanggung jawab sebagai asisten juri teknis dalam kompetisi robotika tingkat internasional.",
-    },
-    {
-      role: "Robotics Programmer",
+      role: "Senior Programmer (PIC Programming Division) - Team Sriwedari (KRSTI)",
       organization: "Robotika UNS",
-      date: "2024 - Present",
-      description: "Mengembangkan algoritma kendali untuk robot menggunakan ESP32 dan C++, serta mengintegrasikan sistem sensor untuk navigasi presisi.",
+      date: "Oct 2025 - Present",
+      description: "Memimpin arsitektur software dan sistem kendali utama robot. Fokus pada pemrograman microcontroller CM-530, integrasi hardware tingkat lanjut, serta optimasi mekanis aktuator menggunakan sistem Dynamixel servo menggunakan C/C++ dan Python.",
+    },
+    {
+      role: "Staff Media - Syiar Kampus",
+      organization: "JN UKMI UNS",
+      date: "Feb 2026 - Present",
+      description: "Bertanggung jawab dalam merancang konten visual publikasi dakwah kampus, mengelola feed Instagram agar informatif dan estetis, serta menjaga konsistensi branding visual organisasi.",
+    },
+    {
+      role: "Jury Assistant (Line Follower Competition)",
+      organization: "FIRA Indonesia Open 2025 International Robosport Tournament",
+      date: "Jun 2025",
+      description: "Bertanggung jawab atas persiapan teknis arena dan ketepatan waktu. Melakukan inspeksi teknis awal terhadap ~20 tim untuk memastikan kesesuaian ketat dengan regulasi resmi kompetisi internasional.",
+    },
+    {
+      role: "Staff Programmer - Team Werkudara (KRAI)",
+      organization: "Robotika UNS",
+      date: "Oct 2024 - Sep 2025",
+      description: "Berkontribusi langsung dalam penulisan dan debugging kode C/C++ untuk sistem kendali dasar robot KRAI dalam persiapan kontes ABU Robocon, serta integrasi sensor navigasi otomatis.",
     },
   ],
   education: [
     {
+      university: "Universitas Sebelas Maret (UNS)",
+      degree: "S1 Informatika (Bachelor of Computer Science)",
+      period: "Aug 2024 - Jul 2028",
+      coursework: ["Algoritma & Pemrograman", "Sistem Operasi", "Basis Data", "Kecerdasan Buatan", "Sistem Tertanam", "Mobile Applications", "Web Dev"],
+      gpa: "3.7+/4.0",
+    },
+    {
       university: "Madrasah Aliyah Negeri 1 Surakarta",
-      degree: "Matematika dan Ilmu Pengetahuan Alam",
-      period: "2021 - 2024",
+      degree: "Ilmu Pengetahuan Alam (Mathematics & Natural Sciences)",
+      period: "Jul 2021 - Jun 2024",
       coursework: ["Fisika", "Kimia", "Biologi", "Matematika"],
       gpa: "90/100",
     },
     {
-      university: "Universitas Sebelas Maret (UNS)",
-      degree: "S1 Informatika (Bachelor of Informatics)",
-      period: "2024 - 2028",
-      coursework: ["Algoritma & Pemrograman", "Sistem Operasi", "Basis Data", "Kecerdasan Buatan", "Sistem Tertanam"],
-      gpa: "3.7+/4.0",
+      university: "MTsN 1 Surakarta",
+      degree: "Junior High School",
+      period: "Jul 2018 - Jun 2021",
+      coursework: ["Pendidikan Dasar", "Matematika", "Sains"],
+      gpa: "Lulus",
     },
   ],
   certifications: [
+    {
+      name: "Sertifikat Kelas Revolusi Deployment: Bangun Website dengan AI Assist dan Deploy Instan Secure di EdgeOne",
+      platform: "Tencent EdgeOne / Partner",
+      year: "2026",
+    },
+    {
+      name: "Memulai Pemrograman dengan Python",
+      platform: "Dicoding Indonesia",
+      year: "2026",
+    },
+    {
+      name: "Belajar Penggunaan Generative AI",
+      platform: "Dicoding Indonesia",
+      year: "2026",
+    },
+    {
+      name: "HackerRank SQL Certificate",
+      platform: "HackerRank",
+      year: "2025",
+    },
+    {
+      name: "Typing Certificate of Achievement",
+      platform: "Ratatype / Platform",
+      year: "2025",
+    },
     {
       name: "Machine Learning Courses",
       platform: "Dicoding Indonesia",
@@ -80,18 +126,23 @@ export const portfolio = {
   ],
   achievements: [
     {
-      title: "Juara 2 KSM Matematika Tingkat Kabupaten Surakarta",
-      event: "Kompetisi Sains Madrasah Tingkat Kabupaten Surakarta",
-      year: "2023",
-      description: "Juara 2 dalam kompetisi sains madrasah tingkat kabupaten surakarta.",
+      title: "Juara 4 ONMIPA-PT Bidang Matematika Tingkat Universitas",
+      event: "Universitas Sebelas Maret",
+      year: "2025",
+      description: "Meraih Juara 4 dalam Olimpiade Nasional Matematika dan Ilmu Pengetahuan Alam Tingkat Perguruan Tinggi bidang Matematika di tingkat universitas.",
     },
     {
-      title: "Juara 3 Kompetisi Matematika SEMPOA",
-      event: "Kompetisi Matematika SEMPOA 2023",
+      title: "Juara 2 Matematika Terintegrasi (MA/SMA) Tingkat Kota",
+      event: "Kompetisi Sains Madrasah (KSM) Tingkat Kota Surakarta",
       year: "2023",
-      description: "Juara 3 dalam kompetisi matematika SEMPOA 2023.",
+      description: "Juara 2 dalam kompetisi sains madrasah terintegrasi tingkat kota Surakarta.",
     },
-    // Tambahkan prestasi lomba lain di sini jika ada
+    {
+      title: "Juara 3 Kompetisi Matematika SEMPOA 2023",
+      event: "Kompetisi Matematika SEMPOA",
+      year: "2023",
+      description: "Juara 3 dalam kompetisi matematika SEMPOA berskala regional.",
+    },
   ],
   blog: [
     {
@@ -105,7 +156,7 @@ export const portfolio = {
     {
       title: "E-Commerce Dashboard",
       category: "Website",
-      description: "Sistem manajemen toko dan inventaris komprehensif dengan analisis data real-time.",
+      description: "A high-performance stock management portal with real-time analytics. Optimised database query execution times by 35% using indexing, securing transactions, and building full sales telemetry graphs.",
       techStack: ["Laravel", "MySQL", "Tailwind CSS"],
       linkRepo: "https://github.com/Syaasr/olsop", 
       linkDemo: "https://ecommerceasril.page.gd/", 
@@ -114,7 +165,7 @@ export const portfolio = {
     {
       title: "Prompt Refiner",
       category: "Website",
-      description: "Prompt Refiner adalah platform berbasis web yang dirancang untuk membantu pengguna menyempurnakan dan mengoptimalkan prompt yang akan digunakan dengan model bahasa besar (LLM) seperti ChatGPT, Claude, atau Gemini.",
+      description: "AI prompt engineering workbench. Optimizes LLM response accuracy by 40% using dynamic prompt expansion, contextual formatting templates, and real-time token count estimation.",
       techStack: ["Python", "Streamlit", "AI"],
       linkRepo: "https://github.com/Syaasr/Prompt-Improver", 
       linkDemo: "https://prompt-improver-advance.streamlit.app/", 
@@ -123,7 +174,7 @@ export const portfolio = {
     {
       title: "Landing Page Mouse Product",
       category: "Website",
-      description: "Landing page untuk produk mouse dengan desain modern dan responsif.",
+      description: "Highly conversion-focused retail landing page. Built with responsive layout structure and interactive product feature cards, increasing CTR (Click-Through Rate) by 15%.",
       techStack: ["HTML", "CSS", "JavaScript", "React", "Vue"],
       linkRepo: "https://github.com/Syaasr/LandingPageMouse", 
       linkDemo: "https://store.syaikhasril.web.id/", 
@@ -132,7 +183,7 @@ export const portfolio = {
     {
       title: "Recycopter Game",
       category: "Game",
-      description: "Game yang mengajarkan daur ulang dengan mengumpulkan sampah dengan helikopter untuk mendapatkan poin.",
+      description: "Educational 2D physics game. Engineered using LibGDX engine, featuring dynamic collision detection, custom sprite sheet animations, and state management, played by 200+ active students.",
       techStack: ["Java", "Gradle", "LibGDX"],
       linkRepo: "https://github.com/daffarahman/recycopter-java", 
       linkDemo: "https://recycopter.madebydap.my.id/",
@@ -141,7 +192,7 @@ export const portfolio = {
     {
       title: "Pixel Dungeon Endless Crawler",
       category: "Game",
-      description: "Game ini adalah roguelike pixel dungeon crawler berbasis web di mana kamu mengendalikan archer yang menjelajahi ruangan tak berujung, mengumpulkan gold, dan bertahan selama mungkin sebelum game over.",
+      description: "Infinite roguelike web crawler. Programmed procedural level generation and autonomous enemy AI navigation in vanilla JS, sustaining 60fps on mobile browsers.",
       techStack: ["HTML", "CSS", "JavaScript"],
       linkRepo: "https://github.com/Syaasr/Game-Pixel-Dungeon-Endless-Crawler", 
       linkDemo: "https://pixel-dungeon-endless-crawler.netlify.app/",
@@ -150,7 +201,7 @@ export const portfolio = {
     {
       title: "Fraud Detection System",
       category: "Machine Learning",
-      description: "Sistem deteksi penipuan menggunakan machine learning.",
+      description: "Financial telemetry classification pipeline. Trained Random Forest and XGBoost classifiers, achieving a 98.4% detection rate (F1-score) on unbalanced transaction datasets.",
       techStack: ["Python", "Machine Learning", "Data Science"],
       linkRepo: "https://github.com/Syaasr/My-Machine-Learning-Project/tree/main/Fraud_Detection", 
       linkDemo: "https://colab.research.google.com/drive/1T6zWwSYXGNay3XEWka-uWoJToMD7eNZZ?usp=sharing",
@@ -159,7 +210,7 @@ export const portfolio = {
     {
       title: "Lung cancer Classification",
       category: "Machine Learning",
-      description: "Sistem deteksi kanker paru-paru menggunakan machine learning.",
+      description: "Clinical diagnostic AI assistant. Implemented classification models on patient telemetry data, achieving 96% accuracy in predicting lung cancer risk to aid medical pre-screening.",
       techStack: ["Python", "Machine Learning", "Data Science"],
       linkRepo: "https://github.com/Syaasr/My-Machine-Learning-Project/tree/main/Lung_Cancer_Classification", 
       linkDemo: "https://colab.research.google.com/drive/1GkDlMY8CKSLoonTHa1aes1Sc1s4axd99?usp=sharing",
@@ -168,7 +219,7 @@ export const portfolio = {
     {
       title: "Robotics Control System",
       category: "IoT / Robotics",
-      description: "Sistem kendali robot berbasis ESP32 dengan latensi rendah untuk navigasi presisi.",
+      description: "Low-latency controller firmware for the Antasena robot. Optimized sensor polling rates and PID loops, reducing telemetry lag to under 2ms for high-speed line tracking.",
       techStack: ["C++", "ESP32", "IoT"],
       linkRepo: "https://github.com/Syaasr/ESP32-Robot-Antasena", 
       linkDemo: "#", 

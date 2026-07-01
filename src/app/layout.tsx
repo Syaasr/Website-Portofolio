@@ -25,8 +25,39 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Syaikhasril Maulana Firdaus",
+    "jobTitle": "Software Developer & Robotics Programmer",
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "Universitas Sebelas Maret (UNS)"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/in/syaikhasrilmf",
+      "https://github.com/syaasr",
+      "https://instagram.com/syaikhasrilmf"
+    ],
+    "knowsAbout": [
+      "Software Engineering",
+      "Robotics Control",
+      "ESP32 Firmware Programming",
+      "Web Development",
+      "Next.js",
+      "Laravel",
+      "Machine Learning"
+    ]
+  };
+
   return (
     <html lang="en" suppressHydrationWarning className="scroll-smooth">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body
         className={cn(
           inter.variable,
@@ -36,7 +67,7 @@ export default function RootLayout({
       >
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
+          defaultTheme="light"
           enableSystem
           disableTransitionOnChange
         >
