@@ -6,7 +6,6 @@ export const portfolio: PortfolioData = {
     role: "Computer Science Student at UNS | Software & Robotics Developer | Graphic Designer | AI & Web3 Enthusiast",
     bio: "Informatics student building bridges between digital intelligence and physical systems (Robotics).",
     location: "Sukoharjo, Central Java, Indonesia",
-    address: "Senden RT 01 RW 06 Waru, Baki, Sukoharjo",
   },
   hero: {
     headline: "Architecting Intelligent Systems",

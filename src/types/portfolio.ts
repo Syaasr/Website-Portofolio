@@ -3,7 +3,7 @@ export interface PersonalInfo {
   role: string;
   bio: string;
   location: string;
-  address: string;
+
 }
 
 export interface HeroInfo {
