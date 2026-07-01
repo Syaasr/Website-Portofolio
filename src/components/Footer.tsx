@@ -6,7 +6,7 @@ import { Github, Linkedin, Instagram } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="bg-white dark:bg-[#1A1A1A] border-t-4 border-black transition-colors duration-200">
+    <footer className="bg-white dark:bg-[#1A1A1A] transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-6 py-12 md:py-16">
         
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">

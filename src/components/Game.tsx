@@ -337,7 +337,7 @@ export function Game() {
   };
 
   return (
-    <section id="mini-game" className="relative py-20 bg-[#F0FDF4] dark:bg-[#101E16] border-b-4 border-black transition-colors duration-200 overflow-hidden">
+    <section id="mini-game" className="relative py-20 bg-[#F0FDF4] dark:bg-[#101E16] transition-colors duration-200 overflow-hidden">
       
       {/* Background patterns */}
       <div className="absolute inset-0 opacity-[0.08] nb-bg-grid-heavy pointer-events-none" />
@@ -474,6 +474,14 @@ export function Game() {
 
         </div>
 
+      </div>
+
+      {/* Ripped Paper Divider */}
+      <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none z-20 translate-y-[2px]">
+        <svg viewBox="0 0 1000 40" className="w-full h-8 text-white dark:text-[#121212] relative" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+          <path className="fill-current" d="M0,20 L40,10 L80,25 L120,8 L160,22 L200,12 L240,27 L280,10 L320,24 L360,12 L400,28 L440,15 L480,26 L520,10 L560,22 L600,8 L640,24 L680,12 L720,28 L760,15 L800,25 L840,8 L880,22 L920,12 L960,27 L1000,15 L1000,40 L0,40 Z" />
+          <path className="stroke-black stroke-[4px] fill-none" d="M0,20 L40,10 L80,25 L120,8 L160,22 L200,12 L240,27 L280,10 L320,24 L360,12 L400,28 L440,15 L480,26 L520,10 L560,22 L600,8 L640,24 L680,12 L720,28 L760,15 L800,25 L840,8 L880,22 L920,12 L960,27 L1000,15" />
+        </svg>
       </div>
     </section>
   );

@@ -6,7 +6,7 @@ import { portfolio } from "@/data/portfolio";
 
 export function Hero() {
   return (
-    <section id="hero" className="relative pt-28 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-[#FFEB3B] dark:bg-[#202010] border-b-4 border-black transition-colors duration-200">
+    <section id="hero" className="relative pt-28 pb-24 md:pt-40 md:pb-32 overflow-hidden bg-[#FFEB3B] dark:bg-[#202010] transition-colors duration-200">
       
       {/* Decorative background grid pattern */}
       <div className="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,#000_2px,transparent_2px),linear-gradient(to_bottom,#000_2px,transparent_2px)] bg-[size:30px_30px]" />
@@ -103,25 +103,29 @@ export function Hero() {
               <div className="absolute inset-4 bg-[#FF5252] nb-border transform -rotate-6" />
 
               {/* Profile Image Neubrutalist Card */}
-              <div className="absolute inset-8 bg-white dark:bg-[#1E1E1E] text-black dark:text-white nb-border p-3 shadow-[6px_6px_0_#000] transform rotate-[-2deg] hover:rotate-[0deg] transition-transform duration-300 flex flex-col justify-between overflow-hidden">
-                <div className="relative w-full h-full border-2 border-black overflow-hidden bg-gray-100">
-                  <img 
-                    src="/images/ig-profile.webp" 
-                    alt="Syaikhasril Maulana Firdaus"
-                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
-                  />
-                  
-                  {/* Overlapping sticker label */}
-                  <div className="absolute bottom-3 left-3 bg-[#FFEB3B] text-black px-2.5 py-1 font-mono text-[9px] sm:text-xs font-black nb-border shadow-[1.5px_1.5px_0_#000]">
-                    asril@portfolio:~$ whoami
-                  </div>
+              <div className="absolute inset-2 bg-white border-[3px] border-black shadow-[4px_4px_0_#000] overflow-hidden group">
+                <img 
+                  src="/images/ig-profile.webp" 
+                  alt="Syaikhasril Profile" 
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300 scale-102 group-hover:scale-100"
+                />
+                
+                {/* Sticker Label Overlay */}
+                <div className="absolute bottom-3 left-3 bg-[#FFEB3B] text-black px-2.5 py-1 font-mono text-[9px] sm:text-xs font-black nb-border shadow-[1.5px_1.5px_0_#000]">
+                  asril@portfolio:~$ whoami
                 </div>
               </div>
-
             </div>
           </div>
-
         </div>
+      </div>
+
+      {/* Ripped Paper Divider */}
+      <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none z-20 translate-y-[2px]">
+        <svg viewBox="0 0 1000 40" className="w-full h-8 text-white dark:text-[#121212] relative" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+          <path className="fill-current" d="M0,20 L40,10 L80,25 L120,8 L160,22 L200,12 L240,27 L280,10 L320,24 L360,12 L400,28 L440,15 L480,26 L520,10 L560,22 L600,8 L640,24 L680,12 L720,28 L760,15 L800,25 L840,8 L880,22 L920,12 L960,27 L1000,15 L1000,40 L0,40 Z" />
+          <path className="stroke-black stroke-[4px] fill-none" d="M0,20 L40,10 L80,25 L120,8 L160,22 L200,12 L240,27 L280,10 L320,24 L360,12 L400,28 L440,15 L480,26 L520,10 L560,22 L600,8 L640,24 L680,12 L720,28 L760,15 L800,25 L840,8 L880,22 L920,12 L960,27 L1000,15" />
+        </svg>
       </div>
     </section>
   );

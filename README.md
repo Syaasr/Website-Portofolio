@@ -1,111 +1,97 @@
-# Portfolio Website
+# Neubrutalist Web Portfolio
 
-Personal portfolio website for Syaikhasril Maulana Firdaus, an Informatics student and IT Generalist specializing in web development and robotics programming.
+Personal portfolio website for Syaikhasril Maulana Firdaus, an Informatics student and software developer specializing in high-performance web applications and robotics control systems.
 
 ## Tech Stack
 
-- **Framework**: [Next.js 16.1.6](https://nextjs.org) (App Router)
-- **Language**: [TypeScript](https://www.typescriptlang.org/)
-- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
-- **UI Components**: Custom components with [Radix UI](https://www.radix-ui.com/)
-- **Icons**: [Lucide React](https://lucide.dev/) & [React Icons](https://react-icons.github.io/react-icons/)
-- **Theming**: [next-themes](https://github.com/pacocoursey/next-themes) for dark/light mode
-- **Fonts**: Inter & JetBrains Mono via [next/font](https://nextjs.org/docs/app/building-your-application/optimizing/fonts)
+- **Framework**: Next.js 16.1.6 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS v4
+- **UI Components**: Custom components with Radix UI primitives
+- **Icons**: Lucide React
+- **Theming**: next-themes for dark and light mode toggle
+- **Fonts**: Inter and JetBrains Mono
 
 ## Project Structure
 
 ```
 src/
 ├── app/
-│   ├── layout.tsx          # Root layout with theme and language providers
-│   ├── page.tsx            # Main page component
-│   └── globals.css         # Global styles and Tailwind directives
+│   ├── layout.tsx           # Root layout with theme and language providers
+│   ├── page.tsx             # Main page component
+│   └── globals.css          # Global styles, Tailwind directives, and custom utility classes
 ├── components/
-│   ├── ui/                 # Reusable UI components (Button, Card, Input, etc.)
-│   ├── animate-ui/         # Animated UI components
-│   ├── AboutSkills.tsx     # About & Skills sections
-│   ├── Blog.tsx            # Blog posts section
-│   ├── Certifications.tsx  # Certifications showcase
-│   ├── Contact.tsx         # Contact form
-│   ├── Education.tsx       # Education timeline
-│   ├── Experience.tsx      # Work experience
-│   ├── Hero.tsx            # Hero section
-│   ├── Footer.tsx          # Footer component
-│   ├── Navbar.tsx          # Navigation bar
-│   ├── Projects.tsx        # Projects portfolio
-│   ├── ThemeProvider.tsx   # Theme context provider
-│   ├── LanguageProvider.tsx # Language context provider
-│   └── ModeToggle.tsx      # Theme toggle button
+│   ├── ui/                  # Basic UI primitives
+│   ├── animate-ui/          # Motion-enhanced UI primitives
+│   ├── eldoraui/            # Core layout/carousel items
+│   ├── AboutSkills.tsx      # About story block and technical competencies grid
+│   ├── Blog.tsx             # Medium RSS blog posts display
+│   ├── Certifications.tsx   # Scrollable certification showcase cards
+│   ├── Contact.tsx          # Interactive contact form
+│   ├── FAQ.tsx              # Interactive FAQ accordion component (static asset)
+│   ├── Footer.tsx           # Neubrutalist footer with social links
+│   ├── Game.tsx             # Custom Flappy Bird canvas arcade mini-game
+│   ├── Hero.tsx             # Hero section with headline and TL;DR profile summary
+│   ├── LanguageProvider.tsx # Client-side language context
+│   ├── LanguageToggle.tsx   # Language selector toggle
+│   ├── ModeToggle.tsx       # Dark/Light theme mode switch
+│   ├── Navbar.tsx           # Header navigation
+│   ├── Projects.tsx         # Filterable portfolio projects showcase
+│   ├── ThemeProvider.tsx    # Next-themes provider wrapper
+│   └── TimelineRoadmap.tsx  # Unified education and experience timeline roadmap
 ├── data/
-│   └── portfolio.ts        # Portfolio data (personal info, skills, projects, etc.)
+│   └── portfolio.ts         # Centralized database for all portfolio content
 └── lib/
-    └── utils.ts            # Utility functions (cn for class merging)
+    └── utils.ts             # Tailwind class name merger helper
 ```
 
 ## Key Features
 
-- **Dark/Light Mode**: Automatic theme detection with manual toggle
-- **Responsive Design**: Fully responsive across all device sizes
-- **Multilingual Support**: Context-based language provider structure
-- **Performance**: Optimized images, fonts, and code splitting
-- **TypeScript**: Full type safety throughout the application
-- **Component Reusability**: Modular UI components using shadcn/ui patterns
-- **Data-Driven**: Content managed centrally in `portfolio.ts`
+- **Neubrutalist Aesthetics**: Implements hard shadows, 3px thick black borders, vibrant colors, display typography, and physical-compression interaction effects.
+- **Ripped Paper Dividers**: Custom SVG paper torn dividers separating each section with perfect light and dark mode color continuity.
+- **Interactive Arcade Mini-Game**: Built-in HTML5 Canvas Flappy Bird clone with custom physics, theme-aware rendering, particle effects, and high-score tracking.
+- **Single Source of Truth**: All textual data, project links, blogs, and experience histories are managed inside the portfolio data module.
+- **Responsive Layout**: Designed mobile-first, ensuring high contrast and tactile usability across all viewports.
+- **Dark and Light Modes**: Fully synchronized color palette tailored for accessibility under both themes.
 
 ## Getting Started
 
-Install dependencies:
+Install the required node modules:
 
 ```bash
 npm install
 ```
 
-Run the development server:
+Start the development server:
 
 ```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser.
+Open http://localhost:3000 in your browser to view the application.
 
-## Build & Production
+## Build and Production
+
+Compile and optimize the build for production:
 
 ```bash
-npm run build    # Build for production
-npm start        # Start production server
+npm run build
+```
+
+Run the built static server locally:
+
+```bash
+npm start
 ```
 
 ## Data Management
 
-Portfolio content is managed in `src/data/portfolio.ts`:
-- Personal information
-- Skills (languages, web, robotics, tools)
-- Work experience
-- Education history
-- Certifications
-- Projects with tech stacks
-- Blog posts
-- Social media links
-
-## Component Architecture
-
-- **UI Components**: Located in `components/ui/` following shadcn/ui patterns
-- **Section Components**: Each page section is a separate component for modularity
-- **Providers**: Theme and Language contexts wrapped in root layout
-- **Utilities**: Shared functions in `lib/utils.ts`
-
-## Styling
-
-- Tailwind CSS with custom animations via `tailwindcss-animate`
-- Dark mode support using `next-themes`
-- Custom font variables for Inter and JetBrains Mono
+All data for the website is centrally stored in `src/data/portfolio.ts` including experience, projects, skills, education, and social links.
 
 ## Deployment
 
-Recommended deployment on [Vercel](https://vercel.com):
+The application is configured for deployment on Vercel:
 
 ```bash
 vercel deploy
 ```
-
-Or follow the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for other platforms.

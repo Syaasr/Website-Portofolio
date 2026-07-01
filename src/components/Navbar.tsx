@@ -3,12 +3,10 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { portfolio } from "@/data/portfolio";
-import { Mail, Menu, X, Sparkles, Brain } from "lucide-react";
-import { useTheme } from "next-themes";
+import { Mail, Menu, X } from "lucide-react";
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { theme, setTheme } = useTheme();
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-[#1A1A1A] nb-border border-t-0 border-x-0 transition-colors duration-200">
@@ -45,21 +43,8 @@ export function Navbar() {
             </a>
           </div>
 
-          {/* Desktop CTA & Theme Toggle */}
+          {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-4">
-            {/* ponytail: standardized 3px borders and interactive shadows */}
-            <button 
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="bg-white dark:bg-[#1A1A1A] text-black dark:text-white border-[3px] border-black p-2 cursor-pointer transition-transform hover:-translate-y-0.5 active:translate-y-0 shadow-[2px_2px_0_#000]"
-              aria-label="Toggle Theme"
-            >
-              {theme === "dark" ? (
-                <Sparkles className="h-4.5 w-4.5 text-[#FFEB3B] fill-[#FFEB3B]" />
-              ) : (
-                <Brain className="h-4.5 w-4.5 text-[#2196F3]" />
-              )}
-            </button>
-
             <a 
               href="#contact" 
               className="bg-[#2196F3] text-white px-5 py-2 font-bold uppercase tracking-wider text-sm nb-btn inline-flex items-center gap-2"
@@ -71,17 +56,6 @@ export function Navbar() {
 
           {/* Mobile navigation triggers */}
           <div className="flex items-center md:hidden gap-3">
-            <button 
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="bg-white dark:bg-[#1A1A1A] text-black dark:text-white border-[3px] border-black p-1.5 cursor-pointer shadow-[2px_2px_0_#000]"
-              aria-label="Toggle Theme"
-            >
-              {theme === "dark" ? (
-                <Sparkles className="h-4 w-4 text-[#FFEB3B] fill-[#FFEB3B]" />
-              ) : (
-                <Brain className="h-4 w-4 text-[#2196F3]" />
-              )}
-            </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="bg-[#FFEB3B] text-black p-2 nb-border hover:bg-yellow-400"
