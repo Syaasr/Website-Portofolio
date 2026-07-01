@@ -14,21 +14,21 @@ export function AboutSkills() {
       {/* Floating Neubrutalist SVGs */}
       {/* 4-Point Sparkle Top-Right */}
       <div className="absolute top-12 right-[12%] hidden lg:block transform rotate-12 animate-rotate-slow select-none z-0">
-        <svg className="w-16 h-16 text-[#FFEB3B] fill-current stroke-black stroke-[3px] filter drop-shadow-[3px_3px_0_rgba(0,0,0,1)]" viewBox="0 0 100 100">
+        <svg aria-hidden="true" focusable="false" className="w-16 h-16 text-[#FFEB3B] fill-current stroke-black stroke-[3px] filter drop-shadow-[3px_3px_0_rgba(0,0,0,1)]" viewBox="0 0 100 100">
           <path d="M50,0 C50,30 70,50 100,50 C70,50 50,70 50,100 C50,70 30,50 0,50 C30,50 50,30 50,0 Z" />
         </svg>
       </div>
 
       {/* Wavy Zigzag Bottom-Left */}
       <div className="absolute bottom-16 left-[5%] hidden md:block transform -rotate-6 select-none z-0">
-        <svg className="w-32 h-8 text-[#FF5252] stroke-black stroke-[4px] fill-none filter drop-shadow-[3px_3px_0_rgba(0,0,0,1)]" viewBox="0 0 100 25">
+        <svg aria-hidden="true" focusable="false" className="w-32 h-8 text-[#FF5252] stroke-black stroke-[4px] fill-none filter drop-shadow-[3px_3px_0_rgba(0,0,0,1)]" viewBox="0 0 100 25">
           <path d="M0,12 L20,3 L40,21 L60,3 L80,21 L100,12" />
         </svg>
       </div>
 
       {/* Crosshair Center-Right */}
       <div className="absolute top-[45%] right-[5%] hidden md:block select-none z-0">
-        <svg className="w-10 h-10 text-[#4ECDC4] stroke-black stroke-[3.5px] fill-none" viewBox="0 0 100 100">
+        <svg aria-hidden="true" focusable="false" className="w-10 h-10 text-[#4ECDC4] stroke-black stroke-[3.5px] fill-none" viewBox="0 0 100 100">
           <circle cx="50" cy="50" r="28" />
           <line x1="50" y1="0" x2="50" y2="100" />
           <line x1="0" y1="50" x2="100" y2="50" />
@@ -37,14 +37,14 @@ export function AboutSkills() {
 
       {/* Floating Sparkle Left */}
       <div className="absolute top-1/3 left-[2%] hidden xl:block select-none z-0">
-        <svg className="w-12 h-12 text-[#2196F3] fill-current stroke-black stroke-[3px]" viewBox="0 0 100 100">
+        <svg aria-hidden="true" focusable="false" className="w-12 h-12 text-[#2196F3] fill-current stroke-black stroke-[3px]" viewBox="0 0 100 100">
           <polygon points="50,10 64,40 90,50 60,60 50,90 40,60 10,50 40,40" />
         </svg>
       </div>
 
       {/* Neubrutalist Target Ring Bottom Right */}
       <div className="absolute bottom-8 right-[4%] hidden lg:block select-none z-0 transform rotate-45">
-        <svg className="w-14 h-14 text-[#FFEB3B] stroke-black stroke-[3px] fill-none filter drop-shadow-[2.5px_2.5px_0_rgba(0,0,0,1)]" viewBox="0 0 100 100">
+        <svg aria-hidden="true" focusable="false" className="w-14 h-14 text-[#FFEB3B] stroke-black stroke-[3px] fill-none filter drop-shadow-[2.5px_2.5px_0_rgba(0,0,0,1)]" viewBox="0 0 100 100">
           <rect x="20" y="20" width="60" height="60" rx="0" strokeWidth="6" />
           <circle cx="50" cy="50" r="12" fill="black" />
         </svg>
@@ -52,7 +52,7 @@ export function AboutSkills() {
 
       {/* Small Sparkle top left */}
       <div className="absolute top-6 left-[15%] hidden md:block select-none z-0 transform -rotate-12">
-        <svg className="w-8 h-8 text-[#FF5252] fill-current stroke-black stroke-[2.5px]" viewBox="0 0 100 100">
+        <svg aria-hidden="true" focusable="false" className="w-8 h-8 text-[#FF5252] fill-current stroke-black stroke-[2.5px]" viewBox="0 0 100 100">
           <path d="M50,0 C50,25 75,50 100,50 C75,50 50,75 50,100 C50,75 25,50 0,50 C25,50 50,25 50,0 Z" />
         </svg>
       </div>
@@ -76,18 +76,18 @@ export function AboutSkills() {
             </p>
             
             {/* Stats list */}
-            <div className="grid grid-cols-3 gap-6 pt-4">
-              <div className="bg-[#4ECDC4] text-black p-4 nb-border text-center transform rotate-1">
-                <div className="text-3xl font-black leading-none">{portfolio.about.stats.experience}</div>
-                <div className="text-xs font-mono font-black uppercase mt-2">Experience</div>
+            <div className="grid grid-cols-3 gap-3 sm:gap-6 pt-4">
+              <div className="bg-[#4ECDC4] text-black p-2.5 sm:p-4 nb-border text-center transform rotate-1">
+                <div className="text-xl sm:text-3xl font-black leading-none">{portfolio.about.stats.experience}</div>
+                <div className="text-[10px] sm:text-xs font-mono font-black uppercase mt-1.5 sm:mt-2">Experience</div>
               </div>
-              <div className="bg-[#FFEB3B] text-black p-4 nb-border text-center transform -rotate-1">
-                <div className="text-3xl font-black leading-none">{portfolio.about.stats.projects}</div>
-                <div className="text-xs font-mono font-black uppercase mt-2">Projects</div>
+              <div className="bg-[#FFEB3B] text-black p-2.5 sm:p-4 nb-border text-center transform -rotate-1">
+                <div className="text-xl sm:text-3xl font-black leading-none">{portfolio.about.stats.projects}</div>
+                <div className="text-[10px] sm:text-xs font-mono font-black uppercase mt-1.5 sm:mt-2">Projects</div>
               </div>
-              <div className="bg-[#2196F3] text-white p-4 nb-border text-center transform rotate-2">
-                <div className="text-3xl font-black leading-none">{portfolio.about.stats.gpa}</div>
-                <div className="text-xs font-mono font-black uppercase mt-2">GPA</div>
+              <div className="bg-[#2196F3] text-white p-2.5 sm:p-4 nb-border text-center transform rotate-2">
+                <div className="text-xl sm:text-3xl font-black leading-none">{portfolio.about.stats.gpa}</div>
+                <div className="text-[10px] sm:text-xs font-mono font-black uppercase mt-1.5 sm:mt-2">GPA</div>
               </div>
             </div>
 

@@ -2,8 +2,7 @@
 
 import React from "react";
 import { portfolio } from "@/data/portfolio";
-import { Github, Linkedin, Mail, Instagram } from "lucide-react";
-import Link from "next/link";
+import { Github, Linkedin, Instagram } from "lucide-react";
 
 export function Footer() {
   return (
@@ -15,10 +14,11 @@ export function Footer() {
           {/* Col 1: Brand & Info */}
           <div className="md:col-span-2 space-y-4">
             <div className="flex items-center gap-2 group">
-              <div className="bg-[#FFEB3B] text-black border-2 border-black px-2.5 py-1 font-black text-lg tracking-tight transform group-hover:rotate-[-2deg] transition-all">
+              {/* ponytail: standardized 3px borders */}
+              <div className="bg-[#FFEB3B] text-black border-[3px] border-black px-2.5 py-1 font-black text-lg tracking-tight transform group-hover:rotate-[-2deg] transition-all">
                 {portfolio.personalInfo.name.split(" ")[0].toUpperCase()}
               </div>
-              <span className="font-mono text-xs font-bold bg-[#FF5252] text-white border-2 border-black px-1.5 py-0.2 transform rotate-[3deg] transition-all">
+              <span className="font-mono text-xs font-bold bg-[#FF5252] text-white border-[3px] border-black px-1.5 py-0.2 transform rotate-[3deg] transition-all">
                 .DEV
               </span>
             </div>
@@ -26,11 +26,12 @@ export function Footer() {
               Informatics engineering student at Universitas Sebelas Maret (UNS) specializing in Next.js web application architecture and low-latency robotics PID systems.
             </p>
             <div className="flex gap-3">
+              {/* ponytail: standardized 3px borders and interactive shadows */}
               <a 
                 href={portfolio.socials.github} 
                 target="_blank" 
                 rel="noreferrer"
-                className="p-2 bg-white text-black border-2 border-black hover:bg-[#FFEB3B] transition-colors"
+                className="p-2 bg-white text-black border-[3px] border-black hover:bg-[#FFEB3B] transition-transform hover:-translate-y-0.5 active:translate-y-0 shadow-[2px_2px_0_#000]"
                 aria-label="GitHub Profile"
               >
                 <Github className="h-5 w-5" />
@@ -39,7 +40,7 @@ export function Footer() {
                 href={portfolio.socials.linkedin} 
                 target="_blank" 
                 rel="noreferrer"
-                className="p-2 bg-white text-black border-2 border-black hover:bg-[#2196F3] hover:text-white transition-colors"
+                className="p-2 bg-white text-black border-[3px] border-black hover:bg-[#2196F3] hover:text-white transition-transform hover:-translate-y-0.5 active:translate-y-0 shadow-[2px_2px_0_#000]"
                 aria-label="LinkedIn Profile"
               >
                 <Linkedin className="h-5 w-5" />
@@ -48,7 +49,7 @@ export function Footer() {
                 href={portfolio.socials.instagram} 
                 target="_blank" 
                 rel="noreferrer"
-                className="p-2 bg-white text-black border-2 border-black hover:bg-[#FF5252] hover:text-white transition-colors"
+                className="p-2 bg-white text-black border-[3px] border-black hover:bg-[#FF5252] hover:text-white transition-transform hover:-translate-y-0.5 active:translate-y-0 shadow-[2px_2px_0_#000]"
                 aria-label="Instagram Profile"
               >
                 <Instagram className="h-5 w-5" />

@@ -17,35 +17,40 @@ export function Navbar() {
           
           {/* Logo */}
           <Link href="#" className="flex items-center gap-2 group">
-            <div className="bg-[#FFEB3B] text-black border-2 border-black px-2.5 py-1 font-black text-lg tracking-tight transform group-hover:rotate-[-2deg] transition-all">
+            {/* ponytail: standardized 3px borders */}
+            <div className="bg-[#FFEB3B] text-black border-[3px] border-black px-2.5 py-1 font-black text-lg tracking-tight transform group-hover:rotate-[-2deg] transition-all">
               {portfolio.personalInfo.name.split(" ")[0].toUpperCase()}
             </div>
-            <span className="font-mono text-xs font-bold bg-[#FF5252] text-white border-2 border-black px-1.5 py-0.2 transform rotate-[3deg] transition-all">
+            <span className="font-mono text-xs font-bold bg-[#FF5252] text-white border-[3px] border-black px-1.5 py-0.2 transform rotate-[3deg] transition-all">
               .DEV
             </span>
           </Link>
 
           {/* Desktop Nav Items */}
           <div className="hidden md:flex items-center gap-6">
-            <a href="#about" className="font-bold text-sm tracking-wide uppercase px-3 py-1 border-2 border-transparent hover:border-black hover:bg-[#4ECDC4] dark:hover:text-black transition-all duration-150 rounded-sm">
+            <a href="#about" className="font-bold text-sm tracking-wide uppercase px-3 py-1 border-[3px] border-transparent hover:border-black hover:bg-[#4ECDC4] dark:hover:text-black transition-all duration-150 rounded-sm">
               About
             </a>
-            <a href="#roadmap" className="font-bold text-sm tracking-wide uppercase px-3 py-1 border-2 border-transparent hover:border-black hover:bg-[#FFEB3B] dark:hover:text-black transition-all duration-150 rounded-sm">
+            <a href="#roadmap" className="font-bold text-sm tracking-wide uppercase px-3 py-1 border-[3px] border-transparent hover:border-black hover:bg-[#FFEB3B] dark:hover:text-black transition-all duration-150 rounded-sm">
               Journey
             </a>
-            <a href="#projects" className="font-bold text-sm tracking-wide uppercase px-3 py-1 border-2 border-transparent hover:border-black hover:bg-[#FF5252] hover:text-white transition-all duration-150 rounded-sm">
+            <a href="#projects" className="font-bold text-sm tracking-wide uppercase px-3 py-1 border-[3px] border-transparent hover:border-black hover:bg-[#FF5252] hover:text-white transition-all duration-150 rounded-sm">
               Projects
             </a>
-            <a href="#blog" className="font-bold text-sm tracking-wide uppercase px-3 py-1 border-2 border-transparent hover:border-black hover:bg-[#4ECDC4] dark:hover:text-black transition-all duration-150 rounded-sm">
+            <a href="#blog" className="font-bold text-sm tracking-wide uppercase px-3 py-1 border-[3px] border-transparent hover:border-black hover:bg-[#4ECDC4] dark:hover:text-black transition-all duration-150 rounded-sm">
               Blog
+            </a>
+            <a href="#mini-game" className="font-bold text-sm tracking-wide uppercase px-3 py-1 border-[3px] border-transparent hover:border-black hover:bg-[#FFEB3B] dark:hover:text-black transition-all duration-150 rounded-sm">
+              Arcade
             </a>
           </div>
 
           {/* Desktop CTA & Theme Toggle */}
           <div className="hidden md:flex items-center gap-4">
+            {/* ponytail: standardized 3px borders and interactive shadows */}
             <button 
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="bg-white dark:bg-[#1A1A1A] text-black dark:text-white border-2 border-black p-2 cursor-pointer transition-transform hover:-translate-y-0.5 active:translate-y-0"
+              className="bg-white dark:bg-[#1A1A1A] text-black dark:text-white border-[3px] border-black p-2 cursor-pointer transition-transform hover:-translate-y-0.5 active:translate-y-0 shadow-[2px_2px_0_#000]"
               aria-label="Toggle Theme"
             >
               {theme === "dark" ? (
@@ -68,7 +73,7 @@ export function Navbar() {
           <div className="flex items-center md:hidden gap-3">
             <button 
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="bg-white dark:bg-[#1A1A1A] text-black dark:text-white border-2 border-black p-1.5 cursor-pointer"
+              className="bg-white dark:bg-[#1A1A1A] text-black dark:text-white border-[3px] border-black p-1.5 cursor-pointer shadow-[2px_2px_0_#000]"
               aria-label="Toggle Theme"
             >
               {theme === "dark" ? (
@@ -90,7 +95,7 @@ export function Navbar() {
 
       {/* Mobile Menu Panel */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t-3 border-black bg-white dark:bg-[#1A1A1A] py-6 px-4 space-y-3 transition-all duration-200">
+        <div className="md:hidden border-t-[3px] border-black bg-white dark:bg-[#1A1A1A] py-6 px-4 space-y-3 transition-all duration-200">
           <a 
             href="#about" 
             onClick={() => setMobileMenuOpen(false)}
@@ -118,6 +123,13 @@ export function Navbar() {
             className="block text-base font-black uppercase tracking-wide px-4 py-2.5 bg-[#4ECDC4] text-black nb-border"
           >
             Blog
+          </a>
+          <a 
+            href="#mini-game" 
+            onClick={() => setMobileMenuOpen(false)}
+            className="block text-base font-black uppercase tracking-wide px-4 py-2.5 bg-[#FFEB3B] text-black nb-border"
+          >
+            Mini Game
           </a>
           <a 
             href="#contact" 

@@ -30,6 +30,18 @@ export default function RootLayout({
     "@type": "Person",
     "name": "Syaikhasril Maulana Firdaus",
     "jobTitle": "Software Developer & Robotics Programmer",
+    "email": "maulana23firdaus@gmail.com",
+    "gender": "Male",
+    "nationality": {
+      "@type": "Country",
+      "name": "Indonesia"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Sukoharjo",
+      "addressRegion": "Central Java",
+      "addressCountry": "ID"
+    },
     "alumniOf": {
       "@type": "CollegeOrUniversity",
       "name": "Universitas Sebelas Maret (UNS)"

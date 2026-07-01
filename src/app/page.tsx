@@ -5,6 +5,7 @@ import { TimelineRoadmap } from "@/components/TimelineRoadmap";
 import { Projects } from "@/components/Projects";
 import { Certifications } from "@/components/Certifications";
 import { Blog } from "@/components/Blog";
+import { Game } from "@/components/Game";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 
@@ -18,6 +19,7 @@ export default function Home() {
       <Projects />
       <Certifications />
       <Blog />
+      <Game />
       <Contact />
       <Footer />
     </main>

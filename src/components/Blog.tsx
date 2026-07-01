@@ -14,14 +14,14 @@ export function Blog() {
 
       {/* Mint Sparkle Left */}
       <div className="absolute top-[15%] left-[8%] hidden lg:block select-none z-0">
-        <svg className="w-16 h-16 text-[#4ECDC4] fill-current stroke-black stroke-[3px] filter drop-shadow-[3px_3px_0_rgba(0,0,0,1)]" viewBox="0 0 100 100">
+        <svg aria-hidden="true" focusable="false" className="w-16 h-16 text-[#4ECDC4] fill-current stroke-black stroke-[3px] filter drop-shadow-[3px_3px_0_rgba(0,0,0,1)]" viewBox="0 0 100 100">
           <path d="M50,0 C50,30 70,50 100,50 C70,50 50,70 50,100 C50,70 30,50 0,50 C30,50 50,30 50,0 Z" />
         </svg>
       </div>
 
       {/* Red Pencil SVG Right */}
       <div className="absolute bottom-[20%] right-[6%] hidden lg:block select-none z-0 transform rotate-[-15deg]">
-        <svg className="w-14 h-14 text-[#FF5252] fill-current stroke-black stroke-[3px] filter drop-shadow-[2.5px_2.5px_0_rgba(0,0,0,1)]" viewBox="0 0 100 100">
+        <svg aria-hidden="true" focusable="false" className="w-14 h-14 text-[#FF5252] fill-current stroke-black stroke-[3px] filter drop-shadow-[2.5px_2.5px_0_rgba(0,0,0,1)]" viewBox="0 0 100 100">
           <path d="M20,80 L80,20 L60,10 L10,70 Z" />
           <path d="M10,70 L20,80 L5,95 Z" fill="white" />
         </svg>
@@ -29,7 +29,7 @@ export function Blog() {
 
       {/* NEW: Neubrutalist Target Ring top right */}
       <div className="absolute top-8 right-[18%] hidden md:block select-none z-0">
-        <svg className="w-12 h-12 text-[#2196F3] stroke-black stroke-[3.5px] fill-none filter drop-shadow-[2.5px_2.5px_0_rgba(0,0,0,1)]" viewBox="0 0 100 100">
+        <svg aria-hidden="true" focusable="false" className="w-12 h-12 text-[#2196F3] stroke-black stroke-[3.5px] fill-none filter drop-shadow-[2.5px_2.5px_0_rgba(0,0,0,1)]" viewBox="0 0 100 100">
           <rect x="25" y="25" width="50" height="50" strokeWidth="6" />
           <circle cx="50" cy="50" r="10" fill="black" />
         </svg>
@@ -37,7 +37,7 @@ export function Blog() {
 
       {/* NEW: Small Sparkle bottom left */}
       <div className="absolute bottom-8 left-[18%] hidden md:block select-none z-0 transform rotate-12">
-        <svg className="w-8 h-8 text-[#FFEB3B] fill-current stroke-black stroke-[2.5px] filter drop-shadow-[1.5px_1.5px_0_rgba(0,0,0,1)]" viewBox="0 0 100 100">
+        <svg aria-hidden="true" focusable="false" className="w-8 h-8 text-[#FFEB3B] fill-current stroke-black stroke-[2.5px] filter drop-shadow-[1.5px_1.5px_0_rgba(0,0,0,1)]" viewBox="0 0 100 100">
           <path d="M50,0 C50,25 75,50 100,50 C75,50 50,75 50,100 C50,75 25,50 0,50 C25,50 50,25 50,0 Z" />
         </svg>
       </div>

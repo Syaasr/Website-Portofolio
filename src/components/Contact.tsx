@@ -14,7 +14,7 @@ export function Contact() {
 
       {/* Paper Plane SVG Left */}
       <div className="absolute top-[35%] left-[5%] hidden lg:block select-none z-0 transform rotate-12">
-        <svg className="w-16 h-16 text-[#4ECDC4] fill-current stroke-black stroke-[3px] filter drop-shadow-[2.5px_2.5px_0_rgba(0,0,0,1)]" viewBox="0 0 100 100">
+        <svg aria-hidden="true" focusable="false" className="w-16 h-16 text-[#4ECDC4] fill-current stroke-black stroke-[3px] filter drop-shadow-[2.5px_2.5px_0_rgba(0,0,0,1)]" viewBox="0 0 100 100">
           <path d="M0,50 L100,0 L50,100 L40,60 Z" />
           <path d="M100,0 L40,60" stroke="black" strokeWidth="3" />
         </svg>
@@ -22,14 +22,14 @@ export function Contact() {
 
       {/* Lightning Bolt SVG Right */}
       <div className="absolute bottom-[15%] right-[5%] hidden lg:block select-none z-0 transform rotate-[-8deg]">
-        <svg className="w-14 h-24 text-[#FFEB3B] fill-current stroke-black stroke-[3px] filter drop-shadow-[3px_3px_0_rgba(0,0,0,1)] animate-bounce-nb" viewBox="0 0 50 100">
+        <svg aria-hidden="true" focusable="false" className="w-14 h-24 text-[#FFEB3B] fill-current stroke-black stroke-[3px] filter drop-shadow-[3px_3px_0_rgba(0,0,0,1)] animate-bounce-nb" viewBox="0 0 50 100">
           <polygon points="30,0 5,50 25,50 15,100 45,40 25,40" />
         </svg>
       </div>
 
       {/* NEW: Crosshairs Bottom Left */}
       <div className="absolute bottom-10 left-[8%] hidden md:block select-none z-0">
-        <svg className="w-12 h-12 text-[#FF5252] stroke-black stroke-[3px] fill-none filter drop-shadow-[2px_2px_0_rgba(0,0,0,1)]" viewBox="0 0 100 100">
+        <svg aria-hidden="true" focusable="false" className="w-12 h-12 text-[#FF5252] stroke-black stroke-[3px] fill-none filter drop-shadow-[2px_2px_0_rgba(0,0,0,1)]" viewBox="0 0 100 100">
           <circle cx="50" cy="50" r="28" />
           <line x1="50" y1="5" x2="50" y2="95" />
           <line x1="5" y1="50" x2="95" y2="50" />
@@ -38,7 +38,7 @@ export function Contact() {
 
       {/* NEW: Concentric Ring Top Right */}
       <div className="absolute top-10 right-[15%] hidden md:block select-none z-0 transform rotate-45">
-        <svg className="w-14 h-14 text-[#2196F3] stroke-black stroke-[3px] fill-none filter drop-shadow-[2.5px_2.5px_0_rgba(0,0,0,1)]" viewBox="0 0 100 100">
+        <svg aria-hidden="true" focusable="false" className="w-14 h-14 text-[#2196F3] stroke-black stroke-[3px] fill-none filter drop-shadow-[2.5px_2.5px_0_rgba(0,0,0,1)]" viewBox="0 0 100 100">
           <circle cx="50" cy="50" r="30" strokeWidth="6" />
           <circle cx="50" cy="50" r="14" fill="black" />
         </svg>

@@ -44,10 +44,15 @@ export function Hero() {
               })}
             </h1>
 
-            {/* Description Subtitle */}
-            <p className="text-lg sm:text-xl font-bold text-gray-800 dark:text-gray-200 max-w-2xl leading-relaxed">
-              {portfolio.hero.subheadline}
-            </p>
+            {/* TL;DR Summary Block */}
+            <div className="w-full bg-white dark:bg-[#1C1C1C] border-[3px] border-black p-4 shadow-[4px_4px_0_#000] text-black dark:text-white rounded-none relative mt-4">
+              <span aria-hidden="true" className="absolute -top-3.5 left-4 bg-[#FF5252] text-white border-2 border-black px-2.5 py-0.5 text-xs font-mono font-black uppercase tracking-wider select-none">
+                TL;DR Summary
+              </span>
+              <p className="text-sm sm:text-base font-bold mt-2 leading-relaxed">
+                Informatics student specializing in high-performance web platforms (Laravel, Next.js) and robotics control systems (C/C++ firmware, ESP32, Dynamixel). Driven by clean architecture, hardware-software integration, and premium visual design.
+              </p>
+            </div>
 
             {/* CTA Actions */}
             <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto pt-2">

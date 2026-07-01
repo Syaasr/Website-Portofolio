@@ -13,13 +13,13 @@ import {
 import { cn } from "@/lib/utils";
 
 // Extract unique categories
-const categories = ["All", ...Array.from(new Set(portfolio.projects.map((p) => (p as any).category || "Other")))];
+const categories = ["All", ...Array.from(new Set(portfolio.projects.map((p) => p.category || "Other")))];
 
 export function Projects() {
   const [activeCategory, setActiveCategory] = useState("All");
 
   const filteredProjects = portfolio.projects.filter((project) => {
-    return activeCategory === "All" || (project as any).category === activeCategory;
+    return activeCategory === "All" || project.category === activeCategory;
   });
 
   return (
@@ -31,14 +31,14 @@ export function Projects() {
 
       {/* Large Code Brackets SVG Right */}
       <div className="absolute top-[18%] right-[5%] hidden lg:block select-none z-0 transform rotate-12">
-        <svg className="w-20 h-20 text-[#2196F3] stroke-black stroke-[3.5px] fill-none filter drop-shadow-[3px_3px_0_rgba(0,0,0,1)]" viewBox="0 0 100 100">
+        <svg aria-hidden="true" focusable="false" className="w-20 h-20 text-[#2196F3] stroke-black stroke-[3.5px] fill-none filter drop-shadow-[3px_3px_0_rgba(0,0,0,1)]" viewBox="0 0 100 100">
           <path d="M30,20 L10,50 L30,80 M70,20 L90,50 L70,80" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </div>
 
       {/* Retro Floppy Disk Left */}
       <div className="absolute bottom-[15%] left-[3%] hidden lg:block select-none z-0 transform rotate-[-12deg]">
-        <svg className="w-16 h-16 text-[#FFEB3B] fill-current stroke-black stroke-[3px] filter drop-shadow-[2.5px_2.5px_0_rgba(0,0,0,1)]" viewBox="0 0 100 100">
+        <svg aria-hidden="true" focusable="false" className="w-16 h-16 text-[#FFEB3B] fill-current stroke-black stroke-[3px] filter drop-shadow-[2.5px_2.5px_0_rgba(0,0,0,1)]" viewBox="0 0 100 100">
           <rect x="15" y="15" width="70" height="70" rx="4" />
           <rect x="30" y="15" width="40" height="25" fill="white" stroke="black" strokeWidth="2" />
           <rect x="35" y="55" width="30" height="30" fill="white" stroke="black" strokeWidth="2" />
@@ -47,7 +47,7 @@ export function Projects() {
 
       {/* Crosshair Center-Left */}
       <div className="absolute top-[50%] left-[2%] hidden md:block select-none z-0">
-        <svg className="w-10 h-10 text-[#FF5252] stroke-black stroke-[3px] fill-none" viewBox="0 0 100 100">
+        <svg aria-hidden="true" focusable="false" className="w-10 h-10 text-[#FF5252] stroke-black stroke-[3px] fill-none" viewBox="0 0 100 100">
           <circle cx="50" cy="50" r="25" />
           <line x1="50" y1="10" x2="50" y2="90" />
           <line x1="10" y1="50" x2="90" y2="50" />
@@ -56,14 +56,14 @@ export function Projects() {
 
       {/* NEW: Rotating Sparkle Top Center-Left */}
       <div className="absolute top-8 left-[25%] hidden lg:block select-none z-0 animate-rotate-slow">
-        <svg className="w-12 h-12 text-[#4ECDC4] fill-current stroke-black stroke-[3px] filter drop-shadow-[2px_2px_0_rgba(0,0,0,1)]" viewBox="0 0 100 100">
+        <svg aria-hidden="true" focusable="false" className="w-12 h-12 text-[#4ECDC4] fill-current stroke-black stroke-[3px] filter drop-shadow-[2px_2px_0_rgba(0,0,0,1)]" viewBox="0 0 100 100">
           <polygon points="50,5 64,36 98,36 70,57 81,91 50,70 19,91 30,57 2,36 36,36" />
         </svg>
       </div>
 
       {/* NEW: Target Rect Bottom Right */}
       <div className="absolute bottom-6 right-[15%] hidden md:block select-none z-0 transform -rotate-12">
-        <svg className="w-14 h-14 text-[#FF5252] stroke-black stroke-[3px] fill-none filter drop-shadow-[2.5px_2.5px_0_rgba(0,0,0,1)]" viewBox="0 0 100 100">
+        <svg aria-hidden="true" focusable="false" className="w-14 h-14 text-[#FF5252] stroke-black stroke-[3px] fill-none filter drop-shadow-[2.5px_2.5px_0_rgba(0,0,0,1)]" viewBox="0 0 100 100">
           <circle cx="50" cy="50" r="30" strokeWidth="6" />
           <rect x="42" y="42" width="16" height="16" fill="black" />
         </svg>
@@ -92,10 +92,10 @@ export function Projects() {
                 key={category}
                 onClick={() => setActiveCategory(category)}
                 className={cn(
-                  "px-4 py-2 font-black uppercase text-xs sm:text-sm transition-all duration-150 cursor-pointer nb-border",
+                  "px-4 py-2 font-black uppercase text-xs sm:text-sm cursor-pointer nb-border transition-all duration-150 shadow-[2px_2px_0_#000] active:translate-y-[2px] active:shadow-none hover:-translate-y-[1px] hover:shadow-[3px_3px_0_#000]",
                   activeCategory === category
-                    ? "bg-[#FFEB3B] text-black nb-shadow-sm transform -translate-y-0.5"
-                    : "bg-white dark:bg-[#1E1E1E] text-black dark:text-white hover:bg-gray-100 dark:hover:bg-black active:translate-y-0"
+                    ? "bg-[#FFEB3B] text-black"
+                    : "bg-white dark:bg-[#1E1E1E] text-black dark:text-white"
                 )}
               >
                 {category}
@@ -111,7 +111,9 @@ export function Projects() {
               align: "start",
               loop: true,
             }}
-            className="w-full"
+            className="w-full focus:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white focus-visible:ring-offset-2 rounded-sm"
+            tabIndex={0}
+            aria-label="Featured Projects Carousel"
           >
             <CarouselContent className="pb-6 -ml-6">
               {filteredProjects.map((project, index) => (
