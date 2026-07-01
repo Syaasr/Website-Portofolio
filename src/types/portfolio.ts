@@ -84,7 +84,7 @@ export interface ProjectItem {
   techStack: string[];
   linkRepo: string;
   linkDemo?: string;
-  category?: string;
+  category?: string[];
   imagePath?: string;
 }
 

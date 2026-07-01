@@ -12,14 +12,20 @@ import {
 } from "@/components/ui/carousel";
 import { cn } from "@/lib/utils";
 
-// Extract unique categories
-const categories = ["All", ...Array.from(new Set(portfolio.projects.map((p) => p.category || "Other")))];
+// Extract unique categories from all projects (flatten arrays)
+const categories = [
+  "All",
+  ...Array.from(
+    new Set(portfolio.projects.flatMap((p) => p.category ?? ["Other"]))
+  ),
+];
 
 export function Projects() {
   const [activeCategory, setActiveCategory] = useState("All");
 
   const filteredProjects = portfolio.projects.filter((project) => {
-    return activeCategory === "All" || project.category === activeCategory;
+    if (activeCategory === "All") return true;
+    return (project.category ?? []).includes(activeCategory);
   });
 
   return (
@@ -136,24 +142,35 @@ export function Projects() {
                         />
                       ) : (
                         <>
-                          {project.category === "Website" && (
-                            <Monitor className="h-16 w-16 text-[#FF5252] transform rotate-[-4deg] group-hover:scale-110 group-hover:rotate-0 transition-transform" />
-                          )}
-                          {project.category === "IoT / Robotics" && (
-                            <Cpu className="h-16 w-16 text-[#B48A05] dark:text-[#FFEB3B] transform rotate-[3deg] group-hover:scale-110 group-hover:rotate-0 transition-transform" />
-                          )}
-                          {project.category === "Machine Learning" && (
-                            <Brain className="h-16 w-16 text-[#2196F3] transform rotate-[-6deg] group-hover:scale-110 group-hover:rotate-0 transition-transform" />
-                          )}
-                          {!["Website", "IoT / Robotics", "Machine Learning"].includes(project.category || "") && (
-                            <Globe className="h-16 w-16 text-[#4ECDC4] transform group-hover:scale-110 transition-transform" />
-                          )}
+                          {(() => {
+                            const cats = project.category ?? [];
+                            if (cats.includes("Website") && !cats.includes("Machine Learning") && !cats.includes("IoT / Robotics"))
+                              return <Monitor className="h-16 w-16 text-[#FF5252] transform rotate-[-4deg] group-hover:scale-110 group-hover:rotate-0 transition-transform" />;
+                            if (cats.includes("IoT / Robotics"))
+                              return <Cpu className="h-16 w-16 text-[#B48A05] dark:text-[#FFEB3B] transform rotate-[3deg] group-hover:scale-110 group-hover:rotate-0 transition-transform" />;
+                            if (cats.includes("Machine Learning"))
+                              return <Brain className="h-16 w-16 text-[#2196F3] transform rotate-[-6deg] group-hover:scale-110 group-hover:rotate-0 transition-transform" />;
+                            return <Globe className="h-16 w-16 text-[#4ECDC4] transform group-hover:scale-110 transition-transform" />;
+                          })()}
                         </>
                       )}
 
-                      {/* Floating Category Badge */}
-                      <div className="absolute bottom-2 left-2 bg-black text-white px-2 py-0.5 text-xs font-mono font-bold nb-border">
-                        {project.category || "Other"}
+                      {/* Floating Category Badges */}
+                      <div className="absolute bottom-2 left-2 flex flex-wrap gap-1">
+                        {(project.category ?? ["Other"]).map((cat) => {
+                          let bgColor = "bg-[#4ECDC4] text-black"; // Default Teal/Green
+                          if (cat === "Website") bgColor = "bg-[#FFEB3B] text-black"; // Yellow
+                          if (cat === "Machine Learning") bgColor = "bg-[#FF5252] text-white"; // Red
+                          if (cat === "IoT / Robotics") bgColor = "bg-[#2196F3] text-white"; // Blue
+                          if (cat === "Game") bgColor = "bg-[#E0A96D] text-black"; // Brownish/Orange
+                          if (cat === "Mobile Apps") bgColor = "bg-[#D8B4FE] text-black"; // Light Purple
+                          
+                          return (
+                            <span key={cat} className={cn("px-2 py-0.5 text-xs font-mono font-bold nb-border", bgColor)}>
+                              {cat}
+                            </span>
+                          );
+                        })}
                       </div>
                     </div>
 
