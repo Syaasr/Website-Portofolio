@@ -45,3 +45,8 @@ next-env.d.ts
 # logs and linting
 lint_*.txt
 *.log
+
+# Temporary files
+.tmp/
+
+.agents/
