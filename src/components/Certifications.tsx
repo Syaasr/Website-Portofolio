@@ -12,6 +12,17 @@ export function Certifications() {
       <div aria-hidden="true" className="absolute inset-0 opacity-[0.25] nb-bg-blueprint pointer-events-none" />
       <div aria-hidden="true" className="absolute inset-0 opacity-[0.08] nb-bg-dots pointer-events-none" />
 
+      {/* Floating Local SVG Icons for Rich Aesthetics */}
+      {/* Key Icon (Top Left Center) */}
+      <div className="absolute top-[8%] left-[28%] hidden xl:block select-none z-0 transform -rotate-12 animate-pulse">
+        <img src="/icons/Key.svg" alt="Key Icon" className="w-14 h-14 filter drop-shadow-[2.5px_2.5px_0_rgba(0,0,0,1)]" />
+      </div>
+
+      {/* Lock Icon (Bottom Center-Left) */}
+      <div className="absolute bottom-[8%] left-[28%] hidden xl:block select-none z-0 transform rotate-6">
+        <img src="/icons/Lock.svg" alt="Lock Icon" className="w-14 h-14 filter drop-shadow-[2.5px_2.5px_0_rgba(0,0,0,1)]" />
+      </div>
+
       {/* Gold Trophy SVG Right */}
       <div className="absolute top-[35%] right-[5%] hidden lg:block select-none z-0 transform rotate-12">
         <svg aria-hidden="true" focusable="false" className="w-20 h-20 text-[#FFEB3B] fill-current stroke-black stroke-[3px] filter drop-shadow-[3px_3px_0_rgba(0,0,0,1)]" viewBox="0 0 100 100">

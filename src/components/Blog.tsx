@@ -12,6 +12,17 @@ export function Blog() {
       <div aria-hidden="true" className="absolute inset-0 opacity-[0.25] nb-bg-checkered pointer-events-none" />
       <div aria-hidden="true" className="absolute inset-0 opacity-[0.06] nb-bg-grid-heavy pointer-events-none" />
 
+      {/* Floating Local SVG Icons for Rich Aesthetics */}
+      {/* Bookmark Icon (Top Center-Left) */}
+      <div className="absolute top-[8%] left-[28%] hidden xl:block select-none z-0 transform rotate-12">
+        <img src="/icons/Bookmark.svg" alt="Bookmark Icon" className="w-12 h-12 filter drop-shadow-[2px_2px_0_rgba(0,0,0,1)]" />
+      </div>
+
+      {/* Chat Icon (Bottom Right Center) */}
+      <div className="absolute bottom-[25%] right-[22%] hidden xl:block select-none z-0 transform -rotate-12 animate-pulse">
+        <img src="/icons/Chat.svg" alt="Chat Icon" className="w-14 h-14 filter drop-shadow-[2.5px_2.5px_0_rgba(0,0,0,1)]" />
+      </div>
+
       {/* Mint Sparkle Left */}
       <div className="absolute top-[15%] left-[8%] hidden lg:block select-none z-0">
         <svg aria-hidden="true" focusable="false" className="w-16 h-16 text-[#4ECDC4] fill-current stroke-black stroke-[3px] filter drop-shadow-[3px_3px_0_rgba(0,0,0,1)]" viewBox="0 0 100 100">

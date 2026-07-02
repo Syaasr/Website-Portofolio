@@ -1,10 +1,42 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { portfolio } from "@/data/portfolio";
 import { GraduationCap, Wrench, Calendar } from "lucide-react";
 
 export function TimelineRoadmap() {
+  // State to track visible card indices for staggered animations
+  const [visibleIndices, setVisibleIndices] = useState<number[]>([]);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const index = parseInt(entry.target.getAttribute("data-index") || "0", 10);
+          if (entry.isIntersecting) {
+            setVisibleIndices((prev) => (prev.includes(index) ? prev : [...prev, index]));
+          } else {
+            // Remove the index when the card scrolls out of the viewport
+            setVisibleIndices((prev) => prev.filter((i) => i !== index));
+          }
+        });
+      },
+      {
+        threshold: 0.1, // Slightly lower threshold for responsive entry/exit
+        rootMargin: "0px 0px -20px 0px"
+      }
+    );
+
+    // Select all cards for observation
+    const cards = containerRef.current?.querySelectorAll("[data-index]");
+    cards?.forEach((card) => observer.observe(card));
+
+    return () => {
+      cards?.forEach((card) => observer.unobserve(card));
+    };
+  }, []);
+
   // Merge and chronologically sort education and experience items
   const roadmapItems = [
     ...portfolio.education.map((edu) => ({
@@ -133,7 +165,17 @@ export function TimelineRoadmap() {
         </svg>
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
+      {/* NEW: Floating Calander Icon (Top Center-Right) */}
+      <div className="absolute top-[5%] right-[25%] hidden xl:block select-none z-0 transform rotate-[-8deg] animate-bounce-slow">
+        <img src="/icons/Calander.svg" alt="Calendar Icon" className="w-12 h-12 filter drop-shadow-[2px_2px_0_rgba(0,0,0,1)]" />
+      </div>
+
+      {/* NEW: Floating Hourglass Icon (Middle-Right Center) */}
+      <div className="absolute top-[48%] right-[25%] hidden xl:block select-none z-0 transform rotate-12">
+        <img src="/icons/Hourglass.svg" alt="Hourglass Icon" className="w-12 h-12 filter drop-shadow-[2px_2px_0_rgba(0,0,0,1)] animate-pulse" />
+      </div>
+
+      <div ref={containerRef} className="container mx-auto px-6 relative z-10">
         
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-center gap-4 mb-16 max-w-4xl mx-auto">
@@ -154,6 +196,8 @@ export function TimelineRoadmap() {
         <div className="hidden lg:grid lg:grid-cols-2 lg:gap-x-24 lg:gap-y-16 max-w-4xl mx-auto relative pt-4 pb-8">
           {gridItems.map((cell, idx) => {
             const isEdu = cell.item.type === "education";
+            const isVisible = visibleIndices.includes(idx);
+            const isLeftColumn = cell.col.includes("col-start-1");
 
             return (
               <div 
@@ -161,20 +205,27 @@ export function TimelineRoadmap() {
                 className={`${cell.col} ${cell.row} relative flex flex-col justify-between`}
               >
                 
-                {/* Winding Connecting Lines */}
+                {/* Winding Connecting Lines (Stays static/connected during card animation, positioned under the cards) */}
                 {cell.connector === "right" && (
-                  <div className="absolute top-[40%] left-full w-24 h-[5px] bg-black dark:bg-black z-20" />
+                  <div className="absolute top-[40%] left-[calc(100%-10px)] w-36 h-[5px] bg-black dark:bg-black z-0" />
                 )}
                 {cell.connector === "left" && (
-                  <div className="absolute top-[40%] right-full w-24 h-[5px] bg-black dark:bg-black z-20" />
+                  <div className="absolute top-[40%] right-[calc(100%-10px)] w-36 h-[5px] bg-black dark:bg-black z-0" />
                 )}
                 {cell.connector === "down" && (
-                  <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 w-[5px] h-16 bg-black dark:bg-black z-20" />
+                  <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-[5px] h-24 bg-black dark:bg-black z-0" />
                 )}
 
-                {/* Card Container */}
+                {/* Card Container (Only this element animates in/out) */}
                 <div 
-                  className={`p-6 bg-white dark:bg-[#1E1E1E] nb-card-static relative h-full flex flex-col justify-between hover:rotate-[0.5deg] transition-transform duration-200 ${
+                  data-index={idx}
+                  className={`p-6 bg-white dark:bg-[#1E1E1E] nb-card-static relative h-full flex flex-col justify-between hover:rotate-[0.5deg] transition-all duration-700 cubic-bezier(0.34, 1.56, 0.64, 1) z-10 ${
+                    isVisible 
+                      ? "opacity-100 translate-x-0 scale-100" 
+                      : isLeftColumn
+                        ? "opacity-0 -translate-x-10 scale-95"
+                        : "opacity-0 translate-x-10 scale-95"
+                  } ${
                     cell.item.type === "education"
                       ? "border-t-[10px] border-t-[#2196F3]" 
                       : cell.item.type === "future"
@@ -235,9 +286,21 @@ export function TimelineRoadmap() {
           <div className="space-y-12 relative z-10">
             {roadmapItems.map((item, idx) => {
               const isEdu = item.type === "education";
+              const isVisible = visibleIndices.includes(idx);
+              const isEven = idx % 2 === 0;
 
               return (
-                <div key={idx} className="relative">
+                <div 
+                  key={idx} 
+                  data-index={idx}
+                  className={`relative transition-all duration-700 cubic-bezier(0.34, 1.56, 0.64, 1) ${
+                    isVisible 
+                      ? "opacity-100 translate-x-0 scale-100" 
+                      : isEven
+                        ? "opacity-0 -translate-x-10 scale-95"
+                        : "opacity-0 translate-x-10 scale-95"
+                  }`}
+                >
                   
                   {/* Mobile Card */}
                   <div 
@@ -281,29 +344,46 @@ export function TimelineRoadmap() {
             })}
 
             {/* Mobile Card: To Be Continued */}
-            <div className="relative">
-              <div className="w-full p-6 bg-white dark:bg-[#1E1E1E] nb-card-static relative border-t-[10px] border-t-[#FFEB3B]">
-                <div className="flex justify-between items-center mb-4">
-                  <span className="font-mono text-[10px] font-black bg-[#FFEB3B] text-black border border-black px-2.5 py-0.5 shadow-[1px_1px_0_#000]">
-                    Present & Beyond
-                  </span>
-                  <span className="font-mono text-[9px] font-black uppercase px-2 py-0.5 border border-black bg-[#FFFDEB] text-[#B48A05] dark:text-[#FFEB3B]">
-                    future
-                  </span>
-                </div>
+            {(() => {
+              const futureIndex = roadmapItems.length;
+              const isVisible = visibleIndices.includes(futureIndex);
+              const isEven = futureIndex % 2 === 0;
 
-                <h4 className="text-lg font-black uppercase tracking-tight text-black dark:text-white leading-tight mb-1">
-                  To Be Continued
-                </h4>
-                <p className="text-xs font-black uppercase tracking-wide text-gray-500 mb-3">
-                  Stay Tuned
-                </p>
-                
-                <p className="text-gray-700 dark:text-gray-300 font-bold text-xs leading-relaxed mb-4">
-                  Continuously building systems, exploring automation, and learning new technology stacks. The journey never stops.
-                </p>
-              </div>
-            </div>
+              return (
+                <div 
+                  data-index={futureIndex}
+                  className={`relative transition-all duration-700 cubic-bezier(0.34, 1.56, 0.64, 1) ${
+                    isVisible 
+                      ? "opacity-100 translate-x-0 scale-100" 
+                      : isEven
+                        ? "opacity-0 -translate-x-10 scale-95"
+                        : "opacity-0 translate-x-10 scale-95"
+                  }`}
+                >
+                  <div className="w-full p-6 bg-white dark:bg-[#1E1E1E] nb-card-static relative border-t-[10px] border-t-[#FFEB3B]">
+                    <div className="flex justify-between items-center mb-4">
+                      <span className="font-mono text-[10px] font-black bg-[#FFEB3B] text-black border border-black px-2.5 py-0.5 shadow-[1px_1px_0_#000]">
+                        Present & Beyond
+                      </span>
+                      <span className="font-mono text-[9px] font-black uppercase px-2 py-0.5 border border-black bg-[#FFFDEB] text-[#B48A05] dark:text-[#FFEB3B]">
+                        future
+                      </span>
+                    </div>
+
+                    <h4 className="text-lg font-black uppercase tracking-tight text-black dark:text-white leading-tight mb-1">
+                      To Be Continued
+                    </h4>
+                    <p className="text-xs font-black uppercase tracking-wide text-gray-500 mb-3">
+                      Stay Tuned
+                    </p>
+                    
+                    <p className="text-gray-700 dark:text-gray-300 font-bold text-xs leading-relaxed mb-4">
+                      Continuously building systems, exploring automation, and learning new technology stacks. The journey never stops.
+                    </p>
+                  </div>
+                </div>
+              );
+            })()}
           </div>
         </div>
 

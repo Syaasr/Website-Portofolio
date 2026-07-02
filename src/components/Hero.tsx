@@ -11,6 +11,27 @@ export function Hero() {
       {/* Decorative background grid pattern */}
       <div className="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,#000_2px,transparent_2px),linear-gradient(to_bottom,#000_2px,transparent_2px)] bg-[size:30px_30px]" />
 
+      {/* Floating Local SVG Icons for Rich Aesthetics */}
+      {/* Bulb Icon (Top Left) */}
+      <div className="absolute top-[12%] left-[4%] hidden xl:block select-none z-0 transform -rotate-12 animate-bounce-slow">
+        <img src="/icons/Bulb.svg" alt="Bulb Icon" className="w-16 h-16 filter drop-shadow-[3px_3px_0_rgba(0,0,0,1)]" />
+      </div>
+
+      {/* Rocket Icon (Bottom Left) */}
+      <div className="absolute bottom-[10%] left-[2%] hidden lg:block select-none z-0 transform rotate-12">
+        <img src="/icons/Rocket.svg" alt="Rocket Icon" className="w-18 h-18 filter drop-shadow-[3px_3px_0_rgba(0,0,0,1)]" />
+      </div>
+
+      {/* Energy Icon (Top Right) */}
+      <div className="absolute top-[15%] right-[22%] hidden xl:block select-none z-0 transform rotate-6 animate-pulse">
+        <img src="/icons/Energy.svg" alt="Energy Icon" className="w-14 h-14 filter drop-shadow-[2.5px_2.5px_0_rgba(0,0,0,1)]" />
+      </div>
+
+      {/* Cube Icon (Middle Center-Left) */}
+      <div className="absolute top-[45%] left-[45%] hidden lg:block select-none z-0 transform -rotate-6">
+        <img src="/icons/Cube.svg" alt="Cube Icon" className="w-12 h-12 filter drop-shadow-[2px_2px_0_rgba(0,0,0,1)]" />
+      </div>
+
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           

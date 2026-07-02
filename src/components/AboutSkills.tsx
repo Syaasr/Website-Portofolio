@@ -11,6 +11,22 @@ export function AboutSkills() {
       <div className="absolute inset-0 opacity-[0.2] nb-bg-checkered" />
       <div className="absolute inset-0 opacity-[0.06] nb-bg-grid-heavy" />
 
+      {/* Floating Local SVG Icons for Rich Aesthetics */}
+      {/* Paintbrush Icon (Top Left Center) */}
+      <div className="absolute top-[8%] left-[25%] hidden xl:block select-none z-0 transform rotate-12">
+        <img src="/icons/Paintbrush.svg" alt="Paintbrush Icon" className="w-14 h-14 filter drop-shadow-[2.5px_2.5px_0_rgba(0,0,0,1)]" />
+      </div>
+
+      {/* Earth Icon (Middle Right) */}
+      <div className="absolute top-[35%] right-[2%] hidden lg:block select-none z-0 transform -rotate-12 animate-spin-slow">
+        <img src="/icons/Earth.svg" alt="Earth Icon" className="w-16 h-16 filter drop-shadow-[3px_3px_0_rgba(0,0,0,1)]" />
+      </div>
+
+      {/* Ramen Icon (Bottom Right) */}
+      <div className="absolute bottom-[8%] right-[10%] hidden md:block select-none z-0 transform rotate-6">
+        <img src="/icons/Ramen.svg" alt="Ramen Icon" className="w-14 h-14 filter drop-shadow-[2.5px_2.5px_0_rgba(0,0,0,1)]" />
+      </div>
+
       {/* Floating Neubrutalist SVGs */}
       {/* 4-Point Sparkle Top-Right */}
       <div className="absolute top-12 right-[12%] hidden lg:block transform rotate-12 animate-rotate-slow select-none z-0">

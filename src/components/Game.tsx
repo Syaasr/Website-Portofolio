@@ -343,6 +343,17 @@ export function Game() {
       <div className="absolute inset-0 opacity-[0.08] nb-bg-grid-heavy pointer-events-none" />
       <div className="absolute inset-0 opacity-[0.15] nb-bg-checkered pointer-events-none" />
 
+      {/* Floating Local SVG Icons for Rich Aesthetics */}
+      {/* Gaming Controller Icon (Top Center-Left) */}
+      <div className="absolute top-[8%] left-[26%] hidden xl:block select-none z-0 transform rotate-12">
+        <img src="/icons/Gaming Controller.svg" alt="Gaming Controller Icon" className="w-16 h-16 filter drop-shadow-[2.5px_2.5px_0_rgba(0,0,0,1)]" />
+      </div>
+
+      {/* Star Icon (Bottom Center-Right) */}
+      <div className="absolute bottom-[10%] right-[28%] hidden xl:block select-none z-0 transform -rotate-12 animate-pulse">
+        <img src="/icons/Star.svg" alt="Star Icon" className="w-12 h-12 filter drop-shadow-[2px_2px_0_rgba(0,0,0,1)]" />
+      </div>
+
       {/* Floating Neubrutalist SVGs */}
       {/* Retro Gamepad Controller Left */}
       <div className="absolute top-[22%] left-[4%] hidden lg:block select-none z-0 transform -rotate-12">

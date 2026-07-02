@@ -12,6 +12,17 @@ export function Contact() {
       <div className="absolute inset-0 opacity-[0.1] nb-bg-grid-heavy" />
       <div className="absolute inset-0 opacity-[0.2] nb-bg-checkered" />
 
+      {/* Floating Local SVG Icons for Rich Aesthetics */}
+      {/* Paper Plane Icon (Top Left Center) */}
+      <div className="absolute top-[8%] left-[26%] hidden xl:block select-none z-0 transform -rotate-12">
+        <img src="/icons/Paper plane.svg" alt="Paper Plane Icon" className="w-14 h-14 filter drop-shadow-[2.5px_2.5px_0_rgba(0,0,0,1)]" />
+      </div>
+
+      {/* Envelope Open Icon (Bottom Right Center) */}
+      <div className="absolute bottom-[20%] right-[25%] hidden xl:block select-none z-0 transform rotate-12 animate-pulse">
+        <img src="/icons/Envelope-open.svg" alt="Envelope Open Icon" className="w-12 h-12 filter drop-shadow-[2px_2px_0_rgba(0,0,0,1)]" />
+      </div>
+
       {/* Paper Plane SVG Left */}
       <div className="absolute top-[35%] left-[5%] hidden lg:block select-none z-0 transform rotate-12">
         <svg aria-hidden="true" focusable="false" className="w-16 h-16 text-[#4ECDC4] fill-current stroke-black stroke-[3px] filter drop-shadow-[2.5px_2.5px_0_rgba(0,0,0,1)]" viewBox="0 0 100 100">

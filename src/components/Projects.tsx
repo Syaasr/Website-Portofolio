@@ -35,6 +35,22 @@ export function Projects() {
       <div aria-hidden="true" className="absolute inset-0 opacity-[0.08] nb-bg-grid-heavy pointer-events-none" />
       <div aria-hidden="true" className="absolute inset-0 opacity-[0.15] nb-bg-checkered pointer-events-none" />
 
+      {/* Floating Local SVG Icons for Rich Aesthetics */}
+      {/* Mouse Icon (Top Left Center) */}
+      <div className="absolute top-[8%] left-[25%] hidden xl:block select-none z-0 transform -rotate-6">
+        <img src="/icons/Mouse.svg" alt="Mouse Icon" className="w-12 h-12 filter drop-shadow-[2px_2px_0_rgba(0,0,0,1)]" />
+      </div>
+
+      {/* USB Icon (Middle Right Center) */}
+      <div className="absolute top-[45%] right-[25%] hidden xl:block select-none z-0 transform rotate-12">
+        <img src="/icons/USB.svg" alt="USB Icon" className="w-12 h-12 filter drop-shadow-[2px_2px_0_rgba(0,0,0,1)]" />
+      </div>
+
+      {/* Pin Icon (Bottom Right) */}
+      <div className="absolute bottom-[10%] right-[3%] hidden lg:block select-none z-0 transform -rotate-12">
+        <img src="/icons/Pin.svg" alt="Pin Icon" className="w-14 h-14 filter drop-shadow-[2.5px_2.5px_0_rgba(0,0,0,1)]" />
+      </div>
+
       {/* Large Code Brackets SVG Right */}
       <div className="absolute top-[18%] right-[5%] hidden lg:block select-none z-0 transform rotate-12">
         <svg aria-hidden="true" focusable="false" className="w-20 h-20 text-[#2196F3] stroke-black stroke-[3.5px] fill-none filter drop-shadow-[3px_3px_0_rgba(0,0,0,1)]" viewBox="0 0 100 100">
