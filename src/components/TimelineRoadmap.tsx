@@ -17,13 +17,12 @@ export function TimelineRoadmap() {
           if (entry.isIntersecting) {
             setVisibleIndices((prev) => (prev.includes(index) ? prev : [...prev, index]));
           } else {
-            // Remove the index when the card scrolls out of the viewport
             setVisibleIndices((prev) => prev.filter((i) => i !== index));
           }
         });
       },
       {
-        threshold: 0.1, // Slightly lower threshold for responsive entry/exit
+        threshold: 0.1,
         rootMargin: "0px 0px -20px 0px"
       }
     );
@@ -207,24 +206,24 @@ export function TimelineRoadmap() {
                 
                 {/* Winding Connecting Lines (Stays static/connected during card animation, positioned under the cards) */}
                 {cell.connector === "right" && (
-                  <div className="absolute top-[40%] left-[calc(100%-10px)] w-36 h-[5px] bg-black dark:bg-black z-0" />
+                  <div className="absolute top-[40%] left-[calc(100%-100px)] w-80 h-[5px] bg-black dark:bg-black z-0" />
                 )}
                 {cell.connector === "left" && (
-                  <div className="absolute top-[40%] right-[calc(100%-10px)] w-36 h-[5px] bg-black dark:bg-black z-0" />
+                  <div className="absolute top-[40%] right-[calc(100%-100px)] w-80 h-[5px] bg-black dark:bg-black z-0" />
                 )}
                 {cell.connector === "down" && (
-                  <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-[5px] h-24 bg-black dark:bg-black z-0" />
+                  <div className="absolute -bottom-32 left-1/2 -translate-x-1/2 w-[5px] h-48 bg-black dark:bg-black z-0" />
                 )}
 
-                {/* Card Container (Only this element animates in/out) */}
+                {/* Card Container (Only this element animates in/out with Pop Scale 50% & Spring Tilt, opacity stays 100%) */}
                 <div 
                   data-index={idx}
                   className={`p-6 bg-white dark:bg-[#1E1E1E] nb-card-static relative h-full flex flex-col justify-between hover:rotate-[0.5deg] transition-all duration-700 cubic-bezier(0.34, 1.56, 0.64, 1) z-10 ${
                     isVisible 
-                      ? "opacity-100 translate-x-0 scale-100" 
+                      ? "scale-100 rotate-0" 
                       : isLeftColumn
-                        ? "opacity-0 -translate-x-10 scale-95"
-                        : "opacity-0 translate-x-10 scale-95"
+                        ? "scale-50 -rotate-6"
+                        : "scale-50 rotate-6"
                   } ${
                     cell.item.type === "education"
                       ? "border-t-[10px] border-t-[#2196F3]" 
@@ -295,10 +294,10 @@ export function TimelineRoadmap() {
                   data-index={idx}
                   className={`relative transition-all duration-700 cubic-bezier(0.34, 1.56, 0.64, 1) ${
                     isVisible 
-                      ? "opacity-100 translate-x-0 scale-100" 
+                      ? "scale-100 rotate-0" 
                       : isEven
-                        ? "opacity-0 -translate-x-10 scale-95"
-                        : "opacity-0 translate-x-10 scale-95"
+                        ? "scale-50 -rotate-4"
+                        : "scale-50 rotate-4"
                   }`}
                 >
                   
@@ -354,10 +353,10 @@ export function TimelineRoadmap() {
                   data-index={futureIndex}
                   className={`relative transition-all duration-700 cubic-bezier(0.34, 1.56, 0.64, 1) ${
                     isVisible 
-                      ? "opacity-100 translate-x-0 scale-100" 
+                      ? "scale-100 rotate-0" 
                       : isEven
-                        ? "opacity-0 -translate-x-10 scale-95"
-                        : "opacity-0 translate-x-10 scale-95"
+                        ? "scale-50 -rotate-4"
+                        : "scale-50 rotate-4"
                   }`}
                 >
                   <div className="w-full p-6 bg-white dark:bg-[#1E1E1E] nb-card-static relative border-t-[10px] border-t-[#FFEB3B]">
