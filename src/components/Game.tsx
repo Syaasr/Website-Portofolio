@@ -383,7 +383,7 @@ export function Game() {
         
         {/* Section Header */}
         <div className="text-center mb-12">
-          <h3 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-black dark:text-white mt-1">
+          <h3 className="inline-block bg-[#FFEB3B] text-black px-6 py-2.5 text-3xl sm:text-5xl font-black uppercase tracking-tight nb-border shadow-[4px_4px_0_#000] transform rotate-[-1deg]">
             Mini Game
           </h3>
           <p className="text-sm sm:text-base font-bold text-gray-700 dark:text-gray-300 mt-4 max-w-xl mx-auto">
@@ -434,10 +434,7 @@ export function Game() {
           {gameState === "GAMEOVER" && (
             <div className="absolute inset-0 bg-black/60 backdrop-blur-xs flex flex-col items-center justify-center p-3 sm:p-6 text-center">
               <div className="bg-white dark:bg-[#1E1E1E] nb-border p-4 sm:p-8 max-w-[280px] sm:max-w-sm w-full shadow-[4px_4px_0_#000] sm:shadow-[6px_6px_0_#000] text-black dark:text-white transform rotate-[-1deg]">
-                <span className="inline-block bg-[#FF5252] text-white px-2 py-0.5 sm:px-3 sm:py-1 font-mono font-black text-[9px] sm:text-xs nb-border mb-2 sm:mb-4 transform rotate-[2deg]">
-                  CRASH DETECTED
-                </span>
-                <h4 className="text-xl sm:text-3xl font-black uppercase tracking-tight mb-1 sm:mb-2">
+                <h4 className="inline-block bg-[#FF5252] text-white px-4 py-2 text-xl sm:text-3xl font-black uppercase tracking-tight nb-border shadow-[3px_3px_0_#000] mb-1 sm:mb-2 transform rotate-[1deg]">
                   Game Over
                 </h4>
                 <div className="flex justify-around bg-gray-100 dark:bg-black p-2 sm:p-3 nb-border my-3 sm:my-6">

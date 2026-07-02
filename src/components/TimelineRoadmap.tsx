@@ -47,7 +47,20 @@ export function TimelineRoadmap() {
     { item: roadmapItems[3], col: "lg:col-start-1", row: "lg:row-start-2", connector: "down" },
     { item: roadmapItems[4], col: "lg:col-start-1", row: "lg:row-start-3", connector: "right" },
     { item: roadmapItems[5], col: "lg:col-start-2", row: "lg:row-start-3", connector: "down" },
-    { item: roadmapItems[6], col: "lg:col-start-2", row: "lg:row-start-4", connector: "none" }
+    { item: roadmapItems[6], col: "lg:col-start-2", row: "lg:row-start-4", connector: "left" },
+    { 
+      item: {
+        type: "future" as const,
+        title: "To Be Continued",
+        subtitle: "Stay Tuned",
+        date: "Present & Beyond",
+        description: "Continuously building systems, exploring automation, and learning new technology stacks. The journey never stops.",
+        extra: null
+      }, 
+      col: "lg:col-start-1", 
+      row: "lg:row-start-4", 
+      connector: "none" 
+    }
   ];
 
   return (
@@ -74,26 +87,10 @@ export function TimelineRoadmap() {
         </svg>
       </div>
 
-      {/* Neubrutalist Target Crosshair Top Left */}
-      <div className="absolute top-10 left-[8%] hidden md:block select-none z-0">
-        <svg aria-hidden="true" focusable="false" className="w-12 h-12 text-[#2196F3] stroke-black stroke-[3.5px] fill-none filter drop-shadow-[2px_2px_0_rgba(0,0,0,1)]" viewBox="0 0 100 100">
-          <circle cx="50" cy="50" r="30" />
-          <line x1="50" y1="5" x2="50" y2="95" />
-          <line x1="5" y1="50" x2="95" y2="50" />
-        </svg>
-      </div>
-
       {/* Small Sparkle bottom right */}
       <div className="absolute bottom-12 right-[15%] hidden md:block select-none z-0 transform rotate-45">
         <svg aria-hidden="true" focusable="false" className="w-10 h-10 text-[#4ECDC4] fill-current stroke-black stroke-[2.5px] filter drop-shadow-[2.5px_2.5px_0_rgba(0,0,0,1)]" viewBox="0 0 100 100">
           <path d="M50,0 C50,25 75,50 100,50 C75,50 50,75 50,100 C50,75 25,50 0,50 C25,50 50,25 50,0 Z" />
-        </svg>
-      </div>
-
-      {/* Wavy Zigzag Middle-Left */}
-      <div className="absolute top-[40%] left-[2%] hidden xl:block select-none z-0 transform rotate-90">
-        <svg aria-hidden="true" focusable="false" className="w-24 h-6 text-[#FF5252] stroke-black stroke-[3px] fill-none" viewBox="0 0 100 25">
-          <path d="M0,12 L20,3 L40,21 L60,3 L80,21 L100,12" />
         </svg>
       </div>
 
@@ -104,42 +101,35 @@ export function TimelineRoadmap() {
         </svg>
       </div>
 
-      {/* Scribble Arrow Top Left */}
-      <div className="absolute top-[12%] left-[15%] hidden lg:block select-none z-0 transform rotate-12">
-        <svg aria-hidden="true" focusable="false" className="w-14 h-14 text-[#FF5252] stroke-black stroke-[3px] fill-none" viewBox="0 0 100 100">
-          <path d="M10,90 Q50,90 40,50 T90,15" strokeLinecap="round" />
-          <path d="M65,15 L90,15 L90,40" strokeLinecap="round" strokeLinejoin="round" />
+      {/* Added Icon: Book Top Left */}
+      <div className="absolute top-[10%] left-[5%] hidden lg:block select-none z-0 transform -rotate-6">
+        <svg aria-hidden="true" focusable="false" className="w-16 h-16 text-[#2196F3] fill-current stroke-black stroke-[1.5px] filter drop-shadow-[1.5px_1.5px_0_rgba(0,0,0,1)]" viewBox="0 0 24 24">
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" fill="none" />
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
         </svg>
       </div>
 
-      {/* Concentric target circle Bottom Left */}
-      <div className="absolute bottom-[30%] left-[6%] hidden xl:block select-none z-0">
-        <svg aria-hidden="true" focusable="false" className="w-14 h-14 text-[#2196F3] stroke-black stroke-[3px] fill-none filter drop-shadow-[2px_2px_0_rgba(0,0,0,1)]" viewBox="0 0 100 100">
-          <circle cx="50" cy="50" r="35" />
-          <circle cx="50" cy="50" r="20" strokeWidth="4" />
-          <circle cx="50" cy="50" r="6" fill="black" />
+      {/* Added Icon: Briefcase Middle Left */}
+      <div className="absolute top-[50%] left-[3%] hidden xl:block select-none z-0 transform rotate-12">
+        <svg aria-hidden="true" focusable="false" className="w-16 h-16 text-[#4ECDC4] fill-current stroke-black stroke-[1.5px] filter drop-shadow-[1.5px_1.5px_0_rgba(0,0,0,1)]" viewBox="0 0 24 24">
+          <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+          <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
         </svg>
       </div>
 
-      {/* Scattered Plus Icons */}
-      <div className="absolute top-[8%] left-[45%] hidden md:block select-none z-0 text-[#2196F3]">
-        <svg aria-hidden="true" focusable="false" className="w-8 h-8 stroke-black stroke-[3.5px] fill-none" viewBox="0 0 100 100">
-          <line x1="50" y1="10" x2="50" y2="90" />
-          <line x1="10" y1="50" x2="90" y2="50" />
+      {/* Added Icon: Terminal / Coding Screen Bottom Left */}
+      <div className="absolute bottom-[8%] left-[7%] hidden md:block select-none z-0 transform -rotate-12">
+        <svg aria-hidden="true" focusable="false" className="w-14 h-14 text-[#FF5252] fill-current stroke-black stroke-[1.5px] filter drop-shadow-[1.5px_1.5px_0_rgba(0,0,0,1)]" viewBox="0 0 24 24">
+          <rect x="2" y="3" width="20" height="18" rx="2" ry="2" />
+          <path d="M7 8l5 4-5 4M13 16h4" />
         </svg>
       </div>
 
-      <div className="absolute bottom-[10%] left-[35%] hidden md:block select-none z-0 text-[#4ECDC4]">
-        <svg aria-hidden="true" focusable="false" className="w-6 h-6 stroke-black stroke-[2.5px] fill-none" viewBox="0 0 100 100">
-          <line x1="50" y1="10" x2="50" y2="90" />
-          <line x1="10" y1="50" x2="90" y2="50" />
-        </svg>
-      </div>
-
-      <div className="absolute top-[60%] right-[15%] hidden md:block select-none z-0 text-[#FF5252]">
-        <svg aria-hidden="true" focusable="false" className="w-7 h-7 stroke-black stroke-[3px] fill-none" viewBox="0 0 100 100">
-          <line x1="50" y1="10" x2="50" y2="90" />
-          <line x1="10" y1="50" x2="90" y2="50" />
+      {/* Added Icon: Award Badge / Certificate Middle Right */}
+      <div className="absolute top-[65%] right-[3%] hidden xl:block select-none z-0 transform rotate-6 animate-bounce-nb">
+        <svg aria-hidden="true" focusable="false" className="w-16 h-16 text-[#FFEB3B] fill-current stroke-black stroke-[1.5px] filter drop-shadow-[1.5px_1.5px_0_rgba(0,0,0,1)]" viewBox="0 0 24 24">
+          <circle cx="12" cy="8" r="7" />
+          <path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.12" />
         </svg>
       </div>
 
@@ -185,9 +175,11 @@ export function TimelineRoadmap() {
                 {/* Card Container */}
                 <div 
                   className={`p-6 bg-white dark:bg-[#1E1E1E] nb-card-static relative h-full flex flex-col justify-between hover:rotate-[0.5deg] transition-transform duration-200 ${
-                    isEdu 
+                    cell.item.type === "education"
                       ? "border-t-[10px] border-t-[#2196F3]" 
-                      : "border-t-[10px] border-t-[#FF5252]"
+                      : cell.item.type === "future"
+                        ? "border-t-[10px] border-t-[#FFEB3B]"
+                        : "border-t-[10px] border-t-[#FF5252]"
                   }`}
                 >
                   <div>
@@ -197,7 +189,11 @@ export function TimelineRoadmap() {
                         {cell.item.date}
                       </span>
                       <span className={`font-mono text-[9px] font-black uppercase px-2 py-0.5 border border-black ${
-                        isEdu ? "bg-[#EFF6FF] text-[#2196F3]" : "bg-[#FEF2F2] text-[#FF5252]"
+                        cell.item.type === "education"
+                          ? "bg-[#EFF6FF] text-[#2196F3]" 
+                          : cell.item.type === "future"
+                            ? "bg-[#FFFDEB] text-[#B48A05] dark:text-[#FFEB3B]"
+                            : "bg-[#FEF2F2] text-[#FF5252]"
                       }`}>
                         {cell.item.type}
                       </span>
@@ -283,6 +279,31 @@ export function TimelineRoadmap() {
                 </div>
               );
             })}
+
+            {/* Mobile Card: To Be Continued */}
+            <div className="relative">
+              <div className="w-full p-6 bg-white dark:bg-[#1E1E1E] nb-card-static relative border-t-[10px] border-t-[#FFEB3B]">
+                <div className="flex justify-between items-center mb-4">
+                  <span className="font-mono text-[10px] font-black bg-[#FFEB3B] text-black border border-black px-2.5 py-0.5 shadow-[1px_1px_0_#000]">
+                    Present & Beyond
+                  </span>
+                  <span className="font-mono text-[9px] font-black uppercase px-2 py-0.5 border border-black bg-[#FFFDEB] text-[#B48A05] dark:text-[#FFEB3B]">
+                    future
+                  </span>
+                </div>
+
+                <h4 className="text-lg font-black uppercase tracking-tight text-black dark:text-white leading-tight mb-1">
+                  To Be Continued
+                </h4>
+                <p className="text-xs font-black uppercase tracking-wide text-gray-500 mb-3">
+                  Stay Tuned
+                </p>
+                
+                <p className="text-gray-700 dark:text-gray-300 font-bold text-xs leading-relaxed mb-4">
+                  Continuously building systems, exploring automation, and learning new technology stacks. The journey never stops.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 

@@ -9,7 +9,7 @@ export function Footer() {
     <footer className="bg-white dark:bg-[#1A1A1A] transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-6 py-12 md:py-16">
         
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           
           {/* Col 1: Brand & Info */}
           <div className="md:col-span-2 space-y-4">
@@ -81,30 +81,6 @@ export function Footer() {
               <li>
                 <a href="#projects" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white">
                   Featured Projects
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Col 3: Resources */}
-          <div>
-            <h4 className="text-sm font-black uppercase tracking-wider text-black dark:text-white border-b-2 border-black pb-1.5 mb-4">
-              Resources
-            </h4>
-            <ul className="space-y-2 text-xs sm:text-sm font-bold">
-              <li>
-                <a href="https://github.com/Syaasr?tab=repositories" target="_blank" rel="noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white">
-                  GitHub Repositories
-                </a>
-              </li>
-              <li>
-                <a href="https://store.syaikhasril.web.id" target="_blank" rel="noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white">
-                  Web Store Portal
-                </a>
-              </li>
-              <li>
-                <a href="https://colab.research.google.com" target="_blank" rel="noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white">
-                  Google Colab
                 </a>
               </li>
             </ul>

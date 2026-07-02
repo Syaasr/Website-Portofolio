@@ -128,7 +128,7 @@ export const portfolio: PortfolioData = {
     {
       title: "4th Place ONMIPA-PT Mathematics Division (University Level)",
       event: "Universitas Sebelas Maret",
-      year: "2025",
+      year: "2026",
       description: "Achieved 4th place in the National Olympiad in Mathematics and Natural Sciences for Higher Education, Mathematics division, at the university level.",
     },
     {
