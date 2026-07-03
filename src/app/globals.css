@@ -309,6 +309,24 @@
   border: 3px solid #000000 !important;
 }
 
+/* Neubrutalist Custom Text Caret Color and High-Contrast Focus Ring */
+.caret-custom-email {
+  caret-color: #FF5252 !important;
+}
+.caret-custom-email:focus {
+  border-color: #FF5252 !important;
+  box-shadow: 4px 4px 0px #000000 !important;
+  background-color: #FFF5F5 !important;
+}
+.caret-custom-anon {
+  caret-color: #2196F3 !important;
+}
+.caret-custom-anon:focus {
+  border-color: #2196F3 !important;
+  box-shadow: 4px 4px 0px #000000 !important;
+  background-color: #F0F7FF !important;
+}
+
 
 
 

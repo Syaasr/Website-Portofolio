@@ -49,6 +49,11 @@ export function Game() {
   // Sync Input Handlers
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
+      // Allow spaces inside inputs and textareas
+      const target = e.target as HTMLElement;
+      if (target && (target.tagName === "INPUT" || target.tagName === "TEXTAREA")) {
+        return;
+      }
       if (e.code === "Space") {
         e.preventDefault();
         playerRef.current.isPressing = true;
@@ -56,6 +61,11 @@ export function Game() {
     };
 
     const handleKeyUp = (e: KeyboardEvent) => {
+      // Allow spaces inside inputs and textareas
+      const target = e.target as HTMLElement;
+      if (target && (target.tagName === "INPUT" || target.tagName === "TEXTAREA")) {
+        return;
+      }
       if (e.code === "Space") {
         e.preventDefault();
         playerRef.current.isPressing = false;

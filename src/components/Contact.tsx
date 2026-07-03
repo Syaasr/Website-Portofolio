@@ -1,13 +1,60 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { portfolio } from "@/data/portfolio";
 import { Github, Instagram, Linkedin, Mail, Send, ExternalLink } from "lucide-react";
 
 export function Contact() {
+  const [activeTab, setActiveTab] = useState<"email" | "anonymous">("email");
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+
+  const handleTelegramSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSubmitStatus("sending");
+
+    const targetForm = e.currentTarget;
+    const formData = new FormData(targetForm);
+    const secretMessage = formData.get("anon-message") as string;
+
+    const token = process.env.NEXT_PUBLIC_TELEGRAM_BOT_TOKEN;
+    const chatId = process.env.NEXT_PUBLIC_TELEGRAM_CHAT_ID;
+
+    if (!token || !chatId) {
+      console.error("Telegram environment variables are missing.");
+      setSubmitStatus("error");
+      return;
+    }
+
+    const formattedMessage = `📩 *New Anonymous Message*:\n\n"${secretMessage}"`;
+
+    try {
+      const response = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: formattedMessage,
+          parse_mode: "Markdown",
+        }),
+      });
+
+      if (response.ok) {
+        setSubmitStatus("success");
+        targetForm.reset();
+      } else {
+        setSubmitStatus("error");
+      }
+    } catch (error) {
+      console.error("Error sending Telegram message:", error);
+      setSubmitStatus("error");
+    }
+  };
+
   return (
     <section id="contact" className="relative py-20 md:py-28 bg-[#FFF5F5] dark:bg-[#1E1212] transition-colors duration-200 overflow-hidden">
-      
+
       {/* Background patterns */}
       <div className="absolute inset-0 opacity-[0.1] nb-bg-grid-heavy" />
       <div className="absolute inset-0 opacity-[0.2] nb-bg-checkered" />
@@ -57,7 +104,7 @@ export function Contact() {
 
       <div className="container mx-auto px-6 max-w-5xl relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            
+
           {/* Contact Info Column */}
           <div className="space-y-8">
             <div>
@@ -68,15 +115,15 @@ export function Contact() {
                 Let's Build the Future Together
               </h3>
             </div>
-            
+
             <p className="text-lg font-bold text-gray-700 dark:text-gray-300 leading-relaxed">
-              I am open to internship opportunities, research collaborations, and freelance projects. 
+              I am open to internship opportunities, research collaborations, and freelance projects.
               Whether you have a hardware setup to debug or a modern web platform to architect, feel free to drop a message.
             </p>
-            
+
             {/* Social channels as list */}
             <div className="space-y-4 pt-4">
-              <a 
+              <a
                 href={`mailto:${portfolio.socials.email}`}
                 className="w-full bg-white dark:bg-[#1E1E1E] text-black dark:text-white p-4 font-mono font-bold text-sm sm:text-base nb-border flex items-center justify-between hover:bg-[#2196F3] hover:text-white transition-colors"
               >
@@ -86,9 +133,9 @@ export function Contact() {
                 </div>
                 <ExternalLink className="h-4 w-4 shrink-0" />
               </a>
-              <a 
-                href={portfolio.socials.github} 
-                target="_blank" 
+              <a
+                href={portfolio.socials.github}
+                target="_blank"
                 rel="noopener noreferrer"
                 className="w-full bg-white dark:bg-[#1E1E1E] text-black dark:text-white p-4 font-mono font-bold text-sm sm:text-base nb-border flex items-center justify-between hover:bg-[#FFEB3B] hover:text-black transition-colors"
               >
@@ -98,9 +145,9 @@ export function Contact() {
                 </div>
                 <ExternalLink className="h-4 w-4 shrink-0" />
               </a>
-              <a 
-                href={portfolio.socials.linkedin} 
-                target="_blank" 
+              <a
+                href={portfolio.socials.linkedin}
+                target="_blank"
                 rel="noopener noreferrer"
                 className="w-full bg-white dark:bg-[#1E1E1E] text-black dark:text-white p-4 font-mono font-bold text-sm sm:text-base nb-border flex items-center justify-between hover:bg-[#2196F3] hover:text-white transition-colors"
               >
@@ -110,9 +157,9 @@ export function Contact() {
                 </div>
                 <ExternalLink className="h-4 w-4 shrink-0" />
               </a>
-              <a 
-                href={portfolio.socials.instagram} 
-                target="_blank" 
+              <a
+                href={portfolio.socials.instagram}
+                target="_blank"
                 rel="noopener noreferrer"
                 className="w-full bg-white dark:bg-[#1E1E1E] text-black dark:text-white p-4 font-mono font-bold text-sm sm:text-base nb-border flex items-center justify-between hover:bg-[#FF5252] hover:text-white transition-colors"
               >
@@ -126,77 +173,186 @@ export function Contact() {
           </div>
 
           {/* Form Column */}
-          <div className="bg-[#FFEB3B] p-8 nb-border border-black shadow-[8px_8px_0_#000] text-black transform rotate-[-0.5deg] relative">
-            
+          <div className="bg-[#FFEB3B] p-8 nb-border border-black shadow-[8px_8px_0_#000] text-black transform rotate-[-0.5deg] relative flex flex-col justify-between">
+
             {/* Caution stripes header ribbon */}
             <div className="absolute top-0 left-0 right-0 h-2.5 nb-bg-stripes border-b-2 border-black" />
-            
-            <h4 className="text-xl font-black uppercase border-b-2 border-black pb-2 pt-2 mb-6 flex items-center gap-2">
-              <Mail className="h-5 w-5" />
-              <span>Send a Message</span>
-            </h4>
-            
-            <form className="space-y-5" action={`mailto:${portfolio.socials.email}`} method="post" encType="text/plain">
-              <div>
-                <label htmlFor="name" className="block text-xs font-mono font-bold uppercase mb-1.5">
-                  Full Name
-                </label>
-                <input 
-                  id="name" 
-                  name="name" 
-                  type="text" 
-                  placeholder="John Doe" 
-                  className="w-full bg-white text-black font-bold p-3 nb-border focus:bg-gray-50 focus:outline-none placeholder-gray-400 text-sm"
-                  required 
-                  suppressHydrationWarning={true}
-                />
+
+            <div>
+              {/* Tab Selector buttons */}
+              <div className="flex gap-2 mb-6 mt-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setActiveTab("email");
+                    setSubmitStatus("idle");
+                  }}
+                  className={`flex-1 py-2 font-mono text-xs font-black uppercase border-2 border-black transition-all ${activeTab === "email"
+                    ? "bg-[#FF5252] text-white shadow-[2px_2px_0_#000] -translate-y-0.5"
+                    : "bg-white text-black hover:-translate-y-0.5 hover:shadow-[2px_2px_0_#000] active:translate-y-0 active:shadow-none"
+                    }`}
+                >
+                  Email
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setActiveTab("anonymous");
+                    setSubmitStatus("idle");
+                  }}
+                  className={`flex-1 py-2 font-mono text-xs font-black uppercase border-2 border-black transition-all ${activeTab === "anonymous"
+                    ? "bg-[#FF5252] text-white shadow-[2px_2px_0_#000] -translate-y-0.5"
+                    : "bg-white text-black hover:-translate-y-0.5 hover:shadow-[2px_2px_0_#000] active:translate-y-0 active:shadow-none"
+                    }`}
+                >
+                  Anonymous Message
+                </button>
               </div>
-              <div>
-                <label htmlFor="email" className="block text-xs font-mono font-bold uppercase mb-1.5">
-                  Email Address
-                </label>
-                <input 
-                  id="email" 
-                  name="email" 
-                  type="email" 
-                  placeholder="john@example.com" 
-                  className="w-full bg-white text-black font-bold p-3 nb-border focus:bg-gray-50 focus:outline-none placeholder-gray-400 text-sm"
-                  required 
-                  suppressHydrationWarning={true}
-                />
-              </div>
-              <div>
-                <label htmlFor="message" className="block text-xs font-mono font-bold uppercase mb-1.5">
-                  Message Details
-                </label>
-                <textarea 
-                  id="message" 
-                  name="message" 
-                  rows={4} 
-                  placeholder="Explain your project goals..." 
-                  className="w-full bg-white text-black font-bold p-3 nb-border focus:bg-gray-50 focus:outline-none placeholder-gray-400 text-sm"
-                  required 
-                  suppressHydrationWarning={true}
-                />
-              </div>
-              
-              <button 
-                type="submit" 
-                className="w-full bg-[#FF5252] text-white p-3.5 font-black uppercase tracking-wider text-sm nb-btn inline-flex justify-center items-center gap-2 cursor-pointer"
-              >
-                <span>Send Message</span>
-                <Send className="h-4.5 w-4.5 stroke-[2.5]" />
-              </button>
-            </form>
+
+              {activeTab === "email" ? (
+                <>
+                  <h4 className="text-xl font-black uppercase border-b-2 border-black pb-2 mb-6 flex items-center gap-2">
+                    <Mail className="h-5 w-5" />
+                    <span>Send via Email</span>
+                  </h4>
+
+                  <form className="space-y-5" action={`mailto:${portfolio.socials.email}`} method="post" encType="text/plain">
+                    <div>
+                      <div className="relative flex flex-col-reverse">
+                        <input
+                          id="name"
+                          name="name"
+                          type="text"
+                          placeholder="John Doe"
+                          className="peer w-full bg-white text-black font-bold p-3 nb-border focus:bg-gray-50 focus:outline-none placeholder-gray-400 text-sm caret-custom-email mt-1.5"
+                          required
+                          suppressHydrationWarning={true}
+                        />
+                        <div className="flex justify-between items-center">
+                          <label htmlFor="name" className="block text-xs font-mono font-bold uppercase">
+                            Full Name
+                          </label>
+                          <span className="hidden peer-focus:inline-flex items-center gap-1 font-mono text-[9px] font-black uppercase text-[#FF5252] animate-pulse">
+                            <span>[</span> TARGET LOCKED <span>]</span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <div className="relative flex flex-col-reverse">
+                        <input
+                          id="email"
+                          name="email"
+                          type="email"
+                          placeholder="john@example.com"
+                          className="peer w-full bg-white text-black font-bold p-3 nb-border focus:bg-gray-50 focus:outline-none placeholder-gray-400 text-sm caret-custom-email mt-1.5"
+                          required
+                          suppressHydrationWarning={true}
+                        />
+                        <div className="flex justify-between items-center">
+                          <label htmlFor="email" className="block text-xs font-mono font-bold uppercase">
+                            Email Address
+                          </label>
+                          <span className="hidden peer-focus:inline-flex items-center gap-1 font-mono text-[9px] font-black uppercase text-[#FF5252] animate-pulse">
+                            <span>[</span> TARGET LOCKED <span>]</span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <div className="relative flex flex-col-reverse">
+                        <textarea
+                          id="message"
+                          name="message"
+                          rows={4}
+                          placeholder="Explain your project goals..."
+                          className="peer w-full bg-white text-black font-bold p-3 nb-border focus:bg-gray-50 focus:outline-none placeholder-gray-400 text-sm caret-custom-email mt-1.5"
+                          required
+                          suppressHydrationWarning={true}
+                        />
+                        <div className="flex justify-between items-center">
+                          <label htmlFor="message" className="block text-xs font-mono font-bold uppercase">
+                            Message Details
+                          </label>
+                          <span className="hidden peer-focus:inline-flex items-center gap-1 font-mono text-[9px] font-black uppercase text-[#FF5252] animate-pulse">
+                            <span>[</span> TARGET LOCKED <span>]</span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <button
+                      type="submit"
+                      className="w-full bg-[#FF5252] text-white p-3.5 font-black uppercase tracking-wider text-sm nb-btn inline-flex justify-center items-center gap-2 cursor-pointer"
+                    >
+                      <span>Send Mail</span>
+                      <Send className="h-4.5 w-4.5 stroke-[2.5]" />
+                    </button>
+                  </form>
+                </>
+              ) : (
+                <>
+                  <h4 className="text-xl font-black uppercase border-b-2 border-black pb-2 mb-6 flex items-center gap-2">
+                    <Send className="h-5 w-5" />
+                    <span>Send Anonymous Message</span>
+                  </h4>
+
+                  <form onSubmit={handleTelegramSubmit} className="space-y-5">
+                    <div>
+                      <div className="relative flex flex-col-reverse">
+                        <textarea
+                          id="anon-message"
+                          name="anon-message"
+                          rows={6}
+                          placeholder="Write anything anonymously..."
+                          className="peer w-full bg-white text-black font-bold p-3 nb-border focus:bg-gray-50 focus:outline-none placeholder-gray-400 text-sm caret-custom-anon mt-1.5"
+                          required
+                          suppressHydrationWarning={true}
+                        />
+                        <div className="flex justify-between items-center">
+                          <label htmlFor="anon-message" className="block text-xs font-mono font-bold uppercase">
+                            Your Secret Message
+                          </label>
+                          <span className="hidden peer-focus:inline-flex items-center gap-1 font-mono text-[9px] font-black uppercase text-[#2196F3] animate-pulse">
+                            <span>[</span> SECURE TRANSMISSION <span>]</span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {submitStatus === "success" && (
+                      <div className="bg-[#4ECDC4] border-[3px] border-black p-3 font-bold text-xs uppercase shadow-[2px_2px_0_#000]">
+                        Message sent successfully!
+                      </div>
+                    )}
+
+                    {submitStatus === "error" && (
+                      <div className="bg-[#FF5252] text-white border-[3px] border-black p-3 font-bold text-xs uppercase shadow-[2px_2px_0_#000]">
+                        Failed to send message. Please try again.
+                      </div>
+                    )}
+
+                    <button
+                      type="submit"
+                      disabled={submitStatus === "sending"}
+                      className="w-full bg-[#2196F3] text-white p-3.5 font-black uppercase tracking-wider text-sm nb-btn inline-flex justify-center items-center gap-2 cursor-pointer disabled:opacity-50"
+                    >
+                      <span>{submitStatus === "sending" ? "Sending..." : "Send Secretly"}</span>
+                      <Send className="h-4.5 w-4.5 stroke-[2.5]" />
+                    </button>
+                  </form>
+                </>
+              )}
+            </div>
           </div>
-      
+
         </div>
       </div>
 
       {/* Ripped Paper Divider */}
       <div className="absolute bottom-0 left-0 right-0 w-full h-8 z-20 translate-y-[2px] pointer-events-none">
         {/* Next section background with motifs clipped to ripped shape */}
-        <div 
+        <div
           className="absolute inset-0 w-full h-full bg-white dark:bg-[#1A1A1A]"
           style={{ clipPath: 'polygon(0% 50%, 4% 25%, 8% 62.5%, 12% 20%, 16% 55%, 20% 30%, 24% 67.5%, 28% 25%, 32% 60%, 36% 30%, 40% 70%, 44% 37.5%, 48% 65%, 52% 25%, 56% 55%, 60% 20%, 64% 60%, 68% 30%, 72% 70%, 76% 37.5%, 80% 62.5%, 84% 20%, 88% 55%, 92% 30%, 96% 67.5%, 100% 37.5%, 100% 100%, 0% 100%)' }}
         >
