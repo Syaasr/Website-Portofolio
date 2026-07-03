@@ -169,10 +169,10 @@ export function AboutSkills() {
             </div>
 
             <div className="grid gap-6">
-              <SkillCategory title="Programming Languages" skills={portfolio.skills.languages} accentColor="bg-[#FF5252] text-white" />
-              <SkillCategory title="Web Development" skills={portfolio.skills.web} accentColor="bg-[#FFEB3B] text-black" />
-              <SkillCategory title="Robotics & IoT" skills={portfolio.skills.robotics} accentColor="bg-[#4ECDC4] text-black" />
-              <SkillCategory title="Tools & DevOps" skills={portfolio.skills.tools} accentColor="bg-[#2196F3] text-white" />
+              <SkillCategory title="Programming Languages" skills={portfolio.skills.languages} accentColor="bg-[#FFEB3B] text-black" bgClass="bg-[#FFEBEB] dark:bg-[#301A1A]" />
+              <SkillCategory title="Web Development" skills={portfolio.skills.web} accentColor="bg-[#FF5252] text-white" bgClass="bg-[#FFFDEB] dark:bg-[#30301A]" />
+              <SkillCategory title="Robotics & IoT" skills={portfolio.skills.robotics} accentColor="bg-[#2196F3] text-white" bgClass="bg-[#EBFDFB] dark:bg-[#1A302E]" />
+              <SkillCategory title="Tools & DevOps" skills={portfolio.skills.tools} accentColor="bg-[#4ECDC4] text-black" bgClass="bg-[#EBF5FF] dark:bg-[#1A2E30]" />
             </div>
           </div>
 
@@ -203,11 +203,12 @@ interface SkillCategoryProps {
   title: string;
   skills: string[];
   accentColor: string;
+  bgClass: string;
 }
 
-function SkillCategory({ title, skills, accentColor }: SkillCategoryProps) {
+function SkillCategory({ title, skills, accentColor, bgClass }: SkillCategoryProps) {
   return (
-    <div className="bg-white dark:bg-[#1E1E1E] nb-card-static p-6 transform hover:rotate-[0.5deg] transition-transform duration-200">
+    <div className={`${bgClass} nb-card-static p-6 transform hover:rotate-[0.5deg] transition-transform duration-200`}>
       <div className="flex items-center justify-between mb-4 border-b-2 border-black pb-2">
         <h4 className="text-lg font-black uppercase tracking-wide text-black dark:text-white">
           {title}
@@ -220,7 +221,7 @@ function SkillCategory({ title, skills, accentColor }: SkillCategoryProps) {
         {skills.map((skill) => (
           <span 
             key={skill} 
-            className="font-mono text-xs font-bold bg-[#F3F4F6] dark:bg-[#202020] text-black dark:text-white border-2 border-black px-2.5 py-1 transition-transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+            className="font-mono text-xs font-bold bg-white dark:bg-[#202020] text-black dark:text-white border-2 border-black px-2.5 py-1 transition-transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
           >
             {skill}
           </span>

@@ -218,7 +218,7 @@ export function TimelineRoadmap() {
                 {/* Card Container (Only this element animates in/out with Pop Scale 50% & Spring Tilt, opacity stays 100%) */}
                 <div 
                   data-index={idx}
-                  className={`p-6 bg-white dark:bg-[#1E1E1E] nb-card-static relative h-full flex flex-col justify-between hover:rotate-[0.5deg] transition-all duration-700 cubic-bezier(0.34, 1.56, 0.64, 1) z-10 ${
+                  className={`p-6 nb-card-static relative h-full flex flex-col justify-between hover:rotate-[0.5deg] transition-all duration-700 cubic-bezier(0.34, 1.56, 0.64, 1) z-10 ${
                     isVisible 
                       ? "scale-100 rotate-0" 
                       : isLeftColumn
@@ -226,10 +226,10 @@ export function TimelineRoadmap() {
                         : "scale-50 rotate-6"
                   } ${
                     cell.item.type === "education"
-                      ? "border-t-[10px] border-t-[#2196F3]" 
+                      ? "bg-[#EBF5FF] dark:bg-[#1A2535] border-t-[10px] border-t-[#2196F3]" 
                       : cell.item.type === "future"
-                        ? "border-t-[10px] border-t-[#FFEB3B]"
-                        : "border-t-[10px] border-t-[#FF5252]"
+                        ? "bg-[#FFFDEB] dark:bg-[#35351A] border-t-[10px] border-t-[#FFEB3B]"
+                        : "bg-[#FFEBEB] dark:bg-[#351A1A] border-t-[10px] border-t-[#FF5252]"
                   }`}
                 >
                   <div>
@@ -303,10 +303,10 @@ export function TimelineRoadmap() {
                   
                   {/* Mobile Card */}
                   <div 
-                    className={`w-full p-6 bg-white dark:bg-[#1E1E1E] nb-card-static relative ${
+                    className={`w-full p-6 nb-card-static relative ${
                       isEdu 
-                        ? "border-t-[10px] border-t-[#2196F3]" 
-                        : "border-t-[10px] border-t-[#FF5252]"
+                        ? "bg-[#EBF5FF] dark:bg-[#1A2535] border-t-[10px] border-t-[#2196F3]" 
+                        : "bg-[#FFEBEB] dark:bg-[#351A1A] border-t-[10px] border-t-[#FF5252]"
                     }`}
                   >
                     <div className="flex justify-between items-center mb-4">
@@ -359,7 +359,7 @@ export function TimelineRoadmap() {
                         : "scale-50 rotate-4"
                   }`}
                 >
-                  <div className="w-full p-6 bg-white dark:bg-[#1E1E1E] nb-card-static relative border-t-[10px] border-t-[#FFEB3B]">
+                  <div className="w-full p-6 nb-card-static relative bg-[#FFFDEB] dark:bg-[#35351A] border-t-[10px] border-t-[#FFEB3B]">
                     <div className="flex justify-between items-center mb-4">
                       <span className="font-mono text-[10px] font-black bg-[#FFEB3B] text-black border border-black px-2.5 py-0.5 shadow-[1px_1px_0_#000]">
                         Present & Beyond

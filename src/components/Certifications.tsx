@@ -71,12 +71,12 @@ export function Certifications() {
                 </h3>
               </div>
             </div>
-            <div className="bg-[#F8FAFC] dark:bg-[#161616] border-[3px] border-black shadow-[6px_6px_0_#000] p-3 sm:p-4 rounded-none">
+            <div className="bg-[#EBF5FF] dark:bg-[#1A2535] border-[3px] border-black shadow-[6px_6px_0_#000] p-3 sm:p-4 rounded-none">
               <div className="max-h-[340px] overflow-y-auto pr-2 space-y-4 nb-scrollbar">
                 {portfolio.certifications.map((cert, index) => (
                   <div 
                     key={index} 
-                    className="bg-white dark:bg-[#222222] border-[3px] border-black shadow-[3px_3px_0_#000] p-5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 transform hover:rotate-[0.5deg] transition-transform duration-200"
+                    className="bg-white dark:bg-[#1A1A1A] border-[3px] border-black shadow-[3px_3px_0_#000] p-5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 transform hover:rotate-[0.5deg] transition-transform duration-200"
                   >
                     <div>
                       <h4 className="text-lg font-black uppercase tracking-tight text-black dark:text-white">
@@ -111,12 +111,12 @@ export function Certifications() {
               </div>
             </div>
             
-            <div className="bg-[#F8FAFC] dark:bg-[#161616] border-[3px] border-black shadow-[6px_6px_0_#000] p-3 sm:p-4 rounded-none">
+            <div className="bg-[#FFEBEB] dark:bg-[#351A1A] border-[3px] border-black shadow-[6px_6px_0_#000] p-3 sm:p-4 rounded-none">
               <div className="max-h-[340px] overflow-y-auto pr-2 space-y-4 nb-scrollbar">
                 {portfolio.achievements.map((item, index) => (
                   <div 
                     key={index} 
-                    className="bg-white dark:bg-[#222222] border-[3px] border-black shadow-[3px_3px_0_#000] p-5 transform hover:rotate-[-0.5deg] transition-transform duration-200"
+                    className="bg-white dark:bg-[#1A1A1A] border-[3px] border-black shadow-[3px_3px_0_#000] p-5 transform hover:rotate-[-0.5deg] transition-transform duration-200"
                   >
                     <div className="flex justify-between items-start gap-4 border-b-2 border-black pb-3 mb-4">
                       <div>
