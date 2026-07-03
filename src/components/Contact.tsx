@@ -16,27 +16,14 @@ export function Contact() {
     const formData = new FormData(targetForm);
     const secretMessage = formData.get("anon-message") as string;
 
-    const token = process.env.NEXT_PUBLIC_TELEGRAM_BOT_TOKEN;
-    const chatId = process.env.NEXT_PUBLIC_TELEGRAM_CHAT_ID;
-
-    if (!token || !chatId) {
-      console.error("Telegram environment variables are missing.");
-      setSubmitStatus("error");
-      return;
-    }
-
-    const formattedMessage = `📩 *New Anonymous Message*:\n\n"${secretMessage}"`;
-
     try {
-      const response = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+      const response = await fetch("/api/send-message", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          chat_id: chatId,
-          text: formattedMessage,
-          parse_mode: "Markdown",
+          message: secretMessage,
         }),
       });
 
