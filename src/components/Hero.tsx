@@ -124,7 +124,7 @@ export function Hero() {
 
           </div>
 
-          {/* Visual Element Right Column */}
+           {/* Visual Element Right Column */}
           <div className="lg:col-span-5 flex justify-center relative py-10 lg:py-0">
             <div className="relative w-80 h-80 sm:w-96 sm:h-96">
               
@@ -135,7 +135,7 @@ export function Hero() {
               <div className="absolute inset-4 bg-[#FF5252] nb-border transform -rotate-6" />
 
               {/* Profile Image Neubrutalist Card */}
-              <div className="absolute inset-2 bg-white border-[3px] border-black shadow-[4px_4px_0_#000] overflow-hidden group">
+              <div className="absolute inset-2 bg-white border-[3px] border-black shadow-[4px_4px_0_#000] overflow-hidden group z-10">
                 <img 
                   src="/images/ig-profile.webp" 
                   alt="Syaikhasril Profile" 
@@ -147,6 +147,18 @@ export function Hero() {
                   asril@portfolio:~$ whoami
                 </div>
               </div>
+
+              {/* Opsi 3: Floating Cybernetic Badge 1 (Left Top) */}
+              <div className="absolute -top-6 -left-6 z-20 bg-white dark:bg-[#1E1E1E] text-black dark:text-white px-3 py-1.5 font-mono text-[10px] sm:text-xs font-black nb-border shadow-[3px_3px_0_#000] transform -rotate-3 hover:rotate-0 transition-transform duration-300 animate-bounce-slow flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-[#4ECDC4] inline-block animate-ping" />
+                <span>🟢 AVAILABLE</span>
+              </div>
+
+              {/* Opsi 3: Floating Cybernetic Badge 2 (Right Bottom) */}
+              <div className="absolute -bottom-4 -right-6 z-20 bg-[#FFEB3B] text-black px-3.5 py-2 font-mono text-[10px] sm:text-xs font-black nb-border shadow-[3px_3px_0_#000] transform rotate-3 hover:rotate-0 transition-transform duration-300 flex items-center gap-1.5">
+                <span>🤖 ROBOTICS & WEB</span>
+              </div>
+
             </div>
           </div>
         </div>
