@@ -12,28 +12,32 @@ interface Line {
 const PROMPT = "asril@portfolio:~$ ";
 
 const BANNER = [
+  " ",
   "  ╔══════════════════════════════════════╗",
   "  ║     SYAIKHASRIL MAULANA FIRDAUS      ║",
-  "  ║     Informatics @ UNS  |  v1.0       ║",
+  "  ║     Informatics @ UNS                ║",
+  "  ║                                      ║",
+  "  ║  Type 'help' to explore              ║",
   "  ╚══════════════════════════════════════╝",
 ];
 
 const HELP_TEXT = [
+  " ",
   "Available commands:",
-  "  help       - Show this help message",
-  "  skills     - List technical skills",
-  "  projects   - List featured projects",
-  "  education  - Show education history",
-  "  experience - Show work experience",
-  "  contact    - Show contact information",
-  "  whoami     - Display bio",
-  "  github     - Open GitHub profile",
-  "  linkedin   - Open LinkedIn profile",
-  "  date       - Show current date & time",
   "  banner     - Display ASCII banner",
-  "  sudo       - Try sudo powers",
   "  clear      - Clear terminal screen",
+  "  contact    - Show contact information",
+  "  date       - Show current date & time",
+  "  education  - Show education history",
   "  exit       - Close terminal",
+  "  experience - Show work experience",
+  "  github     - Open GitHub profile",
+  "  help       - Show this help message",
+  "  linkedin   - Open LinkedIn profile",
+  "  projects   - List featured projects",
+  "  skills     - List technical skills",
+  "  sudo       - Try sudo powers",
+  "  whoami     - Display bio",
 ];
 
 export function FloatingTerminal() {
@@ -49,7 +53,7 @@ export function FloatingTerminal() {
   ]);
   const inputRef = useRef<HTMLInputElement>(null);
   const outputRef = useRef<HTMLDivElement>(null);
-  const animRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const animRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Auto-scroll to bottom on new output
   useEffect(() => {
@@ -87,26 +91,25 @@ export function FloatingTerminal() {
   }, [isMounted, isClosing]);
 
   useEffect(() => {
-    return () => { if (animRef.current) clearInterval(animRef.current); };
+    return () => { if (animRef.current) clearTimeout(animRef.current); };
   }, []);
 
   const animateOutput = (output: string[], startIndex = 0) => {
     let idx = startIndex;
     const speed = 30;
-    animRef.current = setInterval(() => {
+    const tick = () => {
       if (idx < output.length) {
         setLines((prev) => [...prev, { text: output[idx], isOutput: true }]);
         idx++;
-      } else if (animRef.current) {
-        clearInterval(animRef.current);
-        animRef.current = null;
+        animRef.current = setTimeout(tick, speed);
       }
-    }, speed);
+    };
+    animRef.current = setTimeout(tick, speed);
   };
 
   const executeCommand = (cmd: string) => {
     if (animRef.current) {
-      clearInterval(animRef.current);
+      clearTimeout(animRef.current);
       animRef.current = null;
     }
 
@@ -120,27 +123,28 @@ export function FloatingTerminal() {
         break;
       case "skills":
         output = [
+          " ",
           "Languages:",
-          `  ${portfolio.skills.languages.join(", ")}`,
+          `- ${portfolio.skills.languages.join(", ")}`,
           "",
           "Web:",
-          `  ${portfolio.skills.web.join(", ")}`,
+          `- ${portfolio.skills.web.join(", ")}`,
           "",
           "Robotics & IoT:",
-          `  ${portfolio.skills.robotics.join(", ")}`,
+          `- ${portfolio.skills.robotics.join(", ")}`,
           "",
           "Tools:",
-          `  ${portfolio.skills.tools.join(", ")}`,
+          `- ${portfolio.skills.tools.join(", ")}`,
         ];
         break;
       case "projects":
         output = portfolio.projects.map(
           (p) => `  ${p.title} [${(p.category ?? ["Other"]).join(", ")}]`
         );
-        output = ["Featured projects:", ...output];
+        output = [" ", "Featured projects:", ...output];
         break;
       case "contact":
-        output = [
+        output = [" ",
           `  Email:    ${portfolio.socials.email}`,
           `  GitHub:   ${portfolio.socials.github}`,
           `  LinkedIn: ${portfolio.socials.linkedin}`,
@@ -148,37 +152,37 @@ export function FloatingTerminal() {
         ];
         break;
       case "whoami":
-        output = [
-          `  ${portfolio.personalInfo.name}`,
-          `  ${portfolio.personalInfo.role}`,
-          `  ${portfolio.personalInfo.location}`,
-          `  ${portfolio.personalInfo.bio}`,
+        output = [" ",
+          `${portfolio.personalInfo.name}`,
+          `${portfolio.personalInfo.role}`,
+          `${portfolio.personalInfo.location}`,
+          `${portfolio.personalInfo.bio}`,
         ];
         break;
       case "date":
-        output = [`  ${new Date().toLocaleString("en-US", { weekday: "long", year: "numeric", month: "long", day: "numeric", hour: "2-digit", minute: "2-digit", second: "2-digit", timeZoneName: "short" })}`];
+        output = [" ",`  ${new Date().toLocaleString("en-US", { weekday: "long", year: "numeric", month: "long", day: "numeric", hour: "2-digit", minute: "2-digit", second: "2-digit", timeZoneName: "short" })}`];
         break;
       case "education":
-        output = portfolio.education.map((e) => `  ${e.university} — ${e.degree} (${e.period})`);
-        output = ["Education:", ...output];
+        output = portfolio.education.map((e) => `${e.university} — ${e.degree} (${e.period})`);
+        output = [" ", "Education:", ...output];
         break;
       case "experience":
-        output = portfolio.experience.map((e) => `  ${e.role} @ ${e.organization} (${e.date})`);
-        output = ["Experience:", ...output];
+        output = portfolio.experience.map((e) => `${e.role} @ ${e.organization} (${e.date})`);
+        output = [" ", "Experience:", ...output];
         break;
       case "github":
-        output = [`  Opening GitHub: ${portfolio.socials.github}`];
+        output = [" ",`  Opening GitHub: ${portfolio.socials.github}`];
         setTimeout(() => window.open(portfolio.socials.github, "_blank", "noopener"), 600);
         break;
       case "linkedin":
-        output = [`  Opening LinkedIn: ${portfolio.socials.linkedin}`];
+        output = [" ",`  Opening LinkedIn: ${portfolio.socials.linkedin}`];
         setTimeout(() => window.open(portfolio.socials.linkedin, "_blank", "noopener"), 600);
         break;
       case "banner":
         output = BANNER;
         break;
       case "sudo":
-        output = ["  Nice try, but you don't have sudo access on Asril's terminal. 😏"];
+        output = [" ", "  Nice try, but you don't have sudo access on Asril's terminal. 😏"];
         break;
       case "exit":
         setIsOpen(false);
@@ -187,17 +191,13 @@ export function FloatingTerminal() {
         setLines([]);
         return;
       default:
-        output = [`Command not found: ${trimmed}. Type 'help' for available commands.`];
+        output = [" ", `Command not found: ${trimmed}. Type 'help' for available commands.`];
     }
 
-    setLines((prev) => [
-      ...prev,
-      { text: `${PROMPT}${cmd}`, isOutput: false },
-      ...(output.length > 0 ? [{ text: output[0], isOutput: true }] : []),
-    ]);
+    setLines((prev) => [...prev, { text: `${PROMPT}${cmd}`, isOutput: false }]);
 
-    if (output.length > 1) {
-      animateOutput(output, 1);
+    if (output.length > 0) {
+      requestAnimationFrame(() => animateOutput(output, 0));
     }
   };
 

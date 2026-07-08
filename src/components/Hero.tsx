@@ -57,23 +57,37 @@ export function Hero() {
 
             {/* Main Headline */}
             <h1 className="text-4xl sm:text-6xl font-black text-black dark:text-white leading-[1.05] tracking-tight uppercase">
-              {portfolio.hero.headline.split(" ").map((word, idx) => {
-                if (idx === 1) {
+              <div>
+                {/* Line 1: Syaikhasril — one box, asril text in red */}
+                {(() => {
+                  const first = portfolio.hero.headline.split(" ")[0];
+                  const idx = first.toLowerCase().indexOf("asril");
+                  const before = first.slice(0, idx);
+                  const nick = first.slice(idx);
                   return (
-                    <span key={word} className="bg-white text-black px-2 pb-1 nb-border inline-block transform rotate-1 mx-1.5 select-none">
-                      {word}
+                    <span className="bg-white text-black px-2 pb-1 nb-border inline-block transform rotate-1 select-none">
+                      <span>{before}</span>
+                      <span className="text-[#FF5252]">{nick}</span>
                     </span>
                   );
-                }
-                if (idx === 2) {
+                })()}
+              </div>
+              <div className="flex flex-wrap items-baseline gap-x-3 mt-1">
+                {/* Line 2: Maulana (boxed) + Firdaus */}
+                {(() => {
+                  const words = portfolio.hero.headline.split(" ");
                   return (
-                    <span key={word} className="bg-[#4ECDC4] text-black px-2 pb-1 nb-border inline-block transform rotate-[-2deg] mx-1.5 select-none">
-                      {word}
-                    </span>
+                    <>
+                      <span className="bg-[#FF5252] text-white px-2 pb-1 nb-border inline-block transform rotate-1 select-none">
+                        {words[1]}
+                      </span>
+                      <span className="bg-[#2196F3] text-white px-2 pb-1 nb-border inline-block transform rotate-[-1deg] select-none">
+                        {words[2]}
+                      </span>
+                    </>
                   );
-                }
-                return word + " ";
-              })}
+                })()}
+              </div>
             </h1>
 
             {/* Summary Block */}
