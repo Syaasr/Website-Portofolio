@@ -11,8 +11,10 @@ export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0 });
+  const [shadowStyle, setShadowStyle] = useState({ left: 0, width: 0 });
   const navListRef = useRef<HTMLDivElement>(null);
   const linkRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
+  const shadowTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -39,11 +41,15 @@ export function Navbar() {
       const el = linkRefs.current[activeSection]!;
       const parentRect = navListRef.current.getBoundingClientRect();
       const elRect = el.getBoundingClientRect();
-      setIndicatorStyle({
+      const pos = {
         left: elRect.left - parentRect.left,
         width: elRect.width,
-      });
+      };
+      setIndicatorStyle(pos);
+      if (shadowTimeoutRef.current) clearTimeout(shadowTimeoutRef.current);
+      shadowTimeoutRef.current = setTimeout(() => setShadowStyle(pos), 150);
     }
+    return () => { if (shadowTimeoutRef.current) clearTimeout(shadowTimeoutRef.current); };
   }, [activeSection]);
 
   return (
@@ -91,10 +97,10 @@ export function Navbar() {
               );
             })}
 
-            {/* Sliding indicator line */}
+            {/* Black shadow box — slides with delay */}
             <div
-              className="absolute bottom-0 h-[3px] bg-black transition-all duration-300 ease-out pointer-events-none"
-              style={{ left: indicatorStyle.left, width: indicatorStyle.width }}
+              className="absolute inset-y-0 bg-black rounded-sm transition-all duration-200 ease-out pointer-events-none -z-10"
+              style={{ left: shadowStyle.left, width: shadowStyle.width }}
             />
           </div>
 

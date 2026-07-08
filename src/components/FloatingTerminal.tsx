@@ -11,18 +11,37 @@ interface Line {
 
 const PROMPT = "asril@portfolio:~$ ";
 
+const BANNER = [
+  "  ╔══════════════════════════════════════╗",
+  "  ║     SYAIKHASRIL MAULANA FIRDAUS      ║",
+  "  ║     Informatics @ UNS  |  v1.0       ║",
+  "  ╚══════════════════════════════════════╝",
+];
+
 const HELP_TEXT = [
   "Available commands:",
-  "  help      - Show this help message",
-  "  skills    - List technical skills",
-  "  projects  - List featured projects",
-  "  contact   - Show contact information",
-  "  whoami    - Display bio",
-  "  clear     - Clear terminal screen",
+  "  help       - Show this help message",
+  "  skills     - List technical skills",
+  "  projects   - List featured projects",
+  "  education  - Show education history",
+  "  experience - Show work experience",
+  "  contact    - Show contact information",
+  "  whoami     - Display bio",
+  "  github     - Open GitHub profile",
+  "  linkedin   - Open LinkedIn profile",
+  "  date       - Show current date & time",
+  "  banner     - Display ASCII banner",
+  "  sudo       - Try sudo powers",
+  "  clear      - Clear terminal screen",
+  "  exit       - Close terminal",
 ];
 
 export function FloatingTerminal() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
+  const [showOverlay, setShowOverlay] = useState(false);
+  const [showPanel, setShowPanel] = useState(false);
   const [input, setInput] = useState("");
   const [lines, setLines] = useState<Line[]>([
     { text: "Welcome to Asril's interactive terminal!", isOutput: true },
@@ -39,19 +58,40 @@ export function FloatingTerminal() {
     }
   }, [lines]);
 
-  // Focus input when terminal opens
   useEffect(() => {
-    if (isOpen && inputRef.current) {
-      inputRef.current.focus();
+    if (isOpen) {
+      setIsMounted(true);
+      setShowOverlay(false);
+      setShowPanel(false);
+      setIsClosing(false);
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        setShowOverlay(true);
+        setShowPanel(true);
+      }));
+    } else if (isMounted) {
+      setShowOverlay(false);
+      setShowPanel(false);
+      setIsClosing(true);
+      setTimeout(() => {
+        setIsMounted(false);
+        setIsClosing(false);
+      }, 300);
     }
   }, [isOpen]);
+
+  // Focus input when terminal opens
+  useEffect(() => {
+    if (isMounted && !isClosing && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [isMounted, isClosing]);
 
   useEffect(() => {
     return () => { if (animRef.current) clearInterval(animRef.current); };
   }, []);
 
-  const animateOutput = (output: string[]) => {
-    let idx = 0;
+  const animateOutput = (output: string[], startIndex = 0) => {
+    let idx = startIndex;
     const speed = 30;
     animRef.current = setInterval(() => {
       if (idx < output.length) {
@@ -71,9 +111,6 @@ export function FloatingTerminal() {
     }
 
     const trimmed = cmd.trim().toLowerCase();
-
-    setLines((prev) => [...prev, { text: `${PROMPT}${cmd}`, isOutput: false }]);
-
     if (trimmed === "") return;
 
     let output: string[];
@@ -118,6 +155,34 @@ export function FloatingTerminal() {
           `  ${portfolio.personalInfo.bio}`,
         ];
         break;
+      case "date":
+        output = [`  ${new Date().toLocaleString("en-US", { weekday: "long", year: "numeric", month: "long", day: "numeric", hour: "2-digit", minute: "2-digit", second: "2-digit", timeZoneName: "short" })}`];
+        break;
+      case "education":
+        output = portfolio.education.map((e) => `  ${e.university} — ${e.degree} (${e.period})`);
+        output = ["Education:", ...output];
+        break;
+      case "experience":
+        output = portfolio.experience.map((e) => `  ${e.role} @ ${e.organization} (${e.date})`);
+        output = ["Experience:", ...output];
+        break;
+      case "github":
+        output = [`  Opening GitHub: ${portfolio.socials.github}`];
+        setTimeout(() => window.open(portfolio.socials.github, "_blank", "noopener"), 600);
+        break;
+      case "linkedin":
+        output = [`  Opening LinkedIn: ${portfolio.socials.linkedin}`];
+        setTimeout(() => window.open(portfolio.socials.linkedin, "_blank", "noopener"), 600);
+        break;
+      case "banner":
+        output = BANNER;
+        break;
+      case "sudo":
+        output = ["  Nice try, but you don't have sudo access on Asril's terminal. 😏"];
+        break;
+      case "exit":
+        setIsOpen(false);
+        return;
       case "clear":
         setLines([]);
         return;
@@ -125,7 +190,15 @@ export function FloatingTerminal() {
         output = [`Command not found: ${trimmed}. Type 'help' for available commands.`];
     }
 
-    animateOutput(output);
+    setLines((prev) => [
+      ...prev,
+      { text: `${PROMPT}${cmd}`, isOutput: false },
+      ...(output.length > 0 ? [{ text: output[0], isOutput: true }] : []),
+    ]);
+
+    if (output.length > 1) {
+      animateOutput(output, 1);
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -146,13 +219,13 @@ export function FloatingTerminal() {
       </button>
 
       {/* Terminal Overlay */}
-      {isOpen && (
+      {isMounted && (
         <div
-          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/60 backdrop-blur-xs p-4"
+          className={`fixed inset-0 z-[60] flex items-center justify-center p-4 transition-all duration-300 ease-out ${showOverlay ? 'bg-black/60 backdrop-blur-xs' : 'bg-black/0 backdrop-blur-none'}`}
           onClick={() => setIsOpen(false)}
         >
           <div
-            className="w-full max-w-lg bg-black nb-border shadow-[8px_8px_0_#000] flex flex-col"
+            className={`w-full sm:w-2/3 max-w-4xl max-h-[66vh] bg-black nb-border shadow-[8px_8px_0_#000] flex flex-col transition-transform duration-300 ease-out ${isClosing ? 'translate-y-[100vh]' : showPanel ? 'translate-y-0' : 'translate-y-full'}`}
             onClick={(e) => e.stopPropagation()}
           >
             {/* Title Bar */}
@@ -184,7 +257,7 @@ export function FloatingTerminal() {
             {/* Output Area */}
             <div
               ref={outputRef}
-              className="p-4 h-72 overflow-y-auto font-mono text-xs space-y-1 scrollbar-thin"
+              className="p-4 flex-1 min-h-[300px] overflow-y-auto font-mono text-xs space-y-1 scrollbar-thin"
               style={{ scrollbarWidth: "thin", scrollbarColor: "#4ECDC4 #1A1A1A" }}
             >
               {lines.map((line, i) => (

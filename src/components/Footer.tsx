@@ -9,10 +9,10 @@ export function Footer() {
     <footer className="bg-white dark:bg-[#1A1A1A] transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-6 py-12 md:py-16">
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
           
           {/* Col 1: Brand & Info */}
-          <div className="md:col-span-2 space-y-4">
+          <div className="space-y-4">
             <div className="flex items-center gap-2 group">
               {/* ponytail: standardized 3px borders */}
               <div className="bg-[#FFEB3B] text-black border-[3px] border-black px-2.5 py-1 font-black text-lg tracking-tight transform group-hover:rotate-[-2deg] transition-all">
@@ -22,7 +22,7 @@ export function Footer() {
                 .DEV
               </span>
             </div>
-            <p className="text-gray-700 dark:text-gray-300 font-bold text-xs sm:text-sm max-w-sm leading-relaxed">
+            <p className="text-gray-700 dark:text-gray-300 font-bold text-xs sm:text-sm max-w-lg leading-relaxed">
               Informatics engineering student at Universitas Sebelas Maret (UNS) specializing in Next.js web application architecture and low-latency robotics PID systems.
             </p>
             <div className="flex gap-3">
@@ -62,28 +62,20 @@ export function Footer() {
             <h4 className="text-sm font-black uppercase tracking-wider text-black dark:text-white border-b-2 border-black pb-1.5 mb-4">
               Navigation
             </h4>
-            <ul className="space-y-2 text-xs sm:text-sm font-bold">
-              <li>
-                <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white">
-                  Back to Top
-                </a>
-              </li>
-              <li>
-                <a href="#about" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white">
-                  About Me
-                </a>
-              </li>
-              <li>
-                <a href="#roadmap" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white">
-                  My Journey
-                </a>
-              </li>
-              <li>
-                <a href="#projects" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white">
-                  Featured Projects
-                </a>
-              </li>
-            </ul>
+            <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-xs sm:text-sm font-bold">
+              <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white">
+                Back to Top
+              </a>
+              <a href="#about" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white">
+                About Me
+              </a>
+              <a href="#roadmap" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white">
+                My Journey
+              </a>
+              <a href="#projects" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white">
+                Featured Projects
+              </a>
+            </div>
           </div>
 
         </div>
@@ -93,10 +85,7 @@ export function Footer() {
           <div>
             &copy; Copyright 2026 Syaikhasril Maulana Firdaus. All rights reserved.
           </div>
-          <div className="flex items-center gap-2">
-            <span>Designed in Indonesia 🇮🇩</span>
-            <span className="h-2 w-2 rounded-full bg-[#FF5252] border border-black animate-ping" />
-          </div>
+
         </div>
 
       </div>
