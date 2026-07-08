@@ -69,7 +69,7 @@ export function Navbar() {
           </Link>
 
           {/* Desktop Nav Items */}
-          <div className="hidden md:flex items-center gap-2 relative" ref={navListRef}>
+          <div className="hidden min-[1000px]:flex items-center gap-2 relative" ref={navListRef}>
             {NAV_SECTIONS.map((section) => {
               const isActive = activeSection === section;
               const label = section === "mini-game" ? "Arcade" : section.charAt(0).toUpperCase() + section.slice(1);
@@ -105,7 +105,7 @@ export function Navbar() {
           </div>
 
           {/* Desktop CTA */}
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden min-[1000px]:flex items-center gap-4">
             <a 
               href="#contact" 
               className="bg-[#2196F3] text-white px-5 py-2.5 font-bold uppercase tracking-wider text-sm nb-btn inline-flex items-center gap-2 nb-tap"
@@ -116,7 +116,7 @@ export function Navbar() {
           </div>
 
           {/* Mobile navigation triggers */}
-          <div className="flex items-center md:hidden gap-3">
+          <div className="flex items-center min-[1000px]:hidden gap-3">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="bg-[#FFEB3B] text-black p-3 nb-border hover:bg-yellow-400 nb-tap"
@@ -130,7 +130,7 @@ export function Navbar() {
 
       {/* Mobile Menu Panel */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t-[3px] border-black bg-white dark:bg-[#1A1A1A] py-6 px-4 space-y-3 transition-all duration-200">
+        <div className="min-[1000px]:hidden border-t-[3px] border-black bg-white dark:bg-[#1A1A1A] py-6 px-4 space-y-3 transition-all duration-200">
           <a 
             href="#about" 
             onClick={() => setMobileMenuOpen(false)}

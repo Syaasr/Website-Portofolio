@@ -4,10 +4,11 @@ Personal portfolio website for Syaikhasril Maulana Firdaus, an Informatics stude
 
 ## Tech Stack
 
-- **Framework**: Next.js 16.2.9 (App Router, Static Export ready)
+- **Framework**: Next.js 16.2.9 (App Router)
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS v4
 - **Icons**: Lucide React
+- **Analytics**: Vercel Analytics
 - **Theming**: light mode forced for high contrast neubrutalist visual fidelity
 - **Fonts**: Inter and JetBrains Mono
 
@@ -16,91 +17,55 @@ Personal portfolio website for Syaikhasril Maulana Firdaus, an Informatics stude
 ```
 src/
 ├── app/
-│   ├── layout.tsx           # Root layout with schema.org JSON-LD and theme providers
-│   ├── page.tsx             # Main page component
-│   └── globals.css          # Global styles, Tailwind directives, custom caret, and neubrutalist classes
+│   ├── layout.tsx              # Root layout with schema.org JSON-LD, OG tags, Analytics
+│   ├── page.tsx                # Main page — all sections rendered sequentially
+│   ├── not-found.tsx           # Custom Neubrutalist 404 page
+│   ├── globals.css             # Tailwind v4 directives, Neubrutalist utilities, animations
+│   └── api/send-message/route.ts  # Serverless route for Telegram anonymous messages
 ├── components/
-│   ├── AboutSkills.tsx      # About story block, stats, and colorful technical competencies categories
-│   ├── Blog.tsx             # Medium RSS blog posts display
-│   ├── Certifications.tsx   # Certifications (Blue) and Achievements (Red) outer containers
-│   ├── Contact.tsx          # Dual-tab form (Email client-link & Client-side Anonymous Telegram Bot API)
-│   ├── Footer.tsx           # Neubrutalist footer with social links & Designed in Indonesia badge
-│   ├── Game.tsx             # Custom Flappy Bird canvas arcade mini-game with global space key filter
-│   ├── Hero.tsx             # Hero section with headline, profile, location badges, and 3D Floating Cybernetic badges
-│   ├── Navbar.tsx           # Header navigation
-│   ├── Projects.tsx         # Filterable portfolio projects showcase using Embla Carousel
-│   └── TimelineRoadmap.tsx  # Scroll-driven spring pop-scale (Option 3) educational & professional timeline
+│   ├── Navbar.tsx              # Sticky nav with IntersectionObserver + sliding indicator
+│   ├── Hero.tsx                # Hero with headline, status badge, CTA, profile card
+│   ├── AboutSkills.tsx         # About story, stats, technical skills categories
+│   ├── TimelineRoadmap.tsx     # Winding grid timeline with scroll-triggered animations
+│   ├── Projects.tsx            # Filterable project carousel (Embla) with case study modals
+│   ├── CaseStudyModal.tsx      # Modal dialog for project case studies
+│   ├── Certifications.tsx      # Certifications + Achievements columns
+│   ├── Blog.tsx                # Blog article carousel
+│   ├── Game.tsx                # Canvas-based arcade mini-game (Wave x Flappy Bird)
+│   ├── Contact.tsx             # Dual-tab form (Email + Anonymous Telegram)
+│   ├── Footer.tsx              # Footer with brand, social links, navigation
+│   ├── FloatingTerminal.tsx    # Floating FAB → interactive terminal overlay
+│   ├── RippedPaperDivider.tsx  # Shared SVG ripped-paper divider between sections
+│   └── ui/
+│       ├── carousel.tsx        # Embla Carousel wrapper
+│       └── button.tsx          # Base button component
 ├── data/
-│   └── portfolio.ts         # Centralized database for all portfolio content (Single Source of Truth)
+│   └── portfolio.ts            # Single Source of Truth for all content
+├── types/
+│   └── portfolio.ts            # TypeScript interfaces for all data structures
 └── lib/
-    └── utils.ts             # Tailwind class name merger helper
+    └── utils.ts                # Tailwind class merger (cn)
 ```
 
 ## Key Features
 
-- **Neubrutalist Aesthetics**: Implements hard shadows, 3px solid black borders (`nb-border`), high-saturation colors, display typography, and tactile physical-compression hover/active button transformations.
-- **Spring Pop-Scale Animations (Roadmap)**: Cards scale up to `100%` with micro-rotations using `IntersectionObserver` when entering viewports, while connecting lines stay statically connected underneath at `z-0`.
-- **Dual-Tab Get In Touch**:
-  - **Tab 1 (Email)**: Direct pre-filled email client link.
-  - **Tab 2 (Anonymous Message)**: Sends messages instantly to Syaikhasril's personal Telegram Chat via client-side Telegram Bot API requests. Includes input caret color styling and a target-locked status indicator.
-- **Floating Cybernetic Badges**: profile photo is surrounded by hovering status badges (`[🟢 AVAILABLE]` & `[🤖 ROBOTICS & WEB]`) with slight hover-parallax tilting.
-- **Interactive Arcade Mini-Game**: Built-in HTML5 Canvas game with custom collision-box physics, theme-aware rendering, particle effects, and high-score tracking. Integrated with form input filtering to prevent spacebar scroll hijacking.
-- **Single Source of Truth**: All textual data, project links, blogs, and experience histories are managed inside the portfolio data module.
-- **Responsive Layout**: Designed mobile-first, ensuring high contrast and tactile usability across all viewports.
-
-## Getting Started
-
-### 1. Configuration (.env)
-
-Create a `.env.local` file at the root of the project by copying the example file:
-
-```bash
-cp .env.example .env.local
-```
-
-Open `.env.local` and fill in your Telegram Bot credentials to enable anonymous messaging:
-
-```env
-NEXT_PUBLIC_TELEGRAM_BOT_TOKEN=your_telegram_bot_token_here
-NEXT_PUBLIC_TELEGRAM_CHAT_ID=your_personal_chat_id_here
-```
-
-### 2. Run Locally
-
-Install the required node modules:
-
-```bash
-npm install
-```
-
-Start the development server:
-
-```bash
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
-
-## Build and Production
-
-Compile and optimize the build for production (generates static pages in the `out/` folder):
-
-```bash
-NEXT_FONT_GOOGLE_MOCK=1 npm run build
-```
-
-> [!NOTE]
-> `NEXT_FONT_GOOGLE_MOCK=1` bypasses external Google Font fetching errors if you build in an offline/restricted network environment.
-
-To test the generated static pages locally:
-
-```bash
-npm run start
-```
+- **Neubrutalist Design**: Hard shadows, 3px solid black borders (`nb-border`), high-saturation colors, bold typography, and tactile hover/active press transformations.
+- **Interactive Terminal**: Floating FAB button opens a full terminal overlay with commands: `help`, `skills`, `projects`, `education`, `experience`, `contact`, `whoami`, `github`, `linkedin`, `date`, `banner`, `sudo`, `clear`, `exit`. Output animated line-by-line.
+- **Project Case Studies**: Each project includes a structured case study modal (Challenges → Decisions → Optimizations → Outcome) with category-colored sections.
+- **Sliding Nav Indicator**: Active section highlighted with colored background; black shadow box follows with delayed transition.
+- **Project Contributors**: Collaborative projects display contributor names below project description.
+- **Dual-Tab Contact**: Tab 1 (Email → opens default mail client), Tab 2 (Anonymous Message → Telegram Bot API).
+- **Canvas Mini-Game**: Built-in HTML5 arcade game with collision physics, particle effects, and localStorage high score.
+- **Blog Carousel**: Single article in an Embla carousel with previous/next navigation.
+- **Scroll-Triggered Timeline**: Journey roadmap with winding grid layout and spring pop-scale animations.
+- **Case Studies**: Click "Case Study" on any project card to open a structured modal with challenges, decisions, optimizations, and outcome.
+- **Responsive**: Mobile-first, hamburger nav below 1000px, safe-area insets for iPhone notch, 44px tap targets.
+- **Vercel Analytics**: Page view and CTA click tracking built-in.
+- **SEO**: Open Graph + Twitter Card metadata, sitemap.xml, robots.txt, JSON-LD structured data.
 
 ## Data Management
 
-All data for the website is centrally stored in `src/data/portfolio.ts` including experience, projects, skills, education, and social links.
+All data for the website is centrally stored in `src/data/portfolio.ts` including experience, projects, skills, education, certifications, achievements, blog articles, social links, project contributors, and case study details. Type definitions live in `src/types/portfolio.ts`.
 
 ## Deployment
 
