@@ -50,3 +50,4 @@ lint_*.txt
 .tmp/
 
 .agents/
+.omo/

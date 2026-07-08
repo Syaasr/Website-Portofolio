@@ -3,6 +3,7 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "next-themes";
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -14,9 +15,41 @@ const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
 });
 
+const siteUrl = "https://profile.syaikhasril.web.id";
+
 export const metadata: Metadata = {
   title: "Syaikhasril Maulana Firdaus",
   description: "Personal Portfolio of Syaikhasril Maulana Firdaus - Informatics Student & IT Generalist.",
+  metadataBase: new URL(siteUrl),
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Syaikhasril Maulana Firdaus",
+    description: "Personal Portfolio of Syaikhasril Maulana Firdaus - Informatics Student & IT Generalist.",
+    url: siteUrl,
+    siteName: "Syaikhasril Maulana Firdaus",
+    images: [
+      {
+        url: "/thumbnail.png",
+        width: 1200,
+        height: 630,
+        alt: "Syaikhasril Maulana Firdaus Portfolio",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Syaikhasril Maulana Firdaus",
+    description: "Personal Portfolio of Syaikhasril Maulana Firdaus - Informatics Student & IT Generalist.",
+    images: ["/thumbnail.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
   icons: {
     icon: [
       { url: '/favicon.ico' },
@@ -84,7 +117,7 @@ export default function RootLayout({
         className={cn(
           inter.variable,
           jetbrainsMono.variable,
-          "min-h-screen bg-background font-sans antialiased text-foreground"
+          "min-h-screen bg-background font-sans antialiased text-foreground nb-tap"
         )}
       >
         <ThemeProvider
@@ -95,6 +128,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>

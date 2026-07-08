@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { AboutSkills } from "@/components/AboutSkills";
+import { Services } from "@/components/Services";
 import { TimelineRoadmap } from "@/components/TimelineRoadmap";
 import { Projects } from "@/components/Projects";
 import { Certifications } from "@/components/Certifications";
@@ -8,6 +9,7 @@ import { Blog } from "@/components/Blog";
 import { Game } from "@/components/Game";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
+import { FloatingTerminal } from "@/components/FloatingTerminal";
 
 export default function Home() {
   return (
@@ -15,6 +17,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <AboutSkills />
+      <Services />
       <TimelineRoadmap />
       <Projects />
       <Certifications />
@@ -22,6 +25,7 @@ export default function Home() {
       <Game />
       <Contact />
       <Footer />
+      <FloatingTerminal />
     </main>
   );
 }

@@ -2,7 +2,15 @@
 
 import React from "react";
 import { portfolio } from "@/data/portfolio";
+import { RippedPaperDivider } from "@/components/RippedPaperDivider";
 import { ArrowUpRight, BookOpen } from "lucide-react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 export function Blog() {
   return (
@@ -82,66 +90,62 @@ export function Blog() {
           </a>
         </div>
 
-        {/* Blog Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {portfolio.blog.map((post, index) => (
-            <div 
-              key={index} 
-              className="bg-white dark:bg-[#202020] nb-card p-6 sm:p-8 flex flex-col justify-between h-full group"
-            >
-              <div>
-                {/* Tags Row */}
-                <div className="flex flex-wrap gap-1.5 mb-4 border-b-2 border-black pb-3">
-                  {post.tags.map((tag) => (
-                    <span 
-                      key={tag} 
-                      className="font-mono text-[10px] font-bold bg-white dark:bg-black text-black dark:text-white border border-black px-2 py-0.5"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+        {/* Blog Carousel */}
+        <Carousel opts={{ align: "start", loop: true }} className="w-full focus:outline-none" tabIndex={0} aria-label="Blog Articles Carousel">
+          <CarouselContent className="pb-6 -ml-6">
+            {portfolio.blog.map((post, index) => (
+              <CarouselItem key={index} className="pl-6 md:basis-1/2 lg:basis-1/3">
+                <div 
+                  className="bg-white dark:bg-[#202020] nb-card p-6 sm:p-8 flex flex-col justify-between h-full group"
+                >
+                  <div>
+                    {/* Tags Row */}
+                    <div className="flex flex-wrap gap-1.5 mb-4 border-b-2 border-black pb-3">
+                      {post.tags.map((tag) => (
+                        <span 
+                          key={tag} 
+                          className="font-mono text-[10px] font-bold bg-white dark:bg-black text-black dark:text-white border border-black px-2 py-0.5"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    <h4 className="text-xl sm:text-2xl font-black uppercase tracking-tight text-black dark:text-white group-hover:text-[#FF5252] transition-colors leading-tight mb-3">
+                      {post.title}
+                    </h4>
+                    
+                    <p className="text-gray-700 dark:text-gray-300 font-bold text-sm leading-relaxed mb-8">
+                      {post.summary}
+                    </p>
+                  </div>
+
+                  {/* Link CTA */}
+                  <a 
+                    href={post.link} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="bg-black text-white dark:bg-white dark:text-black py-3 px-6 text-center font-black uppercase tracking-wider text-xs nb-btn inline-flex items-center justify-center gap-2 self-start"
+                  >
+                    <span>Read Full Article</span>
+                    <ArrowUpRight className="h-4 w-4 stroke-[3]" />
+                  </a>
                 </div>
-
-                <h4 className="text-xl sm:text-2xl font-black uppercase tracking-tight text-black dark:text-white group-hover:text-[#FF5252] transition-colors leading-tight mb-3">
-                  {post.title}
-                </h4>
-                
-                <p className="text-gray-700 dark:text-gray-300 font-bold text-sm leading-relaxed mb-8">
-                  {post.summary}
-                </p>
-              </div>
-
-              {/* Link CTA */}
-              <a 
-                href={post.link} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="bg-black text-white dark:bg-white dark:text-black py-3 px-6 text-center font-black uppercase tracking-wider text-xs nb-btn inline-flex items-center justify-center gap-2 self-start"
-              >
-                <span>Read Full Article</span>
-                <ArrowUpRight className="h-4 w-4 stroke-[3]" />
-              </a>
-            </div>
-          ))}
-        </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <div className="flex justify-end gap-3 mt-8">
+            <CarouselPrevious className="static translate-y-0 bg-white dark:bg-[#1E1E1E] text-black dark:text-white nb-border w-12 h-12 flex items-center justify-center cursor-pointer hover:bg-[#FFEB3B] dark:hover:text-black transition-colors" />
+            <CarouselNext className="static translate-y-0 bg-white dark:bg-[#1E1E1E] text-black dark:text-white nb-border w-12 h-12 flex items-center justify-center cursor-pointer hover:bg-[#FFEB3B] dark:hover:text-black transition-colors" />
+          </div>
+        </Carousel>
 
       </div>
 
-      {/* Ripped Paper Divider */}
-      <div className="absolute bottom-0 left-0 right-0 w-full h-8 z-20 translate-y-[2px] pointer-events-none">
-        {/* Next section background with motifs clipped to ripped shape */}
-        <div 
-          className="absolute inset-0 w-full h-full bg-[#F0FDF4] dark:bg-[#101E16]"
-          style={{ clipPath: 'polygon(0% 50%, 4% 25%, 8% 62.5%, 12% 20%, 16% 55%, 20% 30%, 24% 67.5%, 28% 25%, 32% 60%, 36% 30%, 40% 70%, 44% 37.5%, 48% 65%, 52% 25%, 56% 55%, 60% 20%, 64% 60%, 68% 30%, 72% 70%, 76% 37.5%, 80% 62.5%, 84% 20%, 88% 55%, 92% 30%, 96% 67.5%, 100% 37.5%, 100% 100%, 0% 100%)' }}
-        >
-          <div className="absolute inset-0 opacity-[0.08] nb-bg-grid-heavy pointer-events-none bg-[position:left_bottom]" />
-          <div className="absolute inset-0 opacity-[0.15] nb-bg-checkered pointer-events-none bg-[position:left_bottom]" />
-        </div>
-        {/* The stroke */}
-        <svg viewBox="0 0 1000 40" className="absolute inset-0 w-full h-full pointer-events-none" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-          <path className="stroke-black stroke-[4px] fill-none" d="M0,20 L40,10 L80,25 L120,8 L160,22 L200,12 L240,27 L280,10 L320,24 L360,12 L400,28 L440,15 L480,26 L520,10 L560,22 L600,8 L640,24 L680,12 L720,28 L760,15 L800,25 L840,8 L880,22 L920,12 L960,27 L1000,15" />
-        </svg>
-      </div>
+      <RippedPaperDivider bgColor="bg-[#F0FDF4] dark:bg-[#101E16]">
+        <div className="absolute inset-0 opacity-[0.08] nb-bg-grid-heavy pointer-events-none bg-[position:left_bottom]" />
+        <div className="absolute inset-0 opacity-[0.15] nb-bg-checkered pointer-events-none bg-[position:left_bottom]" />
+      </RippedPaperDivider>
     </section>
   );
 }

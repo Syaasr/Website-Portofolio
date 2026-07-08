@@ -37,6 +37,22 @@
   --radius-radius: var(--radius);
 
   --animate-bounce-slow: bounce 3s infinite;
+  --animate-rotate-slow: rotate-slow 6s linear infinite;
+  --animate-bounce-nb: bounce-nb 1s ease-in-out infinite;
+  --animate-spin-slow: spin-slow 6s linear infinite;
+}
+
+@keyframes rotate-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes bounce-nb {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 /* ============================================
@@ -199,9 +215,11 @@
   box-shadow: 4px 4px 0px #000000 !important;
   transition: all 0.15s ease-out !important;
 }
-.nb-btn:hover {
-  transform: translate(-3px, -3px) !important;
-  box-shadow: 7px 7px 0px #000000 !important;
+@media (hover: hover) {
+  .nb-btn:hover {
+    transform: translate(-3px, -3px) !important;
+    box-shadow: 7px 7px 0px #000000 !important;
+  }
 }
 .nb-btn:active {
   transform: translate(2px, 2px) !important;
@@ -213,9 +231,11 @@
   box-shadow: 5px 5px 0px #000000 !important;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
-.nb-card:hover {
-  transform: translate(-4px, -4px) !important;
-  box-shadow: 9px 9px 0px #000000 !important;
+@media (hover: hover) {
+  .nb-card:hover {
+    transform: translate(-4px, -4px) !important;
+    box-shadow: 9px 9px 0px #000000 !important;
+  }
 }
 
 .nb-card-static {
@@ -307,6 +327,25 @@
 .dark .nb-scrollbar::-webkit-scrollbar-thumb {
   background: #2196F3 !important;
   border: 3px solid #000000 !important;
+}
+
+/* ============================================
+   MOBILE / TOUCH / SAFE AREA UTILITIES
+   ============================================ */
+@supports (padding: env(safe-area-inset-top)) {
+  .nb-safe-top { padding-top: env(safe-area-inset-top) !important; }
+  .nb-safe-bottom { padding-bottom: env(safe-area-inset-bottom) !important; }
+  .nb-safe-left { padding-left: env(safe-area-inset-left) !important; }
+  .nb-safe-right { padding-right: env(safe-area-inset-right) !important; }
+  .nb-safe-nav {
+    padding-left: calc(1.5rem + env(safe-area-inset-left)) !important;
+    padding-right: calc(1.5rem + env(safe-area-inset-right)) !important;
+  }
+}
+.nb-tap { touch-action: manipulation !important; }
+.nb-tap-target { min-width: 44px !important; min-height: 44px !important; }
+@media (hover: none) and (pointer: coarse) {
+  .nb-hover-mobile-none:hover { transform: none !important; }
 }
 
 /* Neubrutalist Custom Text Caret Color and High-Contrast Focus Ring */

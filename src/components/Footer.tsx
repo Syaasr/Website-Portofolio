@@ -31,7 +31,7 @@ export function Footer() {
                 href={portfolio.socials.github} 
                 target="_blank" 
                 rel="noreferrer"
-                className="p-2 bg-white text-black border-[3px] border-black hover:bg-[#FFEB3B] transition-transform hover:-translate-y-0.5 active:translate-y-0 shadow-[2px_2px_0_#000]"
+                className="p-3 bg-white text-black border-[3px] border-black hover:bg-[#FFEB3B] transition-transform hover:-translate-y-0.5 active:translate-y-0 shadow-[2px_2px_0_#000] nb-tap"
                 aria-label="GitHub Profile"
               >
                 <Github className="h-5 w-5" />
@@ -40,7 +40,7 @@ export function Footer() {
                 href={portfolio.socials.linkedin} 
                 target="_blank" 
                 rel="noreferrer"
-                className="p-2 bg-white text-black border-[3px] border-black hover:bg-[#2196F3] hover:text-white transition-transform hover:-translate-y-0.5 active:translate-y-0 shadow-[2px_2px_0_#000]"
+                className="p-3 bg-white text-black border-[3px] border-black hover:bg-[#2196F3] hover:text-white transition-transform hover:-translate-y-0.5 active:translate-y-0 shadow-[2px_2px_0_#000] nb-tap"
                 aria-label="LinkedIn Profile"
               >
                 <Linkedin className="h-5 w-5" />
@@ -49,7 +49,7 @@ export function Footer() {
                 href={portfolio.socials.instagram} 
                 target="_blank" 
                 rel="noreferrer"
-                className="p-2 bg-white text-black border-[3px] border-black hover:bg-[#FF5252] hover:text-white transition-transform hover:-translate-y-0.5 active:translate-y-0 shadow-[2px_2px_0_#000]"
+                className="p-3 bg-white text-black border-[3px] border-black hover:bg-[#FF5252] hover:text-white transition-transform hover:-translate-y-0.5 active:translate-y-0 shadow-[2px_2px_0_#000] nb-tap"
                 aria-label="Instagram Profile"
               >
                 <Instagram className="h-5 w-5" />

@@ -78,6 +78,13 @@ export interface SocialsInfo {
   instagram: string;
 }
 
+export interface CaseStudy {
+  challenges: string[];
+  decisions: string[];
+  optimizations: string[];
+  outcome: string;
+}
+
 export interface ProjectItem {
   title: string;
   description: string;
@@ -86,6 +93,23 @@ export interface ProjectItem {
   linkDemo?: string;
   category?: string[];
   imagePath?: string;
+  caseStudy?: CaseStudy;
+  contributors?: string[];
+}
+
+export interface TestimonialItem {
+  name: string;
+  role: string;
+  initials: string;
+  text: string;
+  rating: number;
+}
+
+export interface ServiceItem {
+  title: string;
+  description: string;
+  techStack: string[];
+  color: string;
 }
 
 export interface PortfolioData {
@@ -98,6 +122,8 @@ export interface PortfolioData {
   certifications: CertificationItem[];
   achievements: AchievementItem[];
   projects: ProjectItem[];
+  services: ServiceItem[];
+  testimonials: TestimonialItem[];
   blog: BlogItem[];
   socials: SocialsInfo;
 }

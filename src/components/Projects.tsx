@@ -2,7 +2,10 @@
 
 import React, { useState } from "react";
 import { portfolio } from "@/data/portfolio";
+import { ProjectItem } from "@/types/portfolio";
 import { Github, Globe, ArrowUpRight, Monitor, Cpu, Brain } from "lucide-react";
+import { CaseStudyModal } from "@/components/CaseStudyModal";
+import { RippedPaperDivider } from "@/components/RippedPaperDivider";
 import {
   Carousel,
   CarouselContent,
@@ -22,6 +25,18 @@ const categories = [
 
 export function Projects() {
   const [activeCategory, setActiveCategory] = useState("All");
+  const [modalProject, setModalProject] = useState<ProjectItem | null>(null);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
+  const getBorderColor = (categories: string[] | undefined): string => {
+    const cats = categories ?? [];
+    if (cats.includes("Website")) return "#FFEB3B";
+    if (cats.includes("Machine Learning")) return "#FF5252";
+    if (cats.includes("IoT / Robotics")) return "#2196F3";
+    if (cats.includes("Game")) return "#E0A96D";
+    if (cats.includes("Mobile Apps")) return "#D8B4FE";
+    return "#4ECDC4";
+  };
 
   const filteredProjects = portfolio.projects.filter((project) => {
     if (activeCategory === "All") return true;
@@ -140,7 +155,12 @@ export function Projects() {
             <CarouselContent className="pb-6 -ml-6">
               {filteredProjects.map((project, index) => (
                 <CarouselItem key={index} className="pl-6 md:basis-1/2 lg:basis-1/3">
-                  <div className="bg-white dark:bg-[#202020] nb-card flex flex-col justify-between h-full overflow-hidden group">
+                  <div
+                    className="bg-white dark:bg-[#202020] nb-card-static flex flex-col justify-between h-full overflow-hidden group"
+                    onMouseEnter={() => setHoveredIndex(index)}
+                    onMouseLeave={() => setHoveredIndex(null)}
+                    style={hoveredIndex === index ? { borderColor: getBorderColor(project.category) } : undefined}
+                  >
                     
                     {/* Project Header Image/Visual */}
                     <div className="relative h-48 bg-muted border-b-3 border-black flex items-center justify-center overflow-hidden shrink-0">
@@ -212,6 +232,17 @@ export function Projects() {
                         <p className="text-gray-700 dark:text-gray-300 font-bold text-xs sm:text-sm leading-relaxed mb-6">
                           {project.description}
                         </p>
+
+                        {project.contributors && project.contributors.length > 0 && (
+                          <div className="mb-4">
+                            <span className="font-mono text-[10px] font-bold text-gray-500 uppercase tracking-wider">Contributors: </span>
+                            {project.contributors.map((name, i) => (
+                              <span key={name} className="font-mono text-[10px] font-bold text-black dark:text-white">
+                                {i > 0 && <span className="text-gray-400">, </span>}{name}
+                              </span>
+                            ))}
+                          </div>
+                        )}
                       </div>
 
                       {/* Links Row */}
@@ -237,6 +268,17 @@ export function Projects() {
                           </a>
                         )}
                       </div>
+
+                      {/* Case Study Button */}
+                      {project.caseStudy && (
+                        <button
+                          onClick={() => setModalProject(project)}
+                          className="w-full mt-3 bg-[#2196F3] text-white py-2 text-xs font-black uppercase tracking-wide nb-btn inline-flex justify-center items-center gap-1.5 cursor-pointer"
+                        >
+                          <span>Case Study</span>
+                          <ArrowUpRight className="h-3.5 w-3.5 stroke-[3]" />
+                        </button>
+                      )}
                     </div>
 
                   </div>
@@ -261,21 +303,19 @@ export function Projects() {
 
       </div>
 
-      {/* Ripped Paper Divider */}
-      <div className="absolute bottom-0 left-0 right-0 w-full h-8 z-20 translate-y-[2px] pointer-events-none">
-        {/* Next section background with motifs clipped to ripped shape */}
-        <div 
-          className="absolute inset-0 w-full h-full bg-[#FFFBEB] dark:bg-[#1A1A14]"
-          style={{ clipPath: 'polygon(0% 50%, 4% 25%, 8% 62.5%, 12% 20%, 16% 55%, 20% 30%, 24% 67.5%, 28% 25%, 32% 60%, 36% 30%, 40% 70%, 44% 37.5%, 48% 65%, 52% 25%, 56% 55%, 60% 20%, 64% 60%, 68% 30%, 72% 70%, 76% 37.5%, 80% 62.5%, 84% 20%, 88% 55%, 92% 30%, 96% 67.5%, 100% 37.5%, 100% 100%, 0% 100%)' }}
-        >
-          <div aria-hidden="true" className="absolute inset-0 opacity-[0.25] nb-bg-blueprint pointer-events-none bg-[position:left_bottom]" />
-          <div aria-hidden="true" className="absolute inset-0 opacity-[0.08] nb-bg-dots pointer-events-none bg-[position:left_bottom]" />
-        </div>
-        {/* The stroke */}
-        <svg viewBox="0 0 1000 40" className="absolute inset-0 w-full h-full pointer-events-none" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-          <path className="stroke-black stroke-[4px] fill-none" d="M0,20 L40,10 L80,25 L120,8 L160,22 L200,12 L240,27 L280,10 L320,24 L360,12 L400,28 L440,15 L480,26 L520,10 L560,22 L600,8 L640,24 L680,12 L720,28 L760,15 L800,25 L840,8 L880,22 L920,12 L960,27 L1000,15" />
-        </svg>
-      </div>
+      {/* Case Study Modal */}
+      {modalProject && (
+        <CaseStudyModal
+          project={modalProject}
+          isOpen={!!modalProject}
+          onClose={() => setModalProject(null)}
+        />
+      )}
+
+      <RippedPaperDivider bgColor="bg-[#FFFBEB] dark:bg-[#1A1A14]">
+        <div aria-hidden="true" className="absolute inset-0 opacity-[0.25] nb-bg-blueprint pointer-events-none bg-[position:left_bottom]" />
+        <div aria-hidden="true" className="absolute inset-0 opacity-[0.08] nb-bg-dots pointer-events-none bg-[position:left_bottom]" />
+      </RippedPaperDivider>
     </section>
   );
 }
